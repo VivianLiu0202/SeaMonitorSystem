@@ -155,8 +155,6 @@
 .widget.widget-device {
   padding: 22px 18px;
   background: #fff;
-  height: 22em;
-  overflow: auto; /* 如果内容超出高度，出现滚动条 */
 }
 .widget.widget-device .widget-heading {
   display: block;
@@ -180,30 +178,23 @@
   color: white;
   background-color: #002B65; /* 背景色与图片一致 */
   border: none; /* 移除边框 */
-  padding-left: 20px; /* 留出空间放置圆形图标 */
-}
-
-.list-group-item .feature-icon{
-  margin-right: 10px; /* 圆形图标和文本之间的间距 */
-  font-size: 1rem; /* 图标大小 */
-  display: inline-block; /* 让图标和文字在同一行显示 */
+  padding-left: 40px; /* 留出空间放置圆形图标 */
 }
 
 .list-group-item span {
-  margin-right: 20px; /* 文本之间的间距，如果需要的话 */
+  display: block; /* 让文本显示在单独的行 */
 }
 
-.list-group-item .span-tab {
-  display: block; /* 让每个span元素显示在新的行上 */
-  margin-left: 30px; /* 创建空格效果 */
-}
-
-.list-group-item .text-green {
-  color: green;
-}
-
-.list-group-item .text-red {
-  color: red;
+.list-group-item::before {
+  content: '';
+  position: absolute;
+  left: 10px; /* 根据需要调整位置 */
+  top: 50%;
+  transform: translateY(-50%); /* 垂直居中 */
+  height: 20px; /* 圆形的大小 */
+  width: 20px; /* 圆形的大小 */
+  background-color: white; /* 圆形的颜色 */
+  border-radius: 50%; /* 圆形的边框半径 */
 }
 
 /*
@@ -220,19 +211,22 @@
 .widget.widget-six {
   padding: 22px 18px;
   background: #fff;
-  height: 22em;
-  overflow: auto; /* 如果内容超出高度，出现滚动条 */
 }
 .widget.widget-six .widget-heading {
   display: block;
   justify-content: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 .widget.widget-six .widget-heading h6 {
   color: #0e1726;
   font-size: 17px;
   display: block;
   font-weight: 600;
+}
+.widget.widget-six .widget-heading .task-action svg {
+  color: #888ea8;
+  width: 19px;
+  height: 19px;
 }
 
 .widget .widget-six .additional-features{
@@ -243,7 +237,7 @@
 .widget .widget-six .additional-features .feature-item{
   padding: 10px; /* 框内边距 */
 }
-.widget .widget-six .additional-features .feature-item .feature-content{
+.widget .widget-six .additional-features .feature-content{
   background-color: white; /* 框背景色 */
   border-radius: .25rem; /* 圆角 */
   padding: .75rem; /* 内边距 */
@@ -254,7 +248,7 @@
 }
 
 .feature-content .feature-icon{
-  font-size: 1.1rem; /* 图标大小 */
+  font-size: 1rem; /* 图标大小 */
   margin-bottom: 10rem;
 }
 
@@ -262,14 +256,14 @@
   flex-grow: 1; /* 让文本占据多余空间 */
   margin-left: .5rem; /* 文本和图标之间的间距 */
   font-weight: 500; /* 字体粗细 */
-  margin-top:1em;
+  margin-top:0.7em;
 }
 
 .feature-content .form-check-input {
-  margin-top: 1.6em;
-  margin-bottom: 2.5em;
+  margin-top: 1em;
+  margin-bottom: 1.5em;
   width: 2.5em;
-  margin-left: -.7em;
+  margin-left: -1.5em;
   cursor: pointer;
   height: 1.5em;
   background-color: #dee2e6;

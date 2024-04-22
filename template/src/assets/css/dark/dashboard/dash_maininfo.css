@@ -139,78 +139,6 @@ body.dark .widget-card-four .w-icon p {
   font-weight: 700;
 }
 
-
-
-/*
-	===============================
-			@Import	Function
-	===============================
-*/
-/*
-   设备状态card的css
-	===============================
-			@Import	Mixins
-	===============================
-*/
-
-body.dark .widget.widget-device {
-  padding: 22px 18px;
-  background: #0e1726;
-  height: 22em;
-  overflow: auto; /* 如果内容超出高度，出现滚动条 */
-}
-body.dark .widget.widget-device .widget-heading {
-  display: block;
-  justify-content: flex-start;
-  margin-bottom: 15px;
-}
-body.dark .widget.widget-device .widget-heading h6 {
-  color: #e0e6ed;
-  font-size: 17px;
-  display: block;
-  font-weight: 600;
-}
-body.dark .widget.widget-device .widget-heading .task-action svg {
-  color: #888ea8;
-  width: 19px;
-  height: 19px;
-}
-
-body.dark .widget.widget-device .simple-tab .tab-content {
-}
-
-body.dark .widget.widget-device .simple-tab .list-group .list-group-item{
-  position: relative; /* 为伪元素设置定位上下文 */
-  background: #0e1726;
-  border: none; /* 移除边框 */
-  padding-left: 20px; /* 留出空间放置圆形图标 */
-}
-
-body.dark .list-group-item .feature-icon{
-  margin-right: 10px; /* 圆形图标和文本之间的间距 */
-  font-size: 1rem; /* 图标大小 */
-  display: inline-block; /* 让图标和文字在同一行显示 */
-  color: #e0e6ed;
-}
-
-body.dark .list-group-item span {
-  margin-right: 20px; /* 文本之间的间距，如果需要的话 */
-  color: #e0e6ed;
-}
-
-body.dark .list-group-item .span-tab {
-  display: block; /* 让每个span元素显示在新的行上 */
-  margin-left: 30px; /* 创建空格效果 */
-}
-
-body.dark .list-group-item .text-green {
-  color: green;
-}
-
-body.dark .list-group-item .text-red {
-  color: red;
-}
-
 /*
 	===============================
 			@Import	Function
@@ -224,16 +152,15 @@ body.dark .list-group-item .text-red {
 body.dark .widget.widget-six {
   padding: 22px 18px;
   background: #0e1726;
-  height: 22em;
-  overflow: auto; /* 如果内容超出高度，出现滚动条 */
 }
 body.dark .widget.widget-six .widget-heading {
-  display: block;
-  justify-content: flex-start;
-  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 body.dark .widget.widget-six .widget-heading h6 {
   color: #e0e6ed;
+  margin-bottom: 20px;
   font-size: 17px;
   display: block;
   font-weight: 600;
@@ -246,6 +173,7 @@ body.dark .widget .widget-six .additional-features{
 
 body.dark .widget .widget-six .additional-features .feature-item{
   padding: 10px; /* 框内边距 */
+  margin-bottom: 10px; /* 框间距 */
 }
 body.dark .widget .widget-six .additional-features .feature-content{
   background-color: white; /* 框背景色 */
@@ -259,22 +187,20 @@ body.dark .widget .widget-six .additional-features .feature-content{
 
 
 body.dark .feature-content .feature-icon{
-  font-size: 1.1rem; /* 图标大小 */
-  margin-bottom: 10rem;
+  font-size: 1rem; /* 图标大小 */
+  margin-bottom: 3rem;
 }
 
 body.dark .feature-content .feature-text{
   flex-grow: 1; /* 让文本占据多余空间 */
   margin-left: .5rem; /* 文本和图标之间的间距 */
   font-weight: 500; /* 字体粗细 */
-  margin-top: 1em;
+  margin-bottom: 3rem; /* 增加复选框的底部边距 */
 }
 
 body.dark .feature-content .form-check-input {
-  margin-top: 1.6em;
-  margin-bottom: 2.5em;
   width: 2.5em;
-  margin-left: -.7em;
+  margin-left: -1.5em;
   cursor: pointer;
   height: 1.5em;
   background-color: #dee2e6;

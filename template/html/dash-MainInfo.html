@@ -19,7 +19,7 @@
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="../src/plugins/src/apex/apexcharts.css" rel="stylesheet" type="text/css">
-    <link href="../src/assets/css/light/dashboard/dash_maininfo.css" rel="stylesheet" type="text/css" />
+    <link href="../src/assets/css/light/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
     <link href="../src/assets/css/dark/dashboard/dash_maininfo.css" rel="stylesheet" type="text/css" />
     <!-- 通过 Bootstrap Icons CDN 引入图标 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -67,7 +67,7 @@
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar-container">
                             <div class="avatar avatar-sm avatar-indicators avatar-online">
-                                <img alt="avatar" src="../src/assets/img/profile-30.png" class="rounded-circle">
+                                <img alt="avatar" src="../src/assets/img/boy-1.png" class="rounded-circle">
                             </div>
                         </div>
                     </a>
@@ -140,7 +140,7 @@
                 <div class="profile-info">
                     <div class="user-info">
                         <div class="profile-img">
-                            <img src="../src/assets/img/profile-30.png" alt="avatar">
+                            <img src="../src/assets/img/boy-1.png" alt="avatar">
                         </div>
                         <div class="profile-content">
                             <h6 class="">LiuVivian</h6>
@@ -251,8 +251,7 @@
 
                     <div class="row layout-top-spacing">
 
-                        <!--设备状态-->
-                        <div class="col-xl-7 col-lg-6 col-md-6 col-sm-6 col-6 layout-spacing">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 layout-spacing">
                             <div class="widget widget-device">
                                 <div class="widget-heading">
                                     <h6 class="">设备状态</h6>
@@ -279,24 +278,10 @@
                                         <div class="tab-pane fade show active" id="maincontrol-tab-pane" role="tabpanel" aria-labelledby="maincontrol-tab" tabindex="0">
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item">
-                                                    <i class="bi bi-circle feature-icon"></i>
                                                     <span>设备ID</span>
                                                     <span>8D19C331-4F08-47A1</span>
                                                 </li>
-                                                <!--TODO:这里需要添加对于传入温度和连接状态的判断，以此修改颜色-->
-                                                <li class="list-group-item">
-                                                    <i class="bi bi-circle feature-icon"></i>
-                                                    <span>主控状态</span>
-                                                    <span class="span-tab">版本: V0.1.1</span>
-                                                    <span class="span-tab">温度: <span class="text-green">39.64°C</span> </span>
-
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <i class="bi bi-circle feature-icon"></i>
-                                                    <span>次控状态</span>
-                                                    <span class="span-tab">连接：<span class="text-red">断开</span> </span>
-
-                                                </li>
+                                                <!-- ... 其他列表项 ... -->
                                             </ul>
                                         </div>
                                         <div class="tab-pane fade" id="time-tab-pane" role="tabpanel" aria-labelledby="time-tab" tabindex="0">
@@ -315,9 +300,8 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!--附加功能-->
-                        <div class="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6 layout-spacing">
+                        
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 layout-spacing">
                             <div class="widget widget-six">
                                 <div class="widget-heading">
                                     <h6 class="">附加功能</h6>
@@ -846,7 +830,6 @@
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="../src/plugins/src/apex/apexcharts.min.js"></script>
     <script src="../src/assets/js/dashboard/dash_1.js"></script>
-    <script src="../src/assets/js/dashboard/dash_maininfo.js"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
 
