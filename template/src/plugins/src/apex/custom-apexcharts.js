@@ -1,4 +1,4 @@
-window.addEventListener("load", function(){
+window.addEventListener("load", function () {
 
     getcorkThemeObject = localStorage.getItem("theme");
     getParseObject = JSON.parse(getcorkThemeObject)
@@ -19,40 +19,40 @@ window.addEventListener("load", function(){
         // Simple Line
 
         var sline = {
-        chart: {
-            fontFamily: 'Nunito, Arial, sans-serif',
-            height: 350,
-            type: 'line',
-            zoom: {
-            enabled: false
+            chart: {
+                fontFamily: 'Nunito, Arial, sans-serif',
+                height: 350,
+                type: 'line',
+                zoom: {
+                    enabled: false
+                },
+                toolbar: {
+                    show: false,
+                }
             },
-            toolbar: {
-            show: false,
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight'
+            },
+            series: [{
+                name: "总销售额",
+                data: [100, 410, 350, 510, 490, 620, 690, 910, 1480, 1960, 1280, 880]
+            }],
+            title: {
+                text: '水产品销售总额逐月展示(单位:万元)',
+                align: 'left'
+            },
+            grid: {
+                row: {
+                    colors: ['#3b3f5c', 'transparent'], // takes an array which will be repeated on columns
+                    opacity: 0.5
+                },
+            },
+            xaxis: {
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
             }
-        },
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            curve: 'straight'
-        },
-        series: [{
-            name: "Desktops",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }],
-        title: {
-            text: 'Product Trends by Month',
-            align: 'left'
-        },
-        grid: {
-            row: {
-            colors: ['#3b3f5c', 'transparent'], // takes an array which will be repeated on columns
-            opacity: 0.5
-            },
-        },
-        xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-        }
         }
 
 
@@ -64,7 +64,7 @@ window.addEventListener("load", function(){
                 height: 350,
                 type: 'area',
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             dataLabels: {
@@ -74,11 +74,11 @@ window.addEventListener("load", function(){
                 curve: 'smooth'
             },
             series: [{
-                name: 'series1',
-                data: [31, 40, 28, 51, 42, 109, 100]
+                name: '南岸基',
+                data: [31, 40, 28, 51, 42, 109, 100, 89, 98, 102, 120, 88]
             }, {
-                name: 'series2',
-                data: [11, 32, 45, 32, 34, 52, 41]
+                name: '北岸基',
+                data: [11, 32, 45, 32, 34, 52, 41, 49, 60, 70, 80, 90]
             }],
             legend: {
                 markers: {
@@ -94,7 +94,7 @@ window.addEventListener("load", function(){
             },
             xaxis: {
                 type: 'datetime',
-                categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],                
+                categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00", "2018-09-19T07:30:00", "2018-09-19T08:30:00", "2018-09-19T09:30:00", "2018-09-19T10:30:00", "2018-09-19T11:30:00"],
             },
             tooltip: {
                 x: {
@@ -111,14 +111,14 @@ window.addEventListener("load", function(){
                 height: 350,
                 type: 'bar',
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             plotOptions: {
                 bar: {
                     horizontal: false,
                     columnWidth: '55%',
-                    endingShape: 'rounded'  
+                    endingShape: 'rounded'
                 },
             },
             dataLabels: {
@@ -130,10 +130,10 @@ window.addEventListener("load", function(){
                 colors: ['transparent']
             },
             series: [{
-                name: 'Net Profit',
+                name: 'XX养殖法',
                 data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
             }, {
-                name: 'Revenue',
+                name: 'YY养殖法',
                 data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
             }],
             legend: {
@@ -149,11 +149,11 @@ window.addEventListener("load", function(){
                 }
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                categories: ['2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月'],
             },
             yaxis: {
                 title: {
-                    text: '$ (thousands)'
+                    text: '产苗量（千个）'
                 }
             },
             fill: {
@@ -179,7 +179,7 @@ window.addEventListener("load", function(){
                 type: 'bar',
                 stacked: true,
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             responsive: [{
@@ -200,13 +200,13 @@ window.addEventListener("load", function(){
             series: [{
                 name: 'PRODUCT A',
                 data: [44, 55, 41, 67, 22, 43]
-            },{
+            }, {
                 name: 'PRODUCT B',
                 data: [13, 23, 20, 8, 13, 27]
-            },{
+            }, {
                 name: 'PRODUCT C',
                 data: [11, 17, 15, 15, 21, 14]
-            },{
+            }, {
                 name: 'PRODUCT D',
                 data: [21, 7, 25, 13, 22, 8]
             }],
@@ -241,7 +241,7 @@ window.addEventListener("load", function(){
                 height: 350,
                 type: 'bar',
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             plotOptions: {
@@ -264,56 +264,56 @@ window.addEventListener("load", function(){
         // Mixed Chart
 
         var options = {
-        chart: {
-            fontFamily: 'Nunito, Arial, sans-serif',
-            height: 350,
-            type: 'line',
-            toolbar: {
-            show: false,
-            }
-        },
-        series: [{
-            name: 'Website Blog',
-            type: 'column',
-            data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
-        }, {
-            name: 'Social Media',
-            type: 'line',
-            data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
-        }],
-        stroke: {
-            width: [0, 4]
-        },
-        title: {
-            text: 'Traffic Sources'
-        },
-        legend: {
-            markers: {
-                width: 10,
-                height: 10,
-                offsetX: -5,
-                offsetY: 0
+            chart: {
+                fontFamily: 'Nunito, Arial, sans-serif',
+                height: 350,
+                type: 'line',
+                toolbar: {
+                    show: false,
+                }
             },
-            itemMargin: {
-                horizontal: 10,
-                vertical: 0
-            }
-        },
-        labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
-        xaxis: {
-            type: 'datetime'
-        },
-        yaxis: [{
+            series: [{
+                name: 'Website Blog',
+                type: 'column',
+                data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+            }, {
+                name: 'Social Media',
+                type: 'line',
+                data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
+            }],
+            stroke: {
+                width: [0, 4]
+            },
             title: {
-            text: 'Website Blog',
+                text: 'Traffic Sources'
             },
+            legend: {
+                markers: {
+                    width: 10,
+                    height: 10,
+                    offsetX: -5,
+                    offsetY: 0
+                },
+                itemMargin: {
+                    horizontal: 10,
+                    vertical: 0
+                }
+            },
+            labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
+            xaxis: {
+                type: 'datetime'
+            },
+            yaxis: [{
+                title: {
+                    text: 'Website Blog',
+                },
 
-        }, {
-            opposite: true,
-            title: {
-            text: 'Social Media'
-            }
-        }]
+            }, {
+                opposite: true,
+                title: {
+                    text: 'Social Media'
+                }
+            }]
 
         }
 
@@ -327,11 +327,11 @@ window.addEventListener("load", function(){
                 height: 350,
                 type: 'donut',
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             stroke: {
-            colors: '#0e1726'
+                colors: '#0e1726'
             },
             legend: {
                 markers: {
@@ -368,7 +368,7 @@ window.addEventListener("load", function(){
                 height: 350,
                 type: 'radialBar',
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             plotOptions: {
@@ -392,7 +392,7 @@ window.addEventListener("load", function(){
                 }
             },
             series: [44, 55, 67, 83],
-            labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],    
+            labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
         }
 
     } else {
@@ -410,40 +410,40 @@ window.addEventListener("load", function(){
         // Simple Line
 
         var sline = {
-        chart: {
-            fontFamily: 'Nunito, Arial, sans-serif',
-            height: 350,
-            type: 'line',
-            zoom: {
-            enabled: false
+            chart: {
+                fontFamily: 'Nunito, Arial, sans-serif',
+                height: 350,
+                type: 'line',
+                zoom: {
+                    enabled: false
+                },
+                toolbar: {
+                    show: false,
+                }
             },
-            toolbar: {
-            show: false,
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight'
+            },
+            series: [{
+                name: "总销售额",
+                data: [100, 410, 350, 510, 490, 620, 690, 910, 1480, 1960, 1280, 880]
+            }],
+            title: {
+                text: '水产品销售总额逐月展示(单位:万元)',
+                align: 'left'
+            },
+            grid: {
+                row: {
+                    colors: ['#e0e6ed', 'transparent'], // takes an array which will be repeated on columns
+                    opacity: 0.5
+                },
+            },
+            xaxis: {
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
             }
-        },
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            curve: 'straight'
-        },
-        series: [{
-            name: "Desktops",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }],
-        title: {
-            text: 'Product Trends by Month',
-            align: 'left'
-        },
-        grid: {
-            row: {
-            colors: ['#e0e6ed', 'transparent'], // takes an array which will be repeated on columns
-            opacity: 0.5
-            },
-        },
-        xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-        }
         }
 
 
@@ -455,7 +455,7 @@ window.addEventListener("load", function(){
                 height: 350,
                 type: 'area',
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             dataLabels: {
@@ -465,11 +465,11 @@ window.addEventListener("load", function(){
                 curve: 'smooth'
             },
             series: [{
-                name: 'series1',
-                data: [31, 40, 28, 51, 42, 109, 100]
+                name: '南岸基',
+                data: [31, 40, 28, 51, 42, 109, 100, 89, 98, 102, 120, 88]
             }, {
-                name: 'series2',
-                data: [11, 32, 45, 32, 34, 52, 41]
+                name: '北岸基',
+                data: [11, 32, 45, 32, 34, 52, 41, 49, 60, 70, 80, 90]
             }],
             legend: {
                 markers: {
@@ -485,7 +485,7 @@ window.addEventListener("load", function(){
             },
             xaxis: {
                 type: 'datetime',
-                categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],                
+                categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00", "2018-09-19T07:30:00", "2018-09-19T08:30:00", "2018-09-19T09:30:00", "2018-09-19T10:30:00", "2018-09-19T11:30:00"],
             },
             tooltip: {
                 x: {
@@ -502,14 +502,14 @@ window.addEventListener("load", function(){
                 height: 350,
                 type: 'bar',
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             plotOptions: {
                 bar: {
                     horizontal: false,
                     columnWidth: '55%',
-                    endingShape: 'rounded'  
+                    endingShape: 'rounded'
                 },
             },
             dataLabels: {
@@ -521,10 +521,10 @@ window.addEventListener("load", function(){
                 colors: ['transparent']
             },
             series: [{
-                name: 'Net Profit',
+                name: 'XX养殖法',
                 data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
             }, {
-                name: 'Revenue',
+                name: 'YY养殖法',
                 data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
             }],
             legend: {
@@ -540,11 +540,11 @@ window.addEventListener("load", function(){
                 }
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                categories: ['2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月'],
             },
             yaxis: {
                 title: {
-                    text: '$ (thousands)'
+                    text: '产苗量（千个）'
                 }
             },
             fill: {
@@ -570,7 +570,7 @@ window.addEventListener("load", function(){
                 type: 'bar',
                 stacked: true,
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             responsive: [{
@@ -589,16 +589,16 @@ window.addEventListener("load", function(){
                 },
             },
             series: [{
-                name: 'PRODUCT A',
+                name: '智能计算与预测、决策模块',
                 data: [44, 55, 41, 67, 22, 43]
-            },{
-                name: 'PRODUCT B',
+            }, {
+                name: '传感器管理模块',
                 data: [13, 23, 20, 8, 13, 27]
-            },{
-                name: 'PRODUCT C',
+            }, {
+                name: '数据采集与存储模块',
                 data: [11, 17, 15, 15, 21, 14]
-            },{
-                name: 'PRODUCT D',
+            }, {
+                name: '数据基本统计与分析模块',
                 data: [21, 7, 25, 13, 22, 8]
             }],
             xaxis: {
@@ -632,7 +632,7 @@ window.addEventListener("load", function(){
                 height: 350,
                 type: 'bar',
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             plotOptions: {
@@ -655,56 +655,56 @@ window.addEventListener("load", function(){
         // Mixed Chart
 
         var options = {
-        chart: {
-            fontFamily: 'Nunito, Arial, sans-serif',
-            height: 350,
-            type: 'line',
-            toolbar: {
-            show: false,
-            }
-        },
-        series: [{
-            name: 'Website Blog',
-            type: 'column',
-            data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
-        }, {
-            name: 'Social Media',
-            type: 'line',
-            data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
-        }],
-        stroke: {
-            width: [0, 4]
-        },
-        title: {
-            text: 'Traffic Sources'
-        },
-        legend: {
-            markers: {
-                width: 10,
-                height: 10,
-                offsetX: -5,
-                offsetY: 0
+            chart: {
+                fontFamily: 'Nunito, Arial, sans-serif',
+                height: 350,
+                type: 'line',
+                toolbar: {
+                    show: false,
+                }
             },
-            itemMargin: {
-                horizontal: 10,
-                vertical: 0
-            }
-        },
-        labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
-        xaxis: {
-            type: 'datetime'
-        },
-        yaxis: [{
+            series: [{
+                name: 'Website Blog',
+                type: 'column',
+                data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+            }, {
+                name: 'Social Media',
+                type: 'line',
+                data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
+            }],
+            stroke: {
+                width: [0, 4]
+            },
             title: {
-            text: 'Website Blog',
+                text: 'Traffic Sources'
             },
+            legend: {
+                markers: {
+                    width: 10,
+                    height: 10,
+                    offsetX: -5,
+                    offsetY: 0
+                },
+                itemMargin: {
+                    horizontal: 10,
+                    vertical: 0
+                }
+            },
+            labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
+            xaxis: {
+                type: 'datetime'
+            },
+            yaxis: [{
+                title: {
+                    text: 'Website Blog',
+                },
 
-        }, {
-            opposite: true,
-            title: {
-            text: 'Social Media'
-            }
-        }]
+            }, {
+                opposite: true,
+                title: {
+                    text: 'Social Media'
+                }
+            }]
 
         }
 
@@ -718,11 +718,11 @@ window.addEventListener("load", function(){
                 height: 350,
                 type: 'donut',
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             stroke: {
-            colors: '#e0e6ed'
+                colors: '#e0e6ed'
             },
             legend: {
                 markers: {
@@ -759,7 +759,7 @@ window.addEventListener("load", function(){
                 height: 350,
                 type: 'radialBar',
                 toolbar: {
-                show: false,
+                    show: false,
                 }
             },
             plotOptions: {
@@ -783,16 +783,16 @@ window.addEventListener("load", function(){
                 }
             },
             series: [44, 55, 67, 83],
-            labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],    
+            labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
         }
-        
+
     }
 
     // Simple Line
 
     var simpleLine = new ApexCharts(
-    document.querySelector("#s-line"),
-    sline
+        document.querySelector("#s-line"),
+        sline
     );
 
     simpleLine.render();
@@ -839,8 +839,8 @@ window.addEventListener("load", function(){
     // Mixed Chart
 
     var mixed = new ApexCharts(
-    document.querySelector("#mixed-chart"),
-    options
+        document.querySelector("#mixed-chart"),
+        options
     );
 
     mixed.render();
@@ -865,14 +865,13 @@ window.addEventListener("load", function(){
     radialChart.render();
 
 
-
     /**
      * =================================================================================================
      * |     @Re_Render | Re render all the necessary JS when clicked to switch/toggle theme           |
      * =================================================================================================
      */
 
-     document.querySelector('.theme-toggle').addEventListener('click', function() {
+    document.querySelector('.theme-toggle').addEventListener('click', function () {
 
         getcorkThemeObject = localStorage.getItem("theme");
         getParseObject = JSON.parse(getcorkThemeObject)
@@ -911,13 +910,13 @@ window.addEventListener("load", function(){
                     borderColor: '#191e3a'
                 },
             })
-            
+
             simpleBar.updateOptions({
                 grid: {
                     borderColor: '#191e3a'
                 },
             })
-            
+
             mixed.updateOptions({
                 grid: {
                     borderColor: '#191e3a'
@@ -929,8 +928,8 @@ window.addEventListener("load", function(){
                     colors: '#0e1726'
                 }
             })
-            
-            
+
+
         } else {
             // Apex.grid = {
             //     borderColor: '#ebedf2'
@@ -942,8 +941,6 @@ window.addEventListener("load", function(){
             //     theme: 'dark'
             // }
 
-
-            
 
             simpleLine.updateOptions({
                 grid: {
@@ -973,13 +970,13 @@ window.addEventListener("load", function(){
                     borderColor: '#ebedf2'
                 },
             })
-            
+
             simpleBar.updateOptions({
                 grid: {
                     borderColor: '#ebedf2'
                 },
             })
-            
+
             mixed.updateOptions({
                 grid: {
                     borderColor: '#ebedf2'
@@ -991,9 +988,9 @@ window.addEventListener("load", function(){
                     colors: '#e0e6ed'
                 }
             })
-            
+
         }
-         
-     })
-    
+
+    })
+
 })
