@@ -221,7 +221,6 @@
   padding: 22px 18px;
   background: #fff;
   height: 22em;
-  overflow: auto; /* 如果内容超出高度，出现滚动条 */
 }
 .widget.widget-six .widget-heading {
   display: block;
@@ -269,10 +268,8 @@
   margin-top: 1.6em;
   margin-bottom: 2.5em;
   width: 2.5em;
-  margin-left: -.7em;
+  margin-left: 2em;
   cursor: pointer;
-  height: 1.5em;
-  background-color: #dee2e6;
   background-clip: content-box;
   border: none;
   -webkit-appearance: none;
@@ -280,41 +277,47 @@
   border-radius: 1em;
 }
 
-.form-check-input:checked {
-  background-color: #0d6efd;
-}
-
-.form-check-input:focus {
-  box-shadow: none;
-  background-color: #dee2e6;
-}
-
-.form-check-input:checked:focus {
-  box-shadow: none;
-  background-color: #0d6efd;
-}
-
-.form-check-input::before {
-  content: '';
-  width: 1em;
-  height: 1em;
-  background-color: white;
-  display: block;
-  border-radius: 50%;
-  position: relative;
-  transform: scale(1.25) translateY(0.2em) translateX(0.25em);
-  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out;
-}
-
-.form-check-input:checked::before {
-  transform:  translateY(0.25em) translateX(1.17em) scale(1.25);
-}
-
-
 /*
+  视频相关css
 	===============================
 			@Import	Function
 	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+.widget.widget-video {
+  padding: 22px 18px;
+  background: #fff;
+}
+.widget.widget-video .widget-heading {
+  display: block;
+  justify-content: flex-start;
+}
+.widget.widget-video .widget-heading h6 {
+  color: #0e1726;
+  font-size: 17px;
+  display: block;
+  font-weight: 600;
+}
+
+.widget.widget-video .video-container{
+  display: block;
+  margin-top: 1em;
+}
+
+.widget.widget-video .video-container .paginating-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+/*
+    ===============================
+            @Import	Function
+    ===============================
 */
 /*
 	===============================
