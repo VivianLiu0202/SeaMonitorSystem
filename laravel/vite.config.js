@@ -247,8 +247,8 @@ export default defineConfig({
                 'resources/assets/js/components/custom-carousel.js',
 
                 // Dashboard
-                'resources/assets/js/dashboard/dash_1.js',
-                'resources/assets/js/dashboard/dash_2.js',
+                'resources/assets/js/dashboard/dash_datacenter.js',
+                'resources/assets/js/dashboard/dash_underwater.js',
 
 
                 // Elements
@@ -604,8 +604,8 @@ export default defineConfig({
                 'resources/rtl/assets/js/components/custom-carousel.js',
 
                 // Dashboard
-                'resources/rtl/assets/js/dashboard/dash_1.js',
-                'resources/rtl/assets/js/dashboard/dash_2.js',
+                'resources/rtl/assets/js/dashboard/dash_datacenter.js',
+                'resources/rtl/assets/js/dashboard/dash_underwater.js',
 
 
                 // Elements

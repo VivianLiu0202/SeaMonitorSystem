@@ -37,6 +37,10 @@
 
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
+    <!--引用百度地图API-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密匙"></script>
+    <script src="../src/plugins/src/echarts/echarts.min.js"></script>
+
 </head>
 <body class="layout-boxed">
     <!-- BEGIN LOADER -->
@@ -361,7 +365,7 @@
                                                 <div class="switch form-switch-custom switch-inline form-switch-primary form-switch-custom inner-text-toggle form-check-input">
                                                     <div class="input-checkbox">
                                                         <span class="switch-chk-label label-left">ON</span>
-                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch1" checked>
+                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch1">
                                                         <span class="switch-chk-label label-right">OFF</span>
                                                     </div>
                                                 </div>
@@ -375,7 +379,7 @@
                                                 <div class="switch form-switch-custom switch-inline form-switch-primary form-switch-custom inner-text-toggle form-check-input">
                                                     <div class="input-checkbox">
                                                         <span class="switch-chk-label label-left">ON</span>
-                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch2" checked>
+                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch2">
                                                         <span class="switch-chk-label label-right">OFF</span>
                                                     </div>
                                                 </div>
@@ -388,7 +392,7 @@
                                                 <div class="switch form-switch-custom switch-inline form-switch-primary form-switch-custom inner-text-toggle form-check-input">
                                                     <div class="input-checkbox">
                                                         <span class="switch-chk-label label-left">ON</span>
-                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch3" checked>
+                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch3">
                                                         <span class="switch-chk-label label-right">OFF</span>
                                                     </div>
                                                 </div>
@@ -404,7 +408,7 @@
                                                 <div class="switch form-switch-custom switch-inline form-switch-primary form-switch-custom inner-text-toggle form-check-input">
                                                     <div class="input-checkbox">
                                                         <span class="switch-chk-label label-left">ON</span>
-                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch4" checked>
+                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch4">
                                                         <span class="switch-chk-label label-right">OFF</span>
                                                     </div>
                                                 </div>
@@ -417,7 +421,7 @@
                                                 <div class="switch form-switch-custom switch-inline form-switch-primary form-switch-custom inner-text-toggle form-check-input">
                                                     <div class="input-checkbox">
                                                         <span class="switch-chk-label label-left">ON</span>
-                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch5" checked>
+                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch5">
                                                         <span class="switch-chk-label label-right">OFF</span>
                                                     </div>
                                                 </div>
@@ -430,7 +434,7 @@
                                                 <div class="switch form-switch-custom switch-inline form-switch-primary form-switch-custom inner-text-toggle form-check-input">
                                                     <div class="input-checkbox">
                                                         <span class="switch-chk-label label-left">ON</span>
-                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch6" checked>
+                                                        <input class="switch-input" type="checkbox" role="switch" id="form-custom-switch6">
                                                         <span class="switch-chk-label label-right">OFF</span>
                                                     </div>
                                                 </div>
@@ -467,31 +471,91 @@
                             </div>
                         </div>
 
+                        <!--海洋牧场地位-->
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 layout-spacing">
+                            <div class="widget widget-video">
+                                <div class="widget-heading">
+                                    <h6 class="">海洋牧场定位</h6>
+                                </div>
+                                <div id="map"></div>
+                                <!--TODO:修改密钥-->
+                                <p style="color:red;font-weight:600">地图生成工具基于百度地图JS api v2.0版本开发，使用请申请密匙。
+                                    <a href="http://developer.baidu.com/map/index.php?title=jspopular/guide/introduction" style="color:#2f83c7" target="_blank">了解如何申请密匙</a>
+                                    <a href="http://lbsyun.baidu.com/apiconsole/key?application=key" style="color:#2f83c7" target="_blank">申请密匙</a>
+                                </p>
+                                <script type="text/javascript">
+                                    //创建和初始化地图函数：
+                                    function initMap(){
+                                        createMap();//创建地图
+                                        setMapEvent();//设置地图事件
+                                        addMapControl();//向地图添加控件
+                                        addMapOverlay();//向地图添加覆盖物
+                                    }
+                                    function createMap(){
+                                        map = new BMap.Map("map");
+                                        map.centerAndZoom(new BMap.Point(110.330242,20.082306),15);
+                                    }
+                                    function setMapEvent(){
+                                        map.enableScrollWheelZoom();
+                                        map.enableKeyboard();
+                                        map.enableDragging();
+                                        map.enableDoubleClickZoom()
+                                    }
+                                    function addClickHandler(target,window){
+                                        target.addEventListener("click",function(){
+                                            target.openInfoWindow(window);
+                                        });
+                                    }
+                                    function addMapOverlay(){
+                                        var markers = [
+                                            {content:"我的备注",title:"我的标记",imageOffset: {width:0,height:3},position:{lat:20.081084,lng:110.331895}}
+                                        ];
+                                        for(var index = 0; index < markers.length; index++ ){
+                                            var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
+                                            var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+                                                    imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+                                                })});
+                                            var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
+                                            var opts = {
+                                                width: 200,
+                                                title: markers[index].title,
+                                                enableMessage: false
+                                            };
+                                            var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+                                            marker.setLabel(label);
+                                            addClickHandler(marker,infoWindow);
+                                            map.addOverlay(marker);
+                                        };
+                                    }
+                                    //向地图添加控件
+                                    function addMapControl(){
+                                        var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+                                        scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+                                        map.addControl(scaleControl);
+                                        var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+                                        map.addControl(navControl);
+                                        var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+                                        map.addControl(overviewControl);
+                                    }
+                                    var map;
+                                    initMap();
+                                </script>
 
-                        <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                            </div>
+                        </div>
+
+                        <!--历史数据-->
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-chart-three">
                                 <div class="widget-heading">
                                     <div class="">
-                                        <h5 class="">Unique Visitors</h5>
+                                        <h5 class="">历史数据</h5>
                                     </div>
 
-                                    <div class="task-action">
-                                        <div class="dropdown ">
-                                            <a class="dropdown-toggle" href="#" role="button" id="uniqueVisitors" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                                            </a>
-    
-                                            <div class="dropdown-menu left" aria-labelledby="uniqueVisitors">
-                                                <a class="dropdown-item" href="javascript:void(0);">View</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Update</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Download</a>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="widget-content">
-                                    <div id="uniqueVisits"></div>
+                                    <div id="historydata"></div>
                                 </div>
                             </div>
                         </div>
@@ -922,7 +986,7 @@
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="../src/plugins/src/apex/apexcharts.min.js"></script>
-    <script src="../src/assets/js/dashboard/dash_1.js"></script>
+    <script src="../src/plugins/src/echarts/echarts.min.js"></script>
     <script src="../src/assets/js/dashboard/dash_maininfo.js"></script>
 
     <script src="../src/assets/js/scrollspyNav.js"></script>

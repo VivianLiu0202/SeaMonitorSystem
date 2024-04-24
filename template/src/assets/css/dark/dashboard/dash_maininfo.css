@@ -274,7 +274,7 @@ body.dark .feature-content .form-check-input {
   margin-top: 1.6em;
   margin-bottom: 2.5em;
   width: 2.5em;
-  margin-left: -.7em;
+  margin-left: 2em;
   cursor: pointer;
   height: 1.5em;
   background-color: #dee2e6;
@@ -285,38 +285,10 @@ body.dark .feature-content .form-check-input {
   border-radius: 1em;
 }
 
-body.dark .form-check-input:checked {
-  background-color: #0d6efd;
-}
-
-body.dark .form-check-input:focus {
-  box-shadow: none;
-  background-color: #dee2e6;
-}
-
-body.dark .form-check-input:checked:focus {
-  box-shadow: none;
-  background-color: #0d6efd;
-}
-
-body.dark .form-check-input::before {
-  content: '';
-  width: 1em;
-  height: 1em;
-  background-color: white;
-  display: block;
-  border-radius: 50%;
-  position: relative;
-  transform: scale(1.25) translateY(0.2em) translateX(0.25em);
-  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out;
-}
-
-body.dark .form-check-input:checked::before {
-  transform:  translateY(0.25em) translateX(1.17em) scale(1.25);
-}
-
-
 /*
+  视频相关css
+    ===============================
+            @Import	Function
 	===============================
 			@Import	Function
 	===============================
@@ -326,6 +298,73 @@ body.dark .form-check-input:checked::before {
 			@Import	Mixins
 	===============================
 */
+body.dark .widget.widget-video {
+  background: #0e1726;
+  padding: 22px 18px;
+}
+body.dark .widget.widget-video .widget-heading {
+  display: block;
+  justify-content: flex-start;
+}
+body.dark .widget.widget-video .widget-heading h6 {
+  color: #e0e6ed;
+  font-size: 17px;
+  display: block;
+  font-weight: 600;
+}
+
+body.dark .widget.widget-video .video-container{
+  display: block;
+  margin-top: 1em;
+}
+
+body.dark .widget.widget-video .video-container .paginating-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+/*
+  海洋牧场css
+    ===============================
+            @Import	Function
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+body.dark .widget.widget-map {
+  background: #0e1726;
+  padding: 22px 18px;
+}
+body.dark .widget.widget-map .widget-heading {
+  display: block;
+  justify-content: flex-start;
+}
+body.dark .widget.widget-map .widget-heading h6 {
+  color: #e0e6ed;
+  font-size: 17px;
+  display: block;
+  font-weight: 600;
+}
+
+/*
+    ===============================
+            @Import	Function
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+
 body.dark .widget.widget-chart-three {
   background: #0e1726;
   padding: 0;

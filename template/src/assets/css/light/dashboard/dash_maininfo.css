@@ -315,6 +315,32 @@
 }
 
 /*
+  海洋牧场定位css
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+.widget.widget-map {
+  padding: 22px 18px;
+  background: #fff;
+}
+.widget.widget-map .widget-heading {
+  display: block;
+  justify-content: flex-start;
+}
+.widget.widget-map .widget-heading h6 {
+  color: #0e1726;
+  font-size: 17px;
+  display: block;
+  font-weight: 600;
+}
+
+/*
     ===============================
             @Import	Function
     ===============================
