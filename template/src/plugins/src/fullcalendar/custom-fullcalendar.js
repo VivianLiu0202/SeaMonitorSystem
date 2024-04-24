@@ -143,31 +143,62 @@ document.addEventListener('DOMContentLoaded', function() {
         var eventObj = info.event;
 
         if (eventObj.url) {
-          window.open(eventObj.url);
-  
-          info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
+            window.open(eventObj.url);
+            info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
         } else {
-            var getModalEventId = eventObj._def.publicId; 
-            var getModalEventLevel = eventObj._def.extendedProps['calendar'];
+            var getModalEventId = eventObj.id;
+            var getModalEventLevel = eventObj.extendedProps['calendar'];
             var getModalCheckedRadioBtnEl = document.querySelector(`input[value="${getModalEventLevel}"]`);
 
             getModalTitleEl.value = eventObj.title;
             getModalCheckedRadioBtnEl.checked = true;
             getModalUpdateBtnEl.setAttribute('data-fc-event-public-id', getModalEventId)
+            document.querySelector('.btn-delete-event').setAttribute('data-fc-event-public-id', getModalEventId); // Set ID for delete button
             getModalAddBtnEl.style.display = 'none';
             getModalUpdateBtnEl.style.display = 'block';
             myModal.show();
         }
     }
+
+
+
+    // Bind delete event logic to the delete button.
+    document.querySelector('.btn-delete-event').addEventListener('click', function() {
+        var eventId = this.getAttribute('data-fc-event-public-id');
+        var event = calendar.getEventById(eventId);
+        if (event) {
+            event.remove(); // Remove the event from the calendar
+            console.log('Event deleted:', eventId);
+
+            // Optionally, send a delete request to the server
+            fetch('/delete-event', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ eventId: eventId })
+            })
+                .then(response => response.json())
+                .then(data => console.log('Event deleted successfully on the server.'))
+                .catch(error => console.error('Error deleting event on the server:', error));
+        }
+    });
     
 
     // Activate Calender    
     var calendar = new FullCalendar.Calendar(calendarEl, {
         selectable: true,
+        locale: 'zh-cn', // 设置为中文
         height: checkWidowWidth() ? 900 : 1052,
         initialView: checkWidowWidth() ? 'listWeek' : 'dayGridMonth',
         initialDate: `${newDate.getFullYear()}-${getDynamicMonth()}-07`,
         headerToolbar: calendarHeaderToolbar,
+
+        views: {
+            dayGridMonth: { buttonText: '月' },   // 更改为中文或其他语言
+            timeGridWeek: { buttonText: '周' },
+            timeGridDay: { buttonText: '日' },
+            listWeek: { buttonText: '列表' }
+        },
+
         events: calendarEventsList,
         select: calendarSelect,
         unselect: function() {
@@ -175,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         customButtons: {
             addEventButton: {
-                text: 'Add Event',
+                text: '添加日程',
                 click: calendarAddEvent
             }
         },
@@ -199,6 +230,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
     });
+    calendar.render();
+
 
     // Add Event
     getModalAddBtnEl.addEventListener('click', function() {
@@ -236,9 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
         getEvent.setExtendedProp('calendar', getModalUpdatedCheckedRadioBtnValue);
         myModal.hide()
     })
-    
-    // Calendar Renderation
-    calendar.render();
+
     
     var myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
     var modalToggle = document.querySelector('.fc-addEventButton-button ')
@@ -251,3 +282,4 @@ document.addEventListener('DOMContentLoaded', function() {
         if (getModalIfCheckedRadioBtnEl !== null) { getModalIfCheckedRadioBtnEl.checked = false; }
     })
 });
+
