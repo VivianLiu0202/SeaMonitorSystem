@@ -47,9 +47,21 @@
   background-color: #fff;
   border-radius: 6px;
 }
+
+.general-info2 {
+  height:170pt;
+
+}
+
 .general-info .info, .general-info .save-info {
   padding: 20px;
 }
+
+
+.general-info .info .mt-new {
+  margin-top:2.6rem!important
+}
+
 .general-info .info .upload {
   border-right: 1px solid #191e3a;
 }

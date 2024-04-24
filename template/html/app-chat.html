@@ -41,7 +41,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 <form class="form-inline search-full form-inline search" role="search">
                     <div class="search-bar">
-                        <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search...">
+                        <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="搜索...">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x search-close"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                     </div>
                 </form>
@@ -60,7 +60,7 @@
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar-container">
                             <div class="avatar avatar-sm avatar-indicators avatar-online">
-                                <img alt="avatar" src="../src/assets/img/profile-30.png" class="rounded-circle">
+                                <img alt="avatar" src="../src/assets/img/boy-1.png" class="rounded-circle">
                             </div>
                         </div>
                     </a>
@@ -72,24 +72,41 @@
                                     &#x1F44B;
                                 </div>
                                 <div class="media-body">
-                                    <h5>Shaun Park</h5>
-                                    <p>Project Leader</p>
+                                    <h5>李大壮</h5>
+                                    <p>池塘清扫员</p>
                                 </div>
                             </div>
                         </div>
                         <div class="dropdown-item">
-                            <a href="user-profile.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <span>Profile</span>
+                            <a href="user-profile.html" class="btn btn-primary default mb-2 me-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-user">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>用户信息</span>
                             </a>
                         </div>
                         <div class="dropdown-item">
-                            <a href="auth/auth-boxed-lockscreen.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> <span>Lock Screen</span>
+                            <a href="#" class="btn btn-primary default mb-2 me-4" id="sign-in-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock me-2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                                <span>每日签到</span>
                             </a>
                         </div>
                         <div class="dropdown-item">
-                            <a href="auth/auth-boxed-signin.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> <span>Log Out</span>
+                            <a href="auth/auth-boxed-signin.html" class="btn btn-primary default mb-2 me-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-log-out">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>
+                                <span>登出系统</span>
                             </a>
                         </div>
                     </div>
@@ -132,11 +149,11 @@
                 <div class="profile-info">
                     <div class="user-info">
                         <div class="profile-img">
-                            <img src="../src/assets/img/profile-30.png" alt="avatar">
+                            <img src="../src/assets/img/boy-1.png" alt="avatar">
                         </div>
                         <div class="profile-content">
-                            <h6 class="">Shaun Park</h6>
-                            <p class="">Project Leader</p>
+                            <h6 class="">李大壮</h6>
+                            <p class="">池塘清扫员</p>
                         </div>
                     </div>
                 </div>
@@ -211,7 +228,7 @@
                         <a href="#users" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                                <span>Users</span>
+                                <span>用户系统</span>
                             </div>
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -246,192 +263,8 @@
     
                                 <div class="chat-system">
                                     <div class="hamburger"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu mail-menu d-lg-none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div>
-                                    <div class="user-list-box">
-                                        <div class="search">
-                                            <input type="text" class="form-control" placeholder="Search User" />
-                                        </div>
-                                        <div class="people">
-    
-                                            <div class="person" data-chat="person6">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-4.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Nia Hillyer">Nia Hillyer</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">How do you do?</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person" data-chat="person1">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-3.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Sean Freeman">Sean Freeman</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">I was wondering...</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person" data-chat="person2">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-11.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Alma Clarke">Alma Clarke</span>
-                                                            <span class="user-meta-time">1:44 PM</span>
-                                                        </div>
-                                                        <span class="preview">I've forgotten how it felt before</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person" data-chat="person3">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-23.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Alan Green">Alan Green</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">But we’re probably gonna need a new carpet.</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person" data-chat="person4">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-7.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Shaun Park">Shaun Park</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">It’s not that bad...</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person" data-chat="person5">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-15.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Roxanne">Roxanne</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">Wasup for the third time like is you bling bitch</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person" data-chat="person7">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-32.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Ernest Reeves">Ernest Reeves</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">Wasup for the third time like is you bling bitch</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person" data-chat="person8">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-33.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Laurie Fox">Laurie Fox</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">Wasup for the third time like is you bling bitch</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person" data-chat="person9">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-21.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Xavier">Xavier</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">Wasup for the third time like is you bling bitch</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person" data-chat="person10">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-12.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Susan Phillips">Susan Phillips</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">Wasup for the third time like is you bling bitch</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person" data-chat="person11">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-26.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Dale Butler">Dale Butler</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">Wasup for the third time like is you bling bitch</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                            <div class="person border-none" data-chat="person12">
-                                                <div class="user-info">
-                                                    <div class="f-head">
-                                                        <img src="../src/assets/img/profile-20.jpeg" alt="avatar">
-                                                    </div>
-                                                    <div class="f-body">
-                                                        <div class="meta-info">
-                                                            <span class="user-name" data-name="Grace Roberts">Grace Roberts</span>
-                                                            <span class="user-meta-time">2:09 PM</span>
-                                                        </div>
-                                                        <span class="preview">Wasup for the third time like is you bling bitch</span>
-                                                    </div>
-                                                </div>
-                                            </div>                                        
-                                        </div>
+                                    <div class="image-box" style="padding: 0; border-right: 2px solid #dee2e6; min-height: 100%;">
+                                        <img src="../src/assets/img/1.jpeg" alt="Custom Image" style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
                                     <div class="chat-box">
     
@@ -588,19 +421,25 @@
             </div>
 
             <!--  BEGIN FOOTER  -->
-            <div class="footer-wrapper mt-0">
+            <div class="footer-wrapper">
                 <div class="footer-section f-section-1">
-                    <p class="">Copyright © <span class="dynamic-year">2022</span> <a target="_blank" href="https://designreset.com/cork-admin/">DesignReset</a>, All rights reserved.</p>
+                    <p class="">系统正在开发ing，有小bug，敬请谅解</p>
                 </div>
-                <div class="footer-section f-section-2">
-                    <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>
-                </div>
+
             </div>
             <!--  END FOOTER  -->
         </div>
         <!--  END CONTENT AREA  -->
     </div>
     <!-- END MAIN CONTAINER -->
+
+
+
+    <!--todo done 新增签到功能，按钮变化，弹窗-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="../src/assets/js/Hu/signInScript.js"></script>
+
+
     
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="../src/plugins/src/global/vendors.min.js"></script>
