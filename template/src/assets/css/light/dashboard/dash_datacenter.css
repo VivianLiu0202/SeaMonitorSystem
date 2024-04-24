@@ -146,73 +146,6 @@
 	===============================
 */
 /*
-   设备状态card的css
-	===============================
-			@Import	Mixins
-	===============================
-*/
-
-.widget.widget-device {
-  padding: 22px 18px;
-  background: #fff;
-  height: 22em;
-  overflow: auto; /* 如果内容超出高度，出现滚动条 */
-}
-.widget.widget-device .widget-heading {
-  display: block;
-  justify-content: flex-start;
-  margin-bottom: 15px;
-}
-.widget.widget-device .widget-heading h6 {
-  color: #0e1726;
-  font-size: 17px;
-  display: block;
-  font-weight: 600;
-}
-.widget.widget-device .widget-heading .task-action svg {
-  color: #888ea8;
-  width: 19px;
-  height: 19px;
-}
-
-.widget.widget-device .simple-tab .widget-device .list-group-item{
-  position: relative; /* 为伪元素设置定位上下文 */
-  color: white;
-  background-color: #002B65; /* 背景色与图片一致 */
-  border: none; /* 移除边框 */
-  padding-left: 20px; /* 留出空间放置圆形图标 */
-}
-
-.list-group-item .feature-icon{
-  margin-right: 10px; /* 圆形图标和文本之间的间距 */
-  font-size: 1rem; /* 图标大小 */
-  display: inline-block; /* 让图标和文字在同一行显示 */
-}
-
-.list-group-item span {
-  margin-right: 20px; /* 文本之间的间距，如果需要的话 */
-}
-
-.list-group-item .span-tab {
-  display: block; /* 让每个span元素显示在新的行上 */
-  margin-left: 30px; /* 创建空格效果 */
-}
-
-.list-group-item .text-green {
-  color: green;
-}
-
-.list-group-item .text-red {
-  color: red;
-}
-
-/*
-	===============================
-			@Import	Function
-	===============================
-*/
-/*
-   附加功能card的css
 	===============================
 			@Import	Mixins
 	===============================
@@ -220,130 +153,53 @@
 .widget.widget-six {
   padding: 22px 18px;
   background: #fff;
-  height: 22em;
 }
 .widget.widget-six .widget-heading {
-  display: block;
-  justify-content: flex-start;
-  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
 }
 .widget.widget-six .widget-heading h6 {
   color: #0e1726;
+  margin-bottom: 74px;
   font-size: 17px;
   display: block;
   font-weight: 600;
 }
-
-.widget .widget-six .additional-features{
-  background-color: #002B65; /* 背景色 */
-  padding: 1rem; /* 内边距 */
+.widget.widget-six .widget-heading .task-action svg {
+  color: #888ea8;
+  width: 19px;
+  height: 19px;
 }
-
-.widget .widget-six .additional-features .feature-item{
-  padding: 10px; /* 框内边距 */
+.widget.widget-six .w-chart {
+  display: flex;
 }
-.widget .widget-six .additional-features .feature-item .feature-content{
-  background-color: white; /* 框背景色 */
-  border-radius: .25rem; /* 圆角 */
-  padding: .75rem; /* 内边距 */
-  display: flex; /* 启用Flex布局 */
-  flex-direction: column; /* 堆叠子元素 */
-  align-items: center; /* 水平居中对齐子元素 */
-  justify-content: center; /* 垂直居中对齐子元素 */
+.widget.widget-six .w-chart .w-chart-section {
+  width: 50%;
+  padding: 0 12px;
 }
-
-.feature-content .feature-icon{
-  font-size: 1.1rem; /* 图标大小 */
-  margin-bottom: 10rem;
+.widget.widget-six .w-chart .w-chart-section .w-detail {
+  position: absolute;
+  color: #fff;
 }
-
-.feature-content .feature-text{
-  flex-grow: 1; /* 让文本占据多余空间 */
-  margin-left: .5rem; /* 文本和图标之间的间距 */
-  font-weight: 500; /* 字体粗细 */
-  margin-top:1em;
+.widget.widget-six .w-chart .w-chart-section .w-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 0;
+  color: #515365;
 }
-
-.feature-content .form-check-input {
-  margin-top: 1.6em;
-  margin-bottom: 2.5em;
-  width: 2.5em;
-  margin-left: 2em;
-  cursor: pointer;
-  background-clip: content-box;
-  border: none;
-  -webkit-appearance: none;
-  appearance: none;
-  border-radius: 1em;
+.widget.widget-six .w-chart .w-chart-section .w-stats {
+  color: #f8538d;
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  font-weight: 600;
 }
 
 /*
-  视频相关css
 	===============================
 			@Import	Function
 	===============================
-*/
-/*
-	===============================
-			@Import	Mixins
-	===============================
-*/
-.widget.widget-video {
-  padding: 22px 18px;
-  background: #fff;
-}
-.widget.widget-video .widget-heading {
-  display: block;
-  justify-content: flex-start;
-}
-.widget.widget-video .widget-heading h6 {
-  color: #0e1726;
-  font-size: 17px;
-  display: block;
-  font-weight: 600;
-}
-
-.widget.widget-video .video-container{
-  display: block;
-  margin-top: 1em;
-}
-
-.widget.widget-video .video-container .paginating-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 1em;
-}
-
-/*
-  海洋牧场定位css
-	===============================
-			@Import	Function
-	===============================
-*/
-/*
-	===============================
-			@Import	Mixins
-	===============================
-*/
-.widget.widget-map {
-  padding: 22px 18px;
-  background: #fff;
-}
-.widget.widget-map .widget-heading {
-  display: block;
-  justify-content: flex-start;
-}
-.widget.widget-map .widget-heading h6 {
-  color: #0e1726;
-  font-size: 17px;
-  display: block;
-  font-weight: 600;
-}
-
-/*
-    ===============================
-            @Import	Function
-    ===============================
 */
 /*
 	===============================
