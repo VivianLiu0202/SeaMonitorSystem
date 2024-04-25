@@ -78,11 +78,42 @@ body.dark .widget-card-four .w-content {
   justify-content: space-between;
   margin-top: 36px;
 }
+body.dark .widget-card-four .alert-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+  border-top: 1px solid #ccc; /* 添加一条灰色横线 */
+}
 body.dark .widget-card-four .w-content .w-info p.value {
   font-weight: 500;
   margin-bottom: 0;
   color: #e95f2b;
   font-size: 30px;
+}
+body.dark .widget-card-four .w-content .w-info p.note {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e92b2b;
+  font-size: 15px;
+}
+body.dark .widget-card-four .w-content .w-info p.time {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e92b2b;
+  font-size: 15px;
+}
+body.dark .widget-card-four .alert-content .w-info p.note {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e92b2b;
+  font-size: 15px;
+}
+
+body.dark .widget-card-four .alert-content .w-info p.time {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e92b2b;
+  font-size: 15px;
 }
 body.dark .widget-card-four .w-content .w-info p.value span {
   font-size: 15px;
@@ -138,6 +169,45 @@ body.dark .widget-card-four .w-icon p {
   font-size: 15px;
   font-weight: 700;
 }
+
+/* 气象数据css */
+
+body.dark .widget-card-four .weather-data {
+  display: flex;
+  justify-content: center;;
+  margin-top: 36px;
+}
+
+body.dark .widget-card-four .row{
+  display: flex;
+  margin: 0 15px; /* 添加左右间隔为10像素 */
+
+}
+
+body.dark .widget-card-four .weather-item{
+  flex: 1; /* 让每个图标占据相同的空间 */
+  margin: 0 15px; /* 添加左右间隔为10像素 */
+  border-radius: 10px;
+  border-color: #ccc; /* 设置边框颜色为灰色 */
+  border-style: solid;
+}
+body.dark .widget-card-four .weather-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+body.dark .widget-card-four .weather-content .weather-icon {
+  font-size: 50px;
+}
+
+body.dark .widget-card-four .weather-content .weather-text {
+  margin-top: 5px;
+  font-size: 17px;
+}
+
 
 /*
 	===============================
