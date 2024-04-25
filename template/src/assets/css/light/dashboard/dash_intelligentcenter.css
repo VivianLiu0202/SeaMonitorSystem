@@ -60,10 +60,10 @@
   align-self: center;
 }
 .widget-card-four .w-header .w-info h6 {
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 0;
   color: #0e1726;
-  font-size: 23px;
+  font-size: 18px;
   letter-spacing: 0;
 }
 .widget-card-four .w-header .task-action svg {
@@ -79,12 +79,46 @@
   justify-content: space-between;
   margin-top: 36px;
 }
+.widget-card-four .alert-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+  border-top: 1px solid #ccc; /* 添加一条灰色横线 */
+}
 .widget-card-four .w-content .w-info p.value {
   font-weight: 500;
   margin-bottom: 0;
   color: #e95f2b;
   font-size: 30px;
 }
+.widget-card-four .w-content .w-info p.note {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e92b2b;
+  font-size: 15px;
+}
+
+.widget-card-four .w-content .w-info p.time {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e92b2b;
+  font-size: 15px;
+}
+
+.widget-card-four .alert-content .w-info p.note {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e92b2b;
+  font-size: 15px;
+}
+
+.widget-card-four .alert-content .w-info p.time {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e92b2b;
+  font-size: 15px;
+}
+
 .widget-card-four .w-content .w-info p.value span {
   font-size: 15px;
   color: #0e1726;
@@ -140,6 +174,54 @@
   font-weight: 700;
 }
 
+
+/*
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+/* 气象数据css */
+
+.widget-card-four .weather-data {
+  display: flex;
+  justify-content: center;;
+  margin-top: 36px;
+}
+
+.widget-card-four .row{
+  display: flex;
+  margin: 0 15px; /* 添加左右间隔为10像素 */
+}
+
+.widget-card-four .weather-item{
+  flex: 1; /* 让每个图标占据相同的空间 */
+  margin: 0 15px; /* 添加左右间隔为10像素 */
+  border-radius: 10px;
+  border-color: #ccc; /* 设置边框颜色为灰色 */
+  border-style: solid;
+}
+.widget-card-four .weather-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.widget-card-four .weather-content .weather-icon {
+  font-size: 50px;
+}
+
+.widget-card-four .weather-content .weather-text {
+  margin-top: 5px;
+  font-size: 17px;
+}
+
 /*
 	===============================
 			@Import	Function
@@ -166,6 +248,7 @@
   display: block;
   font-weight: 600;
 }
+
 .widget.widget-six .widget-heading .task-action svg {
   color: #888ea8;
   width: 19px;
