@@ -62,7 +62,7 @@ body.dark .widget-card-four .w-header .w-info h6 {
   font-weight: 600;
   margin-bottom: 0;
   color: #e0e6ed;
-  font-size: 23px;
+  font-size: 17px;
   letter-spacing: 0;
 }
 body.dark .widget-card-four .w-header .task-action svg {
@@ -174,7 +174,7 @@ body.dark .widget-card-four .w-icon p {
 
 body.dark .widget-card-four .weather-data {
   display: flex;
-  justify-content: center;;
+  /* justify-content: center;; */
   margin-top: 36px;
 }
 
@@ -208,6 +208,49 @@ body.dark .widget-card-four .weather-content .weather-text {
   font-size: 17px;
 }
 
+/*
+  视频相关css
+    ===============================
+            @Import	Function
+	===============================
+			@Import	Function
+	===============================
+*/
+/*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+body.dark .widget.widget-video {
+  background: #0e1726;
+  padding: 22px 18px;
+  height: 500px;
+}
+
+body.dark .widget.widget-video .widget-heading {
+  display: block;
+  justify-content: flex-start;
+}
+
+body.dark .widget.widget-video .widget-heading h6 {
+  color: #e0e6ed;
+  font-size: 17px;
+  display: block;
+  font-weight: 600;
+}
+
+body.dark .widget.widget-video .video-container {
+  display: block;
+  margin-top: 1em;
+}
+
+body.dark .widget.widget-video .video-container .paginating-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+
 
 /*
 	===============================
@@ -222,47 +265,63 @@ body.dark .widget-card-four .weather-content .weather-text {
 body.dark .widget.widget-six {
   padding: 22px 18px;
   background: #0e1726;
+  height: 500px;
 }
+
 body.dark .widget.widget-six .widget-heading {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0;
+  display: block;
+  justify-content: flex-start;
+  margin-bottom: 30px;
 }
+
 body.dark .widget.widget-six .widget-heading h6 {
   color: #e0e6ed;
-  margin-bottom: 74px;
   font-size: 17px;
   display: block;
   font-weight: 600;
 }
-body.dark .widget.widget-six .widget-heading .task-action svg {
-  color: #888ea8;
-  width: 19px;
-  height: 19px;
+
+body.dark .widget.widget-six .row{
+  margin-top: 10px; /* 上边距 */
+  margin-bottom: 10px; /* 下边距 */
 }
-body.dark .widget.widget-six .w-chart {
+
+/* 确保 feature-item 的高度固定 */
+body.dark .feature-item {
+  border-radius: 10px;
+  border-color: #ccc; /* 设置边框颜色为灰色 */
+  border-style: solid;
+}
+
+/* 使用 Flexbox 布局 */
+body.dark .feature-content {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px; /* 上边距 */
+  margin-bottom: 15px; /* 下边距 */
 }
-body.dark .widget.widget-six .w-chart .w-chart-section {
-  width: 50%;
-  padding: 0 12px;
+
+body.dark .feature-content-up {
+  display: flex;
+  align-items: center;
+  margin-top: 10px; /* 上边距 */
+  margin-bottom: 10px; /* 下边距 */
 }
-body.dark .widget.widget-six .w-chart .w-chart-section .w-detail {
-  position: absolute;
-  color: #fff;
-}
-body.dark .widget.widget-six .w-chart .w-chart-section .w-title {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 0;
-  color: #d3d3d3;
-}
-body.dark .widget.widget-six .w-chart .w-chart-section .w-stats {
-  color: #f8538d;
+
+body.dark .feature-icon {
+  width: 20px; /* 调整图标的宽度 */
+  margin-right: 8px; /* 调整图标与标题之间的间距 */
   font-size: 20px;
-  letter-spacing: 1px;
-  margin-bottom: 0;
-  font-weight: 500;
+}
+
+/* 确保文字另起一行并居中 */
+body.dark .feature-title,
+body.dark .feature-text {
+  text-align: center;
+  width: 100%; /* 使得文字在整个宽度内居中 */
+  display: block; /* 确保文字另起一行 */
 }
 
 /*

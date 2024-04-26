@@ -60,10 +60,10 @@
   align-self: center;
 }
 .widget-card-four .w-header .w-info h6 {
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 0;
   color: #0e1726;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 0;
 }
 .widget-card-four .w-header .task-action svg {
@@ -189,7 +189,7 @@
 
 .widget-card-four .weather-data {
   display: flex;
-  justify-content: center;;
+  /* justify-content: center; */
   margin-top: 36px;
 }
 
@@ -223,6 +223,9 @@
 }
 
 /*
+  视频相关css
+    ===============================
+            @Import	Function
 	===============================
 			@Import	Function
 	===============================
@@ -232,52 +235,107 @@
 			@Import	Mixins
 	===============================
 */
-.widget.widget-six {
-  padding: 22px 18px;
+.widget.widget-video {
   background: #fff;
+  padding: 22px 18px;
+  height: 500px;
 }
-.widget.widget-six .widget-heading {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0;
+
+.widget.widget-video .widget-heading {
+  display: block;
+  justify-content: flex-start;
 }
-.widget.widget-six .widget-heading h6 {
+
+.widget.widget-video .widget-heading h6 {
   color: #0e1726;
-  margin-bottom: 74px;
   font-size: 17px;
   display: block;
   font-weight: 600;
 }
 
-.widget.widget-six .widget-heading .task-action svg {
-  color: #888ea8;
-  width: 19px;
-  height: 19px;
+.widget.widget-video .video-container {
+  display: block;
+  margin-top: 1em;
 }
-.widget.widget-six .w-chart {
+
+.widget.widget-video .video-container .paginating-container {
   display: flex;
+  justify-content: center;
+  margin-top: 1em;
 }
-.widget.widget-six .w-chart .w-chart-section {
-  width: 50%;
-  padding: 0 12px;
+
+/*
+   实时数据
+	===============================
+			@Import	Mixins
+	===============================
+*/
+.widget.widget-six {
+  padding: 22px 18px;
+  background: #fff;
+  height: 500px;
 }
-.widget.widget-six .w-chart .w-chart-section .w-detail {
-  position: absolute;
-  color: #fff;
+
+.widget.widget-six .widget-heading {
+  display: block;
+  justify-content: flex-start;
+  margin-bottom: 30px;
 }
-.widget.widget-six .w-chart .w-chart-section .w-title {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 0;
-  color: #515365;
-}
-.widget.widget-six .w-chart .w-chart-section .w-stats {
-  color: #f8538d;
-  font-size: 20px;
-  letter-spacing: 1px;
-  margin-bottom: 0;
+
+.widget.widget-six .widget-heading h6 {
+  color: #0e1726;
+  font-size: 17px;
+  display: block;
   font-weight: 600;
 }
+
+.widget.widget-six .row{
+  margin-top: 10px; /* 上边距 */
+  margin-bottom: 10px; /* 下边距 */
+}
+
+/* 确保 feature-item 的高度固定 */
+.row .feature-item {
+  border-radius: 10px;
+  border-color: #ccc; /* 设置边框颜色为灰色 */
+  border-style: solid;
+}
+
+/* 使用 Flexbox 布局 */
+.feature-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px; /* 上边距 */
+  margin-bottom: 15px; /* 下边距 */
+}
+
+.feature-content-up {
+  display: flex;
+  align-items: center;
+  margin-top: 10px; /* 上边距 */
+  margin-bottom: 10px; /* 下边距 */
+}
+
+.feature-icon {
+  width: 20px; /* 调整图标的宽度 */
+  margin-right: 8px; /* 调整图标与标题之间的间距 */
+  font-size: 20px;
+}
+
+/* 确保文字另起一行并居中 */
+.feature-title,
+.feature-text {
+  text-align: center;
+  width: 100%; /* 使得文字在整个宽度内居中 */
+  display: block; /* 确保文字另起一行 */
+}
+
+
+
+
+
 
 /*
 	===============================
