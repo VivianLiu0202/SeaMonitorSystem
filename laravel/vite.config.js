@@ -87,8 +87,8 @@ export default defineConfig({
                 'resources/scss/light/assets/apps/todolist.scss',
 
                 // --- Authentication
-                'resources/scss/light/assets/authentication/auth-boxed.scss',
-                'resources/scss/light/assets/authentication/auth-cover.scss',
+                'resources/scss/light/assets/authentication/login-boxed.scss',
+                'resources/scss/light/assets/authentication/login-cover.scss',
 
 
                 // --- Componenets
@@ -158,8 +158,8 @@ export default defineConfig({
                 'resources/scss/dark/assets/apps/todolist.scss',
 
                 // --- Authentication
-                'resources/scss/dark/assets/authentication/auth-boxed.scss',
-                'resources/scss/dark/assets/authentication/auth-cover.scss',
+                'resources/scss/dark/assets/authentication/login-boxed.scss',
+                'resources/scss/dark/assets/authentication/login-cover.scss',
 
 
                 // --- Componenets
@@ -238,7 +238,7 @@ export default defineConfig({
                 'resources/assets/js/apps/todoList.js',
 
                 // Auth
-                'resources/assets/js/authentication/auth-cover.js',
+                'resources/assets/js/authentication/login-cover.js',
                 'resources/assets/js/authentication/form-2.js',
                 'resources/assets/js/authentication/2-Step-Verification.js',
 
@@ -443,8 +443,8 @@ export default defineConfig({
                 'resources/rtl/scss/light/assets/apps/todolist.scss',
 
                 // --- Authentication
-                'resources/rtl/scss/light/assets/authentication/auth-boxed.scss',
-                'resources/rtl/scss/light/assets/authentication/auth-cover.scss',
+                'resources/rtl/scss/light/assets/authentication/login-boxed.scss',
+                'resources/rtl/scss/light/assets/authentication/login-cover.scss',
 
 
                 // --- Componenets
@@ -515,8 +515,8 @@ export default defineConfig({
                 'resources/rtl/scss/dark/assets/apps/todolist.scss',
 
                 // --- Authentication
-                'resources/rtl/scss/dark/assets/authentication/auth-boxed.scss',
-                'resources/rtl/scss/dark/assets/authentication/auth-cover.scss',
+                'resources/rtl/scss/dark/assets/authentication/login-boxed.scss',
+                'resources/rtl/scss/dark/assets/authentication/login-cover.scss',
 
 
                 // --- Componenets
@@ -595,7 +595,7 @@ export default defineConfig({
                 'resources/rtl/assets/js/apps/todoList.js',
 
                 // Auth
-                'resources/rtl/assets/js/authentication/auth-cover.js',
+                'resources/rtl/assets/js/authentication/login-cover.js',
                 'resources/rtl/assets/js/authentication/form-2.js',
                 'resources/rtl/assets/js/authentication/2-Step-Verification.js',
 
