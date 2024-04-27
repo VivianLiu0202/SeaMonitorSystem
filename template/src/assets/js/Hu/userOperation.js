@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const updateButton = document.getElementById('updateButton');
     const workReport = document.getElementById('workReport');
+    const localStorageKey = 'workReportContent'; // Key for localStorage
+
+    // Load saved content from localStorage
+    const savedContent = localStorage.getItem(localStorageKey);
+    if (savedContent) {
+        workReport.innerHTML = savedContent;
+    }
 
     let isEditing = false; // Track whether we are in edit mode
 
@@ -19,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.textContent = '确定';
             isEditing = true;
         } else {
-            // 用户点击确定按钮，保存更改
+            // 用户点击确定按钮，保存更改并退出编辑模式
             let updatedContent = document.querySelector('.textarea-editor').value.split('\n');
             workReport.innerHTML = '';
             updatedContent.forEach(content => {
@@ -27,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 newItem.innerHTML = `<strong>${content}</strong>`;
                 workReport.appendChild(newItem);
             });
+
+            // 保存更新后的内容到localStorage
+            localStorage.setItem(localStorageKey, workReport.innerHTML);
 
             // 恢复按钮的文本为“更新”并退出编辑状态
             this.textContent = '更新';
