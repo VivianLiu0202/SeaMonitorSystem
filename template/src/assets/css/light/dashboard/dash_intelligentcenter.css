@@ -307,8 +307,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 15px; /* 上边距 */
-  margin-bottom: 15px; /* 下边距 */
+  margin-top: 10px; /* 上边距 */
+  margin-bottom: 10px; /* 下边距 */
 }
 
 .feature-content-up {
@@ -335,9 +335,67 @@
 
 
 
-
-
+/*环境监测css
+	===============================
+			@Import	Function
+	===============================
+*/
 /*
+	===============================
+			@Import	Mixins
+	===============================
+*/
+.widget-chart-two {
+  padding: 0;
+}
+
+.widget.widget-chart-two .widget-heading {
+  padding: 20px 20px 0 20px;
+}
+
+.widget.widget-chart-two .widget-heading h6 {
+  color: #0e1726;
+  font-size: 17px;
+  display: block;
+  font-weight: 600;
+}
+
+.widget-chart-two .widget-heading .w-icon a {
+  padding: 6px;
+  border-radius: 10px;
+  padding: 6px;
+  background: #3b3f5c !important;
+  border: none;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+}
+.widget-chart-two .widget-heading .w-icon a svg {
+  color: #fff;
+}
+
+.widget.widget-chart-two .widget-content {
+  padding: 0 0 20px 0;
+}
+
+.widget-chart-two .apexcharts-canvas {
+  margin: 0 auto;
+}
+.widget-chart-two .apexcharts-legend-marker {
+  left: -5px !important;
+}
+
+[id*=apexcharts-donut-slice-] {
+  filter: none;
+}
+
+
+
+
+
+
+
+/*网衣/鱼群css
 	===============================
 			@Import	Function
 	===============================
@@ -358,10 +416,10 @@
   margin-bottom: 0;
   padding-bottom: 20px;
 }
-.widget.widget-chart-three .widget-heading h5 {
+.widget.widget-chart-three .widget-heading h6 {
+  color: #0e1726;
   font-size: 17px;
   display: block;
-  color: #0e1726;
   font-weight: 600;
   margin-bottom: 0;
 }
@@ -1049,265 +1107,6 @@
   top: 3.49px;
 }
 
-/*
-	===============================
-			@Import	Function
-	===============================
-*/
-/*
-	===============================
-			@Import	Mixins
-	===============================
-*/
-/*
-    ==================
-        Dev Summit
-    ==================
-*/
-.widget-card-two {
-  padding: 20px 0px !important;
-  background: #fff;
-}
-.widget-card-two .media {
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-bottom: 19px;
-  padding-bottom: 21px;
-  border-bottom: 1px dashed #e0e6ed;
-}
-.widget-card-two .media .w-img {
-  margin-right: 10px;
-}
-.widget-card-two .media .w-img img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 3px solid #e0e6ed;
-}
-.widget-card-two .media .media-body {
-  align-self: center;
-}
-.widget-card-two .media .media-body h6 {
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0;
-  margin-bottom: 0;
-}
-.widget-card-two .media .media-body p {
-  margin-bottom: 0;
-  font-weight: 600;
-  color: #888ea8;
-}
-.widget-card-two .card-bottom-section {
-  text-align: center;
-}
-.widget-card-two .card-bottom-section h5 {
-  font-size: 14px;
-  color: #009688;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-.widget-card-two .card-bottom-section .img-group img {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  border: 2px solid #e0e6ed;
-}
-.widget-card-two .card-bottom-section .img-group img:not(:last-child) {
-  margin-right: 5px;
-}
-.widget-card-two .card-bottom-section a {
-  display: block;
-  margin-top: 18px;
-  background: #4361ee;
-  color: #fff;
-  padding: 10px 10px;
-  transform: none;
-  margin-right: 15px;
-  margin-left: 15px;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  border: none;
-  background-image: linear-gradient(315deg, #1e9afe 0%, #3d38e1 74%);
-}
-.widget-card-two .card-bottom-section a.btn:hover, .widget-card-two .card-bottom-section a.btn:focus {
-  background-image: linear-gradient(315deg, #3d38e1 0%, #1e9afe 74%);
-}
-
-/*
-	===============================
-			@Import	Function
-	===============================
-*/
-/*
-	===============================
-			@Import	Mixins
-	===============================
-*/
-/*
-    =====================
-        Task Indicator
-    =====================
-*/
-.widget-five {
-  background: #fff;
-  padding: 20px 0px !important;
-  height: 100%;
-}
-.widget-five .widget-heading {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-  margin-bottom: 30px;
-}
-.widget-five .widget-heading .task-info {
-  display: flex;
-}
-.widget-five .widget-heading .usr-avatar {
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background-color: #805dca;
-  color: #fff;
-}
-.widget-five .widget-heading .usr-avatar span {
-  font-size: 13px;
-  font-weight: 500;
-}
-.widget-five .widget-heading .w-title {
-  align-self: center;
-}
-.widget-five .widget-heading .w-title h5 {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 0;
-}
-.widget-five .widget-heading .w-title span {
-  font-size: 12px;
-  font-weight: 600;
-}
-.widget-five .widget-heading .task-action .dropdown a svg {
-  color: #888ea8;
-  width: 19px;
-  height: 19px;
-}
-.widget-five .widget-heading .task-action .dropdown-menu {
-  transform: translate3d(-141px, 0, 0px);
-}
-.widget-five .widget-content {
-  padding: 0 20px;
-}
-.widget-five .widget-content p {
-  margin-bottom: 0;
-  font-weight: 600;
-  font-size: 14px;
-  color: #515365;
-}
-.widget-five .widget-content .progress-data {
-  margin-top: 19px;
-}
-.widget-five .widget-content .progress-data .progress-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-.widget-five .widget-content .progress-data .task-count {
-  display: flex;
-}
-.widget-five .widget-content .progress-data .task-count svg {
-  align-self: center;
-  margin-right: 6px;
-  width: 15px;
-  height: 15px;
-  color: #009688;
-}
-.widget-five .widget-content .progress-data .task-count p {
-  align-self: center;
-  font-weight: 700;
-  font-size: 12px;
-}
-.widget-five .widget-content .progress-data .progress-stats p {
-  font-weight: 600;
-  color: #2196f3;
-  font-size: 15px;
-}
-.widget-five .widget-content .progress-data .progress {
-  border-radius: 30px;
-  height: 12px;
-}
-.widget-five .widget-content .progress-data .progress .progress-bar {
-  margin: 3px;
-  background-color: #60dfcd;
-  background-image: linear-gradient(315deg, #60dfcd 0%, #1e9afe 74%);
-}
-.widget-five .widget-content .meta-info {
-  display: flex;
-  justify-content: space-between;
-}
-.widget-five .widget-content .meta-info .avatar--group {
-  display: inline-flex;
-}
-.widget-five .widget-content .meta-info .avatar {
-  position: relative;
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  font-size: 1rem;
-  transition: 0.5s;
-}
-.widget-five .widget-content .meta-info .avatar.more-group {
-  margin-right: 5px;
-  opacity: 0;
-}
-.widget-five:hover .widget-content .meta-info .avatar.more-group {
-  opacity: 1;
-}
-.widget-five:hover .widget-content .meta-info .avatar:not(:first-child) {
-  margin-left: -0.75rem;
-}
-.widget-five .widget-content .meta-info .avatar img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  border: 2px solid #ffffff;
-  border-radius: 12px;
-}
-.widget-five .widget-content .meta-info .avatar .avatar-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: #bfc9d4;
-  color: #3b3f5c;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  border: 2px solid #ffffff;
-}
-.widget-five .widget-content .meta-info .due-time {
-  align-self: center;
-}
-.widget-five .widget-content .meta-info .due-time p {
-  font-weight: 500;
-  font-size: 11px;
-  padding: 4px 6px 4px 6px;
-  border-radius: 30px;
-  color: #e7515a;
-  background-color: #fbeced;
-}
-.widget-five .widget-content .meta-info .due-time p svg {
-  width: 14px;
-  height: 15px;
-  vertical-align: text-bottom;
-  margin-right: 2px;
-}
 
 /*
     ===============================
