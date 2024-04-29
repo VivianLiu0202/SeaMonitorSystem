@@ -1,3 +1,4 @@
+# coding=utf-8
 """SeaMonitorSystem URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from login import views
 urlpatterns = [
+    path("", views.signin_view, name="signin"),  # 使用 signin_view 处理根 URL
+    path("index/", views.index, name="index"),
+    path("signup/", views.signup_view, name="signup"),
+    path("password_reset/", views.password_reset_view, name="password_reset"),
+    path("lockscreen/", views.lockscreen_view, name="lockscreen"),
+    path("two_step_verification/", views.two_step_verification_view, name="two_step_verification"),
+    # 确保管理员URL配置正确
     path("admin/", admin.site.urls),
 ]
