@@ -1,12 +1,11 @@
 # coding=utf-8
 from django.contrib import admin
-
 from django.contrib.auth.admin import UserAdmin
 from .models import UserInfo
-# Register your models here.
+
 class UserInfoAdmin(UserAdmin):
     model = UserInfo
-    ordering = ('mail',)  # 使用存在的字段来排序
+    ordering = ('email',)  # 更新字段名为 'email'
     fieldsets = UserAdmin.fieldsets + (
         (None, {'fields': ('job', 'nationality', 'city', 'birthday', 'address', 'phone_number', 'url', 'c_time')}),
     )

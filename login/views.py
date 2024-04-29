@@ -25,7 +25,7 @@ def signin_view(request):
             login(request, user)
             if user.is_superuser:
                 return redirect('admin:index')  # 如果是管理员，重定向到管理员控制面板
-            return redirect('index')  # 对于普通用户，重定向到用户信息页面
+            return redirect('index/')  # 对于普通用户，重定向到用户信息页面
         else:
             # 如果认证失败，返回错误信息
             return render(request, 'html/login/auth-cover-signin.html', {
@@ -36,32 +36,43 @@ def signin_view(request):
 
 def signup_view(request):
     if request.method == 'POST':
-        mail = request.POST.get('email')
+        # 获取必填字段
+        email = request.POST.get('email')
         password = request.POST.get('password')
         name = request.POST.get('name')
         job = request.POST.get('job')
-        nationality = request.POST.get('nationality')
-        city = request.POST.get('city')
-        birthday = request.POST.get('birthday')
-        address = request.POST.get('address')
-        phone_number = request.POST.get('phone_number')
-        url = request.POST.get('url')
 
-        # Validate data here (optional)
+        # 获取可选字段，并检查它们是否为空，如果为空则不包括在参数中
+        optional_fields = {
+            'nationality': request.POST.get('nationality') if request.POST.get('nationality') else None,
+            'city': request.POST.get('city') if request.POST.get('city') else None,
+            'birthday': request.POST.get('birthday') if request.POST.get('birthday') else None,
+            'address': request.POST.get('address') if request.POST.get('address') else None,
+            'phone_number': request.POST.get('phone_number') if request.POST.get('phone_number') else None,
+            'url': request.POST.get('url') if request.POST.get('url') else None
+        }
+
+        # 清理字典，移除值为None的键
+        cleaned_fields = {k: v for k, v in optional_fields.items() if v is not None}
 
         try:
+            # 创建用户
             user = UserInfo.objects.create_user(
-                mail=mail, password=password, name=name, job=job, nationality=nationality,
-                city=city, birthday=birthday, address=address, phone_number=phone_number, url=url
+                email=email, password=password, name=name, job=job, **cleaned_fields
             )
-            user.save()
-            login(request, user)  # Log in the new user
+            login(request, user)  # 登录新用户
+            # 重定向到主页或显示成功页面
             return redirect('index')
         except Exception as e:
+            print("Error during user creation:", str(e))
             return render(request, 'html/login/auth-cover-signup.html', {
                 "message": "注册失败！" + str(e)
             })
+
+    # 如果不是POST请求，返回注册表单页面
     return render(request, 'html/login/auth-cover-signup.html')
+
+
 def password_reset_view(request):
     return render(request, 'html/login/auth-cover-password-reset.html')
 
