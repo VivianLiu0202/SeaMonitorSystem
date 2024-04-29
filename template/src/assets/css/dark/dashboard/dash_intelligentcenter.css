@@ -82,7 +82,7 @@ body.dark .widget-card-four .alert-content {
   display: flex;
   justify-content: space-between;
   margin-top: 36px;
-  border-top: 1px solid #ccc; /* 添加一条灰色横线 */
+  border-top: 3px solid #ccc; /* 添加一条灰色横线 */
 }
 body.dark .widget-card-four .w-content .w-info p.value {
   font-weight: 500;
@@ -336,6 +336,7 @@ body.dark .feature-text {
 */
 body.dark .widget-chart-two {
   padding: 0;
+  background: #0e1726;
 }
 body.dark .widget.widget-chart-two .widget-heading {
   padding: 20px 20px 0 20px;
@@ -363,6 +364,24 @@ body.dark .widget-chart-two .widget-heading .w-icon a svg {
 body.dark .widget.widget-chart-two .widget-content {
   padding: 0 0 20px 0;
 }
+
+body.dark .widget.widget-chart-two .widget-content-text {
+  padding: 20px 20px 0 20px;
+}
+
+body.dark .widget.widget-chart-two .widget-content-alert {
+  padding: 0 20px 0 20px;
+  display: flex;
+  justify-content: center;
+  border-top: 3px solid #ccc; /* 添加一条灰色横线 */
+}
+
+body.dark .widget.widget-chart-two .widget-content-alert p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
 body.dark .widget-chart-two .apexcharts-canvas {
   margin: 0 auto;
 }
@@ -388,7 +407,7 @@ body.dark .widget.widget-chart-three .widget-heading {
   margin-bottom: 0;
   padding-bottom: 20px;
 }
-body.dark .widget.widget-chart-three .widget-heading h5 {
+body.dark .widget.widget-chart-three .widget-heading h6 {
   font-size: 17px;
   display: block;
   color: #e0e6ed;

@@ -1,3 +1,19 @@
+function calculateMiddleColor(value) {
+    // 计算红色和绿色的RGB值
+    var red = Math.floor((255 * (100 - value)) / 100);
+    var green = Math.floor((255 * value) / 100);
+    // 构造中间颜色字符串
+    var middleColor = 'rgb(' + red + ',' + green + ',0)';
+    return middleColor;
+}
+
+// 获取数值
+var value = 90; // 这里替换为你的实际数值
+
+// 计算中间颜色
+var middleColor = calculateMiddleColor(value);
+
+
 window.addEventListener("load", function(){
     try {
 
@@ -26,7 +42,7 @@ window.addEventListener("load", function(){
             */
            // 环境监测
         var en_options = {
-            series: [76],
+            series: [90],
             chart: {
             type: 'radialBar',
             offsetY: -20,
@@ -57,7 +73,11 @@ window.addEventListener("load", function(){
                 },
                 value: {
                   offsetY: -2,
-                  fontSize: '22px'
+                  fontSize: '22px',
+                  color: '#808a87', // 修改这里的颜色值为你想要的颜色
+                  formatter: function (val) {
+                    return val.toFixed(0); // 返回四舍五入的整数值，去掉百分号
+                }
                 }
               }
             }
@@ -75,7 +95,14 @@ window.addEventListener("load", function(){
               inverseColors: false,
               opacityFrom: 1,
               opacityTo: 1,
-              stops: [0, 50, 53, 91]
+              stops: [0, 50, 100],
+              colorStops: [{
+                offset: 0,
+                color: middleColor 
+            },{
+                offset: 100,
+                color: '#FF0000' 
+            }]
             },
           },
           labels: ['Average Results'],
@@ -135,10 +162,10 @@ window.addEventListener("load", function(){
                     colors: ['transparent']
                 },
                 series: [{
-                    name: 'Direct',
+                    name: '网衣',
                     data: [58, 44, 55, 57, 56, 61, 58, 63, 60, 66, 56, 63]
                 }, {
-                    name: 'Organic',
+                    name: '鱼群',
                     data: [91, 76, 85, 101, 98, 87, 105, 91, 114, 94, 66, 70]
                 }],
                 xaxis: {
@@ -204,7 +231,7 @@ window.addEventListener("load", function(){
             */
            // 环境监测
            var en_options = {
-            series: [76],
+            series: [90],
             chart: {
             type: 'radialBar',
             offsetY: -20,
@@ -235,7 +262,11 @@ window.addEventListener("load", function(){
                 },
                 value: {
                   offsetY: -2,
-                  fontSize: '22px'
+                  fontSize: '22px',
+                  color: '#808a87', // 修改这里的颜色值为你想要的颜色
+                  formatter: function (val) {
+                    return val.toFixed(0); // 返回四舍五入的整数值，去掉百分号
+                }
                 }
               }
             }
@@ -253,7 +284,14 @@ window.addEventListener("load", function(){
               inverseColors: false,
               opacityFrom: 1,
               opacityTo: 1,
-              stops: [0, 50, 53, 91]
+              stops: [0, 35, 70, 100],
+              colorStops: [{
+                offset: 0,
+                color: middleColor 
+            },{
+                offset: 100,
+                color: '#FF0000' 
+            }]
             },
           },
           labels: ['Average Results'],
@@ -314,10 +352,10 @@ window.addEventListener("load", function(){
                     colors: ['transparent']
                 },
                 series: [{
-                    name: 'Direct',
+                    name: '网页',
                     data: [58, 44, 55, 57, 56, 61, 58, 63, 60, 66, 56, 63]
                 }, {
-                    name: 'Organic',
+                    name: '鱼群',
                     data: [91, 76, 85, 101, 98, 87, 105, 91, 114, 94, 66, 70]
                 }],
                 xaxis: {
@@ -376,7 +414,7 @@ window.addEventListener("load", function(){
             ======================================
         */
 
-        enviroment = new ApexCharts(document.querySelector("#enviroment"), en_options);
+        var enviroment = new ApexCharts(document.querySelector("#enviroment"), en_options);
         enviroment.render();
 
         /*
@@ -439,6 +477,7 @@ window.addEventListener("load", function(){
                         borderColor: '#191e3a',
                     },
                 })
+
 
                 /*
                     ==============================
