@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>SignUp Cover | CORK - Multipurpose Bootstrap Dashboard Template </title>
+    <title>注册-海洋牧场监测可视化系统</title>
     <link rel="icon" type="image/x-icon" href="{% static 'src/assets/img/favicon.ico' %}"/>
     <link href="{% static 'layouts/modern-light-menu/css/light/loader.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'layouts/modern-light-menu/css/dark/loader.css' %}" rel="stylesheet" type="text/css"/>
@@ -68,8 +68,10 @@
                         <form method="post" action="{% url 'signup' %}">
                             {% csrf_token %}
                             <div class="row">
-                                <!--这里的Job，Nationality和City可以改成下拉框选择-->
+                                <!--TODO:这里的Job，Nationality和City可以改成下拉框选择-->
+                                <!--TODO:Job可以设置一些权限级别-->
                                 <!-- Email Field -->
+                                <!--TODO:邮箱的格式验证以及重复性验证，如果错误需要有弹出窗口-->
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Email</label>
                                     <input type="email" name="email" class="form-control" required>
@@ -95,11 +97,13 @@
                                     <input type="text" name="city" class="form-control" required>
                                 </div>
                                 <!-- Password Field -->
+                                <!--TODO:密码的复杂度以及重复密码需要加入-->
                                 <div class="col-12 mb-3">
                                     <label class="form-label">Password</label>
                                     <input type="password" name="password" class="form-control" required>
                                 </div>
                                 <!-- Agreement Checkbox -->
+                                <!--TODO：这里的协议可以加入一个弹窗，显示协议内容-->
                                 <div class="col-12 mb-3">
                                     <div class="form-check form-check-primary form-check-inline">
                                         <input class="form-check-input me-3" type="checkbox"
