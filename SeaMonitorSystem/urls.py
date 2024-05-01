@@ -16,14 +16,48 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from login import views
+from login import views as login_views
+from maininfo import views as maininfo_views
+from userpage import views as userpage_views
+from intelligent import views as intelligent_views
+from underwater import views as underwater_views
+from datacenter import views as datacenter_views
+from extra import views as apps_views
+from allcharts import views as allcharts_views
+
 urlpatterns = [
-    path("", views.signin_view, name="signin"),  # 使用 signin_view 处理根 URL
-    path("index/", views.index, name="index"),
-    path("signup/", views.signup_view, name="signup"),
-    path("password_reset/", views.password_reset_view, name="password_reset"),
-    path("lockscreen/", views.lockscreen_view, name="lockscreen"),
-    path("two_step_verification/", views.two_step_verification_view, name="two_step_verification"),
+    path("", login_views.signin_view, name="signin"),  # 使用 signin_view 处理根 URL
+    path("signup/", login_views.signup_view, name="signup"),
+    path("password_reset/", login_views.password_reset_view, name="password_reset"),
+    path("lockscreen/", login_views.lockscreen_view, name="lockscreen"),
+    path("two_step_verification/", login_views.two_step_verification_view, name="two_step_verification"),
+
+    # 主要信息界面的url路由
+    path("index/", maininfo_views.index, name="index"),
+
+    # 智能分析界面的url路由
+    path("intelligent/", intelligent_views.intelligent, name="intelligent"),
+
+    # 水下系统界面的url路由
+    path("underwater/", underwater_views.underwater, name="underwater"),
+
+    # 数据中心界面的url路由
+    path("datacenter/", datacenter_views.datacenter, name="datacenter"),
+
+    # 图表展示界面的url路由
+    path("allcharts/", allcharts_views.allcharts, name="allcharts"),
+
+    #三个应用的url路由
+    path("chat/", apps_views.chat, name="chat"),
+    path("calendar/", apps_views.calendar, name="calendar"),
+    path("todolist/", apps_views.todoList, name="todolist"),
+
+
+    # 用户信息与设置界面的url路由
+    path("user_profile/", userpage_views.user_profile, name="user_profile"),
+    path("user_account_settings/", userpage_views.user_settings, name="user_settings"),
+
+
     # 确保管理员URL配置正确
     path("admin/", admin.site.urls),
 ]

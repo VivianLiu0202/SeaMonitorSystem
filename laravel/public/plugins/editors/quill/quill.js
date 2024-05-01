@@ -178,7 +178,7 @@ function create(input, value) {
         throw new ParchmentError("Unable to create " + input + " blot");
     }
     var BlotClass = match;
-    var node = 
+    var node =
     // @ts-ignore
     input instanceof Node || input['nodeType'] === Node.TEXT_NODE ? input : BlotClass.create(value);
     return new BlotClass(node, value);
@@ -9511,7 +9511,7 @@ Toolbar.DEFAULTS = {
       if (range.length == 0) {
         var formats = this.quill.getFormat();
         Object.keys(formats).forEach(function (name) {
-          // Clean functionality in existing apps only clean inline formats
+          // Clean functionality in existing extra only clean inline formats
           if (_parchment2.default.query(name, _parchment2.default.Scope.INLINE) != null) {
             _this3.quill.format(name, false);
           }

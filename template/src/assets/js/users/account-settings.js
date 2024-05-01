@@ -33,7 +33,7 @@ FilePond.registerPlugin(
       files: [
           {
               // the server file reference
-              source: '../src/assets/img/user-profile.jpeg',
+              source: '/static/src/assets/img/user-profile.jpeg',
 
               // set type to limbo to tell FilePond this is a temp file
               options: {

@@ -82,5 +82,3 @@ def lockscreen_view(request):
 def two_step_verification_view(request):
     return render(request, 'html/login/auth-cover-two-step-verification.html')
 
-def index(request):
-    return render(request, 'html/dash-MainInfo.html')
