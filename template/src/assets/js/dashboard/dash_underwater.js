@@ -204,7 +204,7 @@ window.addEventListener("load", function(){
         }]
         },
         subtitle: {
-          text: '$10,840',
+          text: '',
           align: 'left',
           margin: 0,
           offsetX: 100,
@@ -216,7 +216,7 @@ window.addEventListener("load", function(){
           }
         },
         title: {
-          text: 'Total Profit',
+          text: '',
           align: 'left',
           margin: 0,
           offsetX: -10,
@@ -234,13 +234,10 @@ window.addEventListener("load", function(){
             lineCap: 'square'
         },
         series: [{
-            name: 'Expenses',
-            data: [16800, 16800, 15500, 14800, 15500, 17000, 21000, 16000, 15000, 17000, 14000, 17000]
-        }, {
-            name: 'Income',
-            data: [16500, 17500, 16200, 17300, 16000, 21500, 16000, 17000, 16000, 19000, 18000, 19000]
+            name: 'Expen',
+            data: [16800, 16800, 15500, 14800, 15500, 17000, 21000]
         }],
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        labels: ['0', '25', '50', '75', '100', '125', '150'],
         xaxis: {
           axisBorder: {
             show: false
@@ -424,7 +421,7 @@ window.addEventListener("load", function(){
             colors: '#0e1726'
           },
           series: [985, 737, 270],
-          labels: ['Apparel', 'Sports', 'Others'],
+          labels: ['鱼群1', '鱼群2', '鱼群3'],
     
           responsive: [
             { 
@@ -650,7 +647,7 @@ window.addEventListener("load", function(){
         }]
         },
         subtitle: {
-          text: '$10,840',
+          text: '',
           align: 'left',
           margin: 0,
           offsetX: 100,
@@ -662,7 +659,7 @@ window.addEventListener("load", function(){
           }
         },
         title: {
-          text: 'Total Profit',
+          text: '',
           align: 'left',
           margin: 0,
           offsetX: -10,
@@ -681,12 +678,9 @@ window.addEventListener("load", function(){
         },
         series: [{
             name: 'Expenses',
-            data: [16800, 16800, 15500, 14800, 15500, 17000, 21000, 16000, 15000, 17000, 14000, 17000]
-        }, {
-            name: 'Income',
-            data: [16500, 17500, 16200, 17300, 16000, 21500, 16000, 17000, 16000, 19000, 18000, 19000]
+            data: [168, 168, 155, 148, 155, 170, 210]
         }],
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        labels: ['0', '25', '50', '75', '100', '125', '150'],
         xaxis: {
           axisBorder: {
             show: false
@@ -707,7 +701,7 @@ window.addEventListener("load", function(){
             },
           }
         },
-        yaxis: {
+        /*yaxis: {
           labels: {
             formatter: function(value, index) {
               return (value / 1000) + 'K'
@@ -720,7 +714,7 @@ window.addEventListener("load", function(){
                 cssClass: 'apexcharts-yaxis-title',
             },
           }
-        },
+        },*/
         grid: {
           borderColor: '#e0e6ed',
           strokeDashArray: 5,
@@ -794,6 +788,187 @@ window.addEventListener("load", function(){
         }]
       }
       
+      var options11 = {
+        chart: {
+          fontFamily: 'Nunito, sans-serif',
+          height: 365,
+          type: 'area',
+          zoom: {
+              enabled: false
+          },
+          dropShadow: {
+            enabled: true,
+            opacity: 0.2,
+            blur: 10,
+            left: -7,
+            top: 22
+          },
+          toolbar: {
+            show: false
+          },
+        },
+        colors: ['#1b55e2', '#e7515a'],
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+          discrete: [{
+          seriesIndex: 0,
+          dataPointIndex: 7,
+          fillColor: '#000',
+          strokeColor: '#000',
+          size: 5
+        }, {
+          seriesIndex: 2,
+          dataPointIndex: 11,
+          fillColor: '#000',
+          strokeColor: '#000',
+          size: 4
+        }]
+        },
+        subtitle: {
+          text: '',
+          align: 'left',
+          margin: 0,
+          offsetX: 100,
+          offsetY: 20,
+          floating: false,
+          style: {
+            fontSize: '18px',
+            color:  '#4361ee'
+          }
+        },
+        title: {
+          text: '',
+          align: 'left',
+          margin: 0,
+          offsetX: -10,
+          offsetY: 20,
+          floating: false,
+          style: {
+            fontSize: '18px',
+            color:  '#0e1726'
+          },
+        },
+        stroke: {
+            show: true,
+            curve: 'smooth',
+            width: 2,
+            lineCap: 'square'
+        },
+        series: [{
+            name: 'Expenses',
+            data: [168, 168, 155, 148, 155, 170, 210, 100, 100, 100, 100, 110]
+        }],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        xaxis: {
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false
+          },
+          crosshairs: {
+            show: true
+          },
+          labels: {
+            offsetX: 0,
+            offsetY: 5,
+            style: {
+                fontSize: '12px',
+                fontFamily: 'Nunito, sans-serif',
+                cssClass: 'apexcharts-xaxis-title',
+            },
+          }
+        },
+        /*yaxis: {
+          labels: {
+            formatter: function(value, index) {
+              return (value / 1000) + 'K'
+            },
+            offsetX: -15,
+            offsetY: 0,
+            style: {
+                fontSize: '12px',
+                fontFamily: 'Nunito, sans-serif',
+                cssClass: 'apexcharts-yaxis-title',
+            },
+          }
+        },*/
+        grid: {
+          borderColor: '#e0e6ed',
+          strokeDashArray: 5,
+          xaxis: {
+              lines: {
+                  show: true
+              }
+          },   
+          yaxis: {
+              lines: {
+                  show: false,
+              }
+          },
+          padding: {
+            top: -50,
+            right: 0,
+            bottom: 0,
+            left: 5
+          },
+        }, 
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetY: -50,
+          fontSize: '16px',
+          fontFamily: 'Quicksand, sans-serif',
+          markers: {
+            width: 10,
+            height: 10,
+            strokeWidth: 0,
+            strokeColor: '#fff',
+            fillColors: undefined,
+            radius: 12,
+            onClick: undefined,
+            offsetX: -5,
+            offsetY: 0
+          },    
+          itemMargin: {
+            horizontal: 10,
+            vertical: 20
+          }
+          
+        },
+        tooltip: {
+          theme: Theme,
+          marker: {
+            show: true,
+          },
+          x: {
+            show: false,
+          }
+        },
+        fill: {
+            type:"gradient",
+            gradient: {
+                type: "vertical",
+                shadeIntensity: 1,
+                inverseColors: !1,
+                opacityFrom: .19,
+                opacityTo: .05,
+                stops: [100, 100]
+            }
+        },
+        responsive: [{
+          breakpoint: 575,
+          options: {
+            legend: {
+                offsetY: -50,
+            },
+          },
+        }]
+      }
+      
+
       /*
           ==================================
               Sales By Category | Options
@@ -870,7 +1045,7 @@ window.addEventListener("load", function(){
             colors: '#fff'
           },
           series: [985, 737, 270],
-          labels: ['Apparel', 'Sports', 'Others'],
+          labels: ['鱼群1', '鱼群2', '鱼群3'],
     
           responsive: [
             { 
@@ -897,7 +1072,9 @@ window.addEventListener("load", function(){
           ],
       }
     }
-    
+
+
+   
   
   /**
       ==============================
@@ -927,12 +1104,139 @@ window.addEventListener("load", function(){
           Revenue Monthly | Render
       ================================
   */
+  var chartData1 = {
+      series: [{
+        name: 'Expenses',
+        data: [168, 168, 155, 148, 155, 170, 210]
+    }]
+  };
+
+  var chartData2 = {
+    series: [{
+            name: 'Expen',
+            data: [200, 200, 200, 150, 200, 200, 200]
+        }]
+  };
+  
+  var chartData3 = {
+    series: [{
+      name: 'Expen',
+      data: [300, 300, 300, 150, 300, 300, 300]
+  }]
+  };
+  var chartData4 = {
+    series: [{
+      name: 'Expen',
+      data: [400, 400, 400, 150, 400, 400, 400]
+  }]
+  };
+  var chartData5 = {
+    series: [{
+      name: 'Expen',
+      data: [500, 500, 500, 150, 500, 500, 500]
+  }]
+  };
+
+  var chartData11 = {
+    series: [{
+      name: 'Expenses',
+      data: [168, 168, 155, 148, 155, 170, 210, 300, 400, 500, 600]
+  }]
+};
+
+var chartData22 = {
+  series: [{
+          name: 'Expen',
+          data: [200, 200, 200, 150, 200, 200, 200, 111, 344, 111, 332, 112]
+      }]
+};
+
+var chartData33 = {
+  series: [{
+    name: 'Expen',
+    data: [300, 300, 300, 150, 300, 300, 300, 111, 344, 111, 332, 112]
+}]
+};
+var chartData44 = {
+  series: [{
+    name: 'Expen',
+    data: [400, 400, 400, 150, 400, 400, 400, 111, 344, 111, 332, 112]
+}]
+};
+var chartData55 = {
+  series: [{
+    name: 'Expen',
+    data: [500, 500, 500, 150, 500, 500, 500, 111, 344, 111,332,112]
+}]
+};
+
+
   var chart1 = new ApexCharts(
       document.querySelector("#revenueMonthly"),
       options1
   );
   
   chart1.render();
+
+  var chart2 = new ApexCharts(
+    document.querySelector("#revenueMonthly2"),
+    options11
+);
+
+chart2.render();
+
+  document.querySelector("#fish1").addEventListener('click', function() {
+    chart1.updateOptions({
+      series: chartData1.series,
+    });
+  });
+  document.querySelector("#fish2").addEventListener('click', function() {
+    chart1.updateOptions({
+      series: chartData2.series,
+    });
+  });
+  document.querySelector("#fish3").addEventListener('click', function() {
+    chart1.updateOptions({
+      series: chartData3.series,
+    });
+  });
+  document.querySelector("#fish4").addEventListener('click', function() {
+    chart1.updateOptions({
+      series: chartData4.series,
+    });
+  });
+  document.querySelector("#fish5").addEventListener('click', function() {
+    chart1.updateOptions({
+      series: chartData5.series,
+    });
+  });
+
+
+  document.querySelector("#fish11").addEventListener('click', function() {
+    chart2.updateOptions({
+      series: chartData11.series,
+    });
+  });
+  document.querySelector("#fish22").addEventListener('click', function() {
+    chart2.updateOptions({
+      series: chartData22.series,
+    });
+  });
+  document.querySelector("#fish33").addEventListener('click', function() {
+    chart2.updateOptions({
+      series: chartData33.series,
+    });
+  });
+  document.querySelector("#fish44").addEventListener('click', function() {
+    chart2.updateOptions({
+      series: chartData44.series,
+    });
+  });
+  document.querySelector("#fish55").addEventListener('click', function() {
+    chart2.updateOptions({
+      series: chartData55.series,
+    });
+  });
   
   /*
       =================================
@@ -961,9 +1265,6 @@ window.addEventListener("load", function(){
   //   suppressScrollY: true
   
   // });
-
-
-
 
 
   /**
