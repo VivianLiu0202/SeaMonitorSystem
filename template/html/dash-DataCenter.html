@@ -416,7 +416,7 @@
                             </div>
                         </div>
 
-                        <div id="chartRadial" class="col-xl-12 layout-spacing">
+                        <!-- <div id="chartRadial" class="col-xl-12 layout-spacing">
                             <div class="statbox widget box box-shadow">
                                 <div class="widget-header">
                                     <div class="row">
@@ -429,7 +429,7 @@
                                     <div id="radial-chart" class=""></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div id="chartPyramid" class="col-xl-12 layout-spacing">
                             <div class="statbox widget box box-shadow">
@@ -446,14 +446,43 @@
                             </div>
                         </div>
 
-                        
+                        <div id="chartRadar" class="col-xl-12 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>数据类型占比</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content widget-content-area">
+                                    <div id="radar-chart" class=""></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="chartTreemap" class="col-xl-12 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>结构化数据树形图</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content widget-content-area">
+                                    <div id="treemap-chart" class=""></div>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-card-four">
                                 <div class="widget-content">
                                     <div class="w-header">
                                         <div class="w-info">
-                                            <h6 class="value">支出</h6>
+                                            <h6 class="value">磁盘已使用</h6>
                                         </div>
                                         <div class="task-action">
                                             <div class="dropdown">
@@ -467,7 +496,7 @@
                                     </div>
                                     <div class="w-content">
                                         <div class="w-info">
-                                            <p class="value">$ 45,141 <span>本周</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up">
+                                            <p class="value"> 570G <span>本周</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up">
                                                     <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
                                                     <polyline points="17 6 23 6 23 12"></polyline>
                                                 </svg></p>
@@ -495,20 +524,20 @@
 
                                         <div class="info-box">
                                             <div class="icon">
-                                                <span>
+                                                <!-- <span>
                                                     <img src="{% static 'src/assets/img/money-bag.png' %}"
                                                         alt="money-bag">
-                                                </span>
+                                                </span> -->
                                             </div>
 
                                             <div class="balance-info">
-                                                <h6>Total Balance</h6>
-                                                <p>$41,741.42</p>
+                                                <h6>进程总量 </h6>
+                                                <p>999</p>
                                             </div>
                                         </div>
 
                                         <div class="card-bottom-section">
-                                            <div><span class="badge badge-light-success">+ 13.6% <svg
+                                            <div><span class="badge badge-light-success">+ 1% <svg
                                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -516,7 +545,7 @@
                                                         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
                                                         <polyline points="17 6 23 6 23 12"></polyline>
                                                     </svg></span></div>
-                                            <a href="javascript:void(0);" class="">View Report</a>
+                                            <a href="javascript:void(0);" class="">查看报告</a>
                                         </div>
                                     </div>
                                 </div>
@@ -527,7 +556,7 @@
                             <div class="widget widget-chart-three">
                                 <div class="widget-heading">
                                     <div class="">
-                                        <h5 class="">Unique Visitors</h5>
+                                        <h5 class="">数据总量</h5>
                                     </div>
 
                                     <div class="task-action">
@@ -558,12 +587,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+                            <div class="widget widget-card-four">
+                                <div class="widget-content">
+                                <div class="w-header">
+                                    <div class="w-info">
+                                    <h6 class="value">传感器信息</h6>
+                                    </div>
+                
+                                </div>
+                
+                                <div class="w-content">
+                                    <div class="w-info">
+                                    <p id="transfer-time">平均传输时间  02：05</p>
+                                    <p id="process-time">平均处理时间  00：02</p>
 
+                                    </div>
+                                </div>        
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-activity-five">
 
                                 <div class="widget-heading">
-                                    <h5 class="">传感器信息</h5>
+                                    <h5 class="">传感器设备日志</h5>
 
                                     <div class="task-action">
                                         <div class="dropdown">

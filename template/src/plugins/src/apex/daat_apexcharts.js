@@ -16,60 +16,173 @@ window.addEventListener("load", function () {
                 theme: 'dark'
             }
 
-            // pyramid
-            var pyramidChart = {
+            var radarChart = {
                 series: [{
-                data: [200, 330, 548, 740, 880, 990, 1100, 1380],
+                  name: '系列 1',
+                  data: [80, 50, 30, 40, 100, 20],
+                }, {
+                  name: '系列 2',
+                  data: [20, 30, 40, 80, 20, 80],
+                }, {
+                  name: '系列 3',
+                  data: [44, 76, 78, 13, 43, 10],
                 }],
                 chart: {
-                type: 'pyramid',
-                height: 350,
-                },
-                plotOptions: {
-                pyramid: {
-                    horizontalAlign: 'center',
-                    labels: {
-                    show: true,
-                    formatter: function (val, opt) {
-                        return opt.w.globals.labels[opt.dataPointIndex];
-                    },
-                    },
-                },
-                },
-                colors: [
-                '#F44F5E',
-                '#E55A89',
-                '#D863B1',
-                '#CA6CD8',
-                '#B57BED',
-                '#8D95EB',
-                '#62ACEA',
-                '#4BC3E6',
-                ],
-                dataLabels: {
-                enabled: true,
-                formatter: function (val, opt) {
-                    return opt.w.globals.labels[opt.dataPointIndex];
-                },
-                dropShadow: {
+                  height: 350,
+                  type: 'radar',
+                  dropShadow: {
                     enabled: true,
-                },
+                    blur: 1,
+                    left: 1,
+                    top: 1
+                  }
                 },
                 title: {
-                text: '金字塔图',
-                align: 'center',
+                  text: '数据类型占比'
+                },
+                stroke: {
+                  width: 2
+                },
+                fill: {
+                  opacity: 0.1
+                },
+                markers: {
+                  size: 0
+                },
+                yaxis: {
+                  stepSize: 20
                 },
                 xaxis: {
-                categories: ['一', '二', '三', '四', '五', '六', '七', '八'], // 中文数字字符数组
-                labels: {
-                    show: false
+                  categories: ['2011年', '2012年', '2013年', '2014年', '2015年', '2016年']
                 }
+              };
+
+
+              var treemapChart = {
+                series: [
+                {
+                  data: [
+                    {
+                      x: 'New Delhi',
+                      y: 218
+                    },
+                    {
+                      x: 'Kolkata',
+                      y: 149
+                    },
+                    {
+                      x: 'Mumbai',
+                      y: 184
+                    },
+                    {
+                      x: 'Ahmedabad',
+                      y: 55
+                    },
+                    {
+                      x: 'Bangaluru',
+                      y: 84
+                    },
+                    {
+                      x: 'Pune',
+                      y: 31
+                    },
+                    {
+                      x: 'Chennai',
+                      y: 70
+                    },
+                    {
+                      x: 'Jaipur',
+                      y: 30
+                    },
+                    {
+                      x: 'Surat',
+                      y: 44
+                    },
+                    {
+                      x: 'Hyderabad',
+                      y: 68
+                    },
+                    {
+                      x: 'Lucknow',
+                      y: 28
+                    },
+                    {
+                      x: 'Indore',
+                      y: 19
+                    },
+                    {
+                      x: 'Kanpur',
+                      y: 29
+                    }
+                  ]
+                }
+              ],
+                legend: {
+                show: false
+              },
+              chart: {
+                height: 350,
+                type: 'treemap'
+              },
+              title: {
+                text: 'Basic Treemap'
+              }
+              };
+
+
+            // pyramid
+            var pyramidChart = {
+                series: [
+                  {
+                    name: "",
+                    data: [200, 330, 548, 740, 880, 990, 1100, 1380],
+                  },
+                ],
+                chart: {
+                  fontFamily: 'Nunito, Arial, sans-serif',
+                  type: 'bar',
+                  height: 350,
+                },
+                plotOptions: {
+                  bar: {
+                    borderRadius: 0,
+                    horizontal: true,
+                    distributed: true,
+                    barHeight: '80%',
+                    isFunnel: true,
+                  },
+                },
+                colors: [
+                  '#F44F5E',
+                  '#E55A89',
+                  '#D863B1',
+                  '#CA6CD8',
+                  '#B57BED',
+                  '#8D95EB',
+                  '#62ACEA',
+                  '#4BC3E6',
+                ],
+                dataLabels: {
+                  enabled: true,
+                  formatter: function (val, opt) {
+                    return opt.w.globals.labels[opt.dataPointIndex] 
+                  },
+                  dropShadow: {
+                    enabled: true,
+                  },
+                },
+                title: {
+                  text: '金字塔图',
+                  align: 'middle',
+                },
+                xaxis: {
+                  categories: ['甜食', '加工食品', '健康脂肪', '肉类', '豆类和豆类制品', '乳制品', '水果和蔬菜', '谷物'],
                 },
                 legend: {
-                show: false,
+                  show: false,
                 },
-            };
-
+              }; 
+            
             // Simple Line
 
             var sline = {
@@ -550,57 +663,168 @@ window.addEventListener("load", function () {
 
             // pyramid
             var pyramidChart = {
-                series: [{
-                data: [200, 330, 548, 740, 880, 990, 1100, 1380],
-                }],
+                series: [
+                  {
+                    name: "",
+                    data: [200, 330, 548, 740, 880, 990, 1100, 1380],
+                  },
+                ],
                 chart: {
-                type: 'pyramid',
-                height: 350,
+                  type: 'bar',
+                  height: 350,
                 },
                 plotOptions: {
-                pyramid: {
-                    horizontalAlign: 'center',
-                    labels: {
-                    show: true,
-                    formatter: function (val, opt) {
-                        return opt.w.globals.labels[opt.dataPointIndex];
-                    },
-                    },
-                },
+                  bar: {
+                    borderRadius: 0,
+                    horizontal: true,
+                    distributed: true,
+                    barHeight: '80%',
+                    isFunnel: true,
+                  },
                 },
                 colors: [
-                '#F44F5E',
-                '#E55A89',
-                '#D863B1',
-                '#CA6CD8',
-                '#B57BED',
-                '#8D95EB',
-                '#62ACEA',
-                '#4BC3E6',
+                  '#F44F5E',
+                  '#E55A89',
+                  '#D863B1',
+                  '#CA6CD8',
+                  '#B57BED',
+                  '#8D95EB',
+                  '#62ACEA',
+                  '#4BC3E6',
                 ],
                 dataLabels: {
-                enabled: true,
-                formatter: function (val, opt) {
-                    return opt.w.globals.labels[opt.dataPointIndex];
-                },
-                dropShadow: {
+                  enabled: true,
+                  formatter: function (val, opt) {
+                    return opt.w.globals.labels[opt.dataPointIndex] 
+                  },
+                  dropShadow: {
                     enabled: true,
-                },
+                  },
                 },
                 title: {
-                text: '金字塔图',
-                align: 'center',
+                  text: '金字塔图',
+                  align: 'middle',
                 },
                 xaxis: {
-                categories: ['一', '二', '三', '四', '五', '六', '七', '八'], // 中文数字字符数组
-                labels: {
-                    show: false
-                }
+                  categories: ['甜食', '加工食品', '健康脂肪', '肉类', '豆类和豆类制品', '乳制品', '水果和蔬菜', '谷物'],
                 },
                 legend: {
-                show: false,
+                  show: false,
                 },
-            };
+              };
+            
+              var radarChart = {
+                series: [{
+                  name: '系列 1',
+                  data: [80, 50, 30, 40, 100, 20],
+                }, {
+                  name: '系列 2',
+                  data: [20, 30, 40, 80, 20, 80],
+                }, {
+                  name: '系列 3',
+                  data: [44, 76, 78, 13, 43, 10],
+                }],
+                chart: {
+                  height: 350,
+                  type: 'radar',
+                  dropShadow: {
+                    enabled: true,
+                    blur: 1,
+                    left: 1,
+                    top: 1
+                  }
+                },
+                title: {
+                  text: '数据类型占比'
+                },
+                stroke: {
+                  width: 2
+                },
+                fill: {
+                  opacity: 0.1
+                },
+                markers: {
+                  size: 0
+                },
+                yaxis: {
+                  stepSize: 20
+                },
+                xaxis: {
+                  categories: ['2011年', '2012年', '2013年', '2014年', '2015年', '2016年']
+                }
+              };
+            
+              var treemapChart = {
+                series: [
+                {
+                  data: [
+                    {
+                      x: 'New Delhi',
+                      y: 218
+                    },
+                    {
+                      x: 'Kolkata',
+                      y: 149
+                    },
+                    {
+                      x: 'Mumbai',
+                      y: 184
+                    },
+                    {
+                      x: 'Ahmedabad',
+                      y: 55
+                    },
+                    {
+                      x: 'Bangaluru',
+                      y: 84
+                    },
+                    {
+                      x: 'Pune',
+                      y: 31
+                    },
+                    {
+                      x: 'Chennai',
+                      y: 70
+                    },
+                    {
+                      x: 'Jaipur',
+                      y: 30
+                    },
+                    {
+                      x: 'Surat',
+                      y: 44
+                    },
+                    {
+                      x: 'Hyderabad',
+                      y: 68
+                    },
+                    {
+                      x: 'Lucknow',
+                      y: 28
+                    },
+                    {
+                      x: 'Indore',
+                      y: 19
+                    },
+                    {
+                      x: 'Kanpur',
+                      y: 29
+                    }
+                  ]
+                }
+              ],
+                legend: {
+                show: false
+              },
+              chart: {
+                height: 350,
+                type: 'treemap'
+              },
+              title: {
+                text: 'Basic Treemap'
+              }
+              };
+      
 
             // Simple Line
 
@@ -1153,12 +1377,18 @@ window.addEventListener("load", function () {
         radialChart.render();
 
         // Pyramid Chart
-        var pyramidChart = new ApexCharts(
+        var pyramid = new ApexCharts(
             document.querySelector("#pyramid-chart"),
             pyramidChart
         );
 
-        pyramidChart.render();
+        pyramid.render();
+
+        var radar = new ApexCharts(document.querySelector("#radar-chart"), radarChart);
+        radar.render();
+
+        var treemap = new ApexCharts(document.querySelector("#treemap-chart"), treemapChart);
+        treemap.render();
         /**
          * =================================================================================================
          * |     @Re_Render | Re render all the necessary JS when clicked to switch/toggle theme           |
