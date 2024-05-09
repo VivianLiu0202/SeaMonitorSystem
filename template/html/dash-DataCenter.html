@@ -3,6 +3,7 @@
 {% load static %}
 
 <head>
+    <!--Wang HERE-->>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
@@ -23,6 +24,16 @@
     <link href="{% static 'src/plugins/src/apex/apexcharts.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'src/assets/css/light/dashboard/dash_datacenter.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'src/assets/css/dark/dashboard/dash_datacenter.css' %}" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <link href="{% static 'src/plugins/src/apex/apexcharts.css' %}" rel="stylesheet" type="text/css">
+
+    <link href="{% static 'src/assets/css/light/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'src/plugins/css/light/apex/custom-apexcharts.css' %}" rel="stylesheet" type="text/css">
+
+    <link href="{% static 'src/assets/css/dark/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'src/plugins/css/dark/apex/custom-apexcharts.css' %}" rel="stylesheet" type="text/css">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
 </head>
@@ -360,33 +371,16 @@
                         <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-six">
                                 <div class="widget-heading">
-                                    <h6 class="">Statistics</h6>
+                                    <h6 class="">数据库查询数据</h6>
                                     <div class="task-action">
                                         <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="statistics"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-more-horizontal">
-                                                    <circle cx="12" cy="12" r="1"></circle>
-                                                    <circle cx="19" cy="12" r="1"></circle>
-                                                    <circle cx="5" cy="12" r="1"></circle>
-                                                </svg>
-                                            </a>
-
-                                            <div class="dropdown-menu left" aria-labelledby="statistics"
-                                                style="will-change: transform;">
-                                                <a class="dropdown-item" href="javascript:void(0);">View</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Download</a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="w-chart">
                                     <div class="w-chart-section">
                                         <div class="w-detail">
-                                            <p class="w-title">Total Visits</p>
+                                            <p class="w-title">总访问数</p>
                                             <p class="w-stats">423,964</p>
                                         </div>
                                         <div class="w-chart-render-one">
@@ -396,7 +390,7 @@
 
                                     <div class="w-chart-section">
                                         <div class="w-detail">
-                                            <p class="w-title">Paid Visits</p>
+                                            <p class="w-title">成功访问数</p>
                                             <p class="w-stats">7,929</p>
                                         </div>
                                         <div class="w-chart-render-one">
@@ -405,72 +399,93 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
+                        <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                            <div class="widget widget-map">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>数据中心分布</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="map-container" id="data-map" style="display: flex; justify-content: center; align-items: center;">
+                                    <iframe src="https://map.baidu.com/" style="width:90%; height:400px; justify-content: center; align-items:center;"></iframe> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="chartRadial" class="col-xl-12 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>各渔业养殖组KPI完成情况</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content widget-content-area">
+                                    <div id="radial-chart" class=""></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="chartPyramid" class="col-xl-12 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>数据交汇处理</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content widget-content-area">
+                                    <div id="pyramid-chart" class=""></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
 
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-card-four">
                                 <div class="widget-content">
                                     <div class="w-header">
                                         <div class="w-info">
-                                            <h6 class="value">Expenses</h6>
+                                            <h6 class="value">支出</h6>
                                         </div>
                                         <div class="task-action">
                                             <div class="dropdown">
-                                                <a class="dropdown-toggle" href="#" role="button" id="expenses"
-                                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-more-horizontal">
-                                                        <circle cx="12" cy="12" r="1"></circle>
-                                                        <circle cx="19" cy="12" r="1"></circle>
-                                                        <circle cx="5" cy="12" r="1"></circle>
-                                                    </svg>
-                                                </a>
-
-                                                <div class="dropdown-menu left" aria-labelledby="expenses"
-                                                    style="will-change: transform;">
-                                                    <a class="dropdown-item" href="javascript:void(0);">This Week</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Last Week</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                                                <div class="dropdown-menu left" aria-labelledby="expenses" style="will-change: transform;">
+                                                    <a class="dropdown-item" href="javascript:void(0);">本周</a>
+                                                    <a class="dropdown-item" href="javascript:void(0);">上周</a>
+                                                    <a class="dropdown-item" href="javascript:void(0);">上个月</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="w-content">
-
                                         <div class="w-info">
-                                            <p class="value">$ 45,141 <span>this week</span> <svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-trending-up">
+                                            <p class="value">$ 45,141 <span>本周</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up">
                                                     <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
                                                     <polyline points="17 6 23 6 23 12"></polyline>
                                                 </svg></p>
                                         </div>
-
                                     </div>
-
                                     <div class="w-progress-stats">
                                         <div class="progress">
-                                            <div class="progress-bar bg-gradient-secondary" role="progressbar"
-                                                style="width: 57%" aria-valuenow="57" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-
                                         <div class="">
                                             <div class="w-icon">
                                                 <p>57%</p>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
 
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
@@ -548,7 +563,7 @@
                             <div class="widget widget-activity-five">
 
                                 <div class="widget-heading">
-                                    <h5 class="">Activity Log</h5>
+                                    <h5 class="">传感器信息</h5>
 
                                     <div class="task-action">
                                         <div class="dropdown">
@@ -593,11 +608,11 @@
                                                 </div>
                                                 <div class="t-content">
                                                     <div class="t-uppercontent">
-                                                        <h5>New project created : <a
-                                                                href="javscript:void(0);"><span>[Cork Admin]</span></a>
+                                                        <h5>Video-1 <a href="javascript:void(0);">类型</a>   <a
+                                                            href="javascript:void(0);">大小</a>
                                                         </h5>
                                                     </div>
-                                                    <p>07 May, 2022</p>
+                                                    <p>07 May, 2024</p>
                                                 </div>
                                             </div>
 
@@ -616,10 +631,11 @@
                                                 </div>
                                                 <div class="t-content">
                                                     <div class="t-uppercontent">
-                                                        <h5>Mail sent to <a href="javascript:void(0);">HR</a> and <a
-                                                                href="javascript:void(0);">Admin</a></h5>
+                                                        <h5>Video-2 <a href="javascript:void(0);">类型</a>   <a
+                                                            href="javascript:void(0);">大小</a>
+                                                        </h5>
                                                     </div>
-                                                    <p>06 May, 2022</p>
+                                                    <p>06 May, 2024</p>
                                                 </div>
                                             </div>
 
@@ -635,9 +651,11 @@
                                                 </div>
                                                 <div class="t-content">
                                                     <div class="t-uppercontent">
-                                                        <h5>Server Logs Updated</h5>
+                                                        <h5>Video-3 <a href="javascript:void(0);">类型</a>   <a
+                                                            href="javascript:void(0);">大小</a>
+                                                        </h5>
                                                     </div>
-                                                    <p>01 May, 2022</p>
+                                                    <p>01 May, 2024</p>
                                                 </div>
                                             </div>
 
@@ -653,10 +671,11 @@
                                                 </div>
                                                 <div class="t-content">
                                                     <div class="t-uppercontent">
-                                                        <h5>Task Completed : <a href="javscript:void(0);"><span>[Backup
-                                                                    Files EOD]</span></a></h5>
+                                                        <h5>Holder-1 <a href="javascript:void(0);">类型</a>   <a
+                                                            href="javascript:void(0);">大小</a>
+                                                        </h5>
                                                     </div>
-                                                    <p>30 Apr, 2022</p>
+                                                    <p>30 Apr, 2024</p>
                                                 </div>
                                             </div>
 
@@ -675,11 +694,12 @@
                                                 </div>
                                                 <div class="t-content">
                                                     <div class="t-uppercontent">
-                                                        <h5>Documents Submitted from <a
-                                                                href="javascript:void(0);">Sara</a></h5>
+                                                        <h5>Sonar-1 <a href="javascript:void(0);">类型</a>   <a
+                                                            href="javascript:void(0);">大小</a>
+                                                        </h5>
                                                         <span class=""></span>
                                                     </div>
-                                                    <p>25 Apr, 2022</p>
+                                                    <p>25 Apr, 2024</p>
                                                 </div>
                                             </div>
 
@@ -700,10 +720,12 @@
                                                 </div>
                                                 <div class="t-content">
                                                     <div class="t-uppercontent">
-                                                        <h5>Server rebooted successfully</h5>
+                                                        <h5>Sensor-1 <a href="javascript:void(0);">类型</a>   <a
+                                                            href="javascript:void(0);">大小</a>
+                                                        </h5>
                                                         <span class=""></span>
                                                     </div>
-                                                    <p>10 Apr, 2022</p>
+                                                    <p>10 Apr, 2024</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -717,7 +739,7 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget-four">
                                 <div class="widget-heading">
-                                    <h5 class="">Visitors by Browser</h5>
+                                    <h5 class="">硬件信息统计</h5>
                                 </div>
                                 <div class="widget-content">
                                     <div class="vistorsBrowser">
@@ -736,7 +758,7 @@
                                             </div>
                                             <div class="w-browser-details">
                                                 <div class="w-browser-info">
-                                                    <h6>Chrome</h6>
+                                                    <h6>CPU运行状态</h6>
                                                     <p class="browser-count">65%</p>
                                                 </div>
                                                 <div class="w-browser-stats">
@@ -764,7 +786,7 @@
                                             <div class="w-browser-details">
 
                                                 <div class="w-browser-info">
-                                                    <h6>Safari</h6>
+                                                    <h6>内存运行状态</h6>
                                                     <p class="browser-count">25%</p>
                                                 </div>
 
@@ -796,7 +818,7 @@
                                             <div class="w-browser-details">
 
                                                 <div class="w-browser-info">
-                                                    <h6>Others</h6>
+                                                    <h6>GPU运行状态</h6>
                                                     <p class="browser-count">15%</p>
                                                 </div>
 
@@ -908,7 +930,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+                        <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-five">
 
                                 <div class="widget-heading">
@@ -1066,35 +1088,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                            <div class="widget widget-card-two">
-                                <div class="widget-content">
-
-                                    <div class="media">
-                                        <div class="w-img">
-                                            <img src="{% static 'src/assets/img/g-8.png' %}" alt="avatar">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6>Dev Summit - New York</h6>
-                                            <p class="meta-date-time">Bronx, NY</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-bottom-section">
-                                        <h5>4 Members Going</h5>
-                                        <div class="img-group">
-                                            <img src="{% static 'src/assets/img/profile-19.jpeg' %}" alt="avatar">
-                                            <img src="{% static 'src/assets/img/profile-6.jpeg' %}" alt="avatar">
-                                            <img src="{% static 'src/assets/img/profile-8.jpeg' %}" alt="avatar">
-                                            <img src="{% static 'src/assets/img/profile-3.jpeg' %}" alt="avatar">
-                                        </div>
-                                        <a href="javascript:void(0);" class="btn">View Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -1134,6 +1128,7 @@
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="{% static 'src/plugins/src/apex/apexcharts.min.js' %}"></script>
     <script src="{% static 'src/assets/js/dashboard/dash_datacenter.js' %}"></script>
+    <script src="{% static 'src/plugins/src/apex/daat_apexcharts.js' %}"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
 </body>

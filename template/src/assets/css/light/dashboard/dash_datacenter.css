@@ -140,6 +140,30 @@
   font-weight: 700;
 }
 
+
+.widget.widget-data-map .widget-heading h6 {
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #0e1726;
+  font-size: 23px;
+  letter-spacing: 0;
+}
+
+.layout-spacing {
+  width: 100%; /* 设置父元素宽度为100% */
+}
+
+.map-container {
+  width: 100%; /* 设置地图容器宽度为100% */
+}
+
+
+.map-container iframe {
+  width: 100%; /* 设置宽度为父容器宽度的100% */
+  height: 400px; /* 设置一个固定的高度，或者使用其他适当的高度值 */
+  border: none; /* 可选：移除 iframe 的边框 */
+}
+
 /*
 	===============================
 			@Import	Function
