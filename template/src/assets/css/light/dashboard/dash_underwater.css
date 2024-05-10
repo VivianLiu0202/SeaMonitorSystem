@@ -345,7 +345,8 @@
 .widget-chart-one .apexcharts-legend-marker {
   left: -5px !important;
 }
-.widget-chart-one .apexcharts-yaxis-title, .widget-chart-one .apexcharts-xaxis-title {
+.widget-chart-one .apexcharts-yaxis-title,
+.widget-chart-one .apexcharts-xaxis-title {
   font-weight: 600;
   fill: #888e88;
 }
@@ -894,6 +895,15 @@
         Account Info
     =====================
 */
+.widget.widget-wallet-one{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  height: 100%;
+  border: 1px solid #e0e6ed;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
+}
 .widget.widget-wallet-one .wallet-title {
   letter-spacing: 0px;
   font-size: 18px;
@@ -920,7 +930,7 @@
   height: 16px;
 }
 .widget.widget-wallet-one .wallet-action {
-  padding: 4px 0px;
+  padding: 30px 0px;
   border-radius: 10px;
   max-width: 350px;
   margin: 0 auto;
@@ -1256,6 +1266,12 @@
   position: absolute;
   left: -20px;
   top: 1px;
+}
+
+.widget.widget-card-four {
+  padding: 25px 23px;
+  background: #fff;
+  height: 100%;
 }
 
 /*
