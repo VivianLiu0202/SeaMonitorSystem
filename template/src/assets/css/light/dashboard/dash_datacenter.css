@@ -50,6 +50,7 @@
 .widget.widget-card-four {
   padding: 25px 23px;
   background: #fff;
+  height: 100%;
 }
 
 .widget-card-four .w-header {
@@ -74,6 +75,7 @@
 .widget-card-four .w-header .task-action .dropdown-menu {
   transform: translate3d(-141px, 0, 0px);
 }
+
 .widget-card-four .w-content {
   display: flex;
   justify-content: space-between;
@@ -149,9 +151,6 @@
   letter-spacing: 0;
 }
 
-.layout-spacing {
-  width: 100%; /* 设置父元素宽度为100% */
-}
 
 .map-container {
   width: 100%; /* 设置地图容器宽度为100% */

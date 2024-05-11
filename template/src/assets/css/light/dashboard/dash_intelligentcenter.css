@@ -9,32 +9,33 @@
 	===============================
 */
 .layout-spacing {
-  padding-bottom: 25px;
+    padding-bottom: 25px;
 }
 
 .widget {
-  position: relative;
-  padding: 0;
-  border-radius: 6px;
-  border: 1px solid #e0e6ed;
-  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
+    position: relative;
+    padding: 0;
+    border-radius: 6px;
+    border: 1px solid #e0e6ed;
+    box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
 }
 
 .apexcharts-xaxis text, .apexcharts-yaxis text {
-  fill: #3b3f5c;
+    fill: #3b3f5c;
 }
 
 .apexcharts-legend-text {
-  color: #3b3f5c !important;
+    color: #3b3f5c !important;
 }
 
 .apexcharts-tooltip.apexcharts-theme-dark {
-  background: #191e3a !important;
-  box-shadow: none;
+    background: #191e3a !important;
+    box-shadow: none;
 }
+
 .apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
-  background: #191e3a !important;
-  border-bottom: 1px solid #191e3a;
+    background: #191e3a !important;
+    border-bottom: 1px solid #191e3a;
 }
 
 /*
@@ -48,130 +49,146 @@
 	===============================
 */
 .widget.widget-card-four {
-  padding: 25px 23px;
-  background: #fff;
+    padding: 25px 23px;
+    background: #fff;
+    height: 100%;
 }
 
 .widget-card-four .w-header {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
+
 .widget-card-four .w-header .w-info {
-  align-self: center;
+    align-self: center;
 }
+
 .widget-card-four .w-header .w-info h6 {
-  font-weight: 600;
-  margin-bottom: 0;
-  color: #0e1726;
-  font-size: 17px;
-  letter-spacing: 0;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: #0e1726;
+    font-size: 17px;
+    letter-spacing: 0;
 }
+
 .widget-card-four .w-header .task-action svg {
-  color: #888ea8;
-  width: 19px;
-  height: 19px;
+    color: #888ea8;
+    width: 19px;
+    height: 19px;
 }
+
 .widget-card-four .w-header .task-action .dropdown-menu {
-  transform: translate3d(-141px, 0, 0px);
+    transform: translate3d(-141px, 0, 0px);
 }
+
 .widget-card-four .w-content {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 36px;
 }
+
 .widget-card-four .alert-content {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 36px;
-  border-top: 3px solid #ccc; /* 添加一条灰色横线 */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 36px;
+    border-top: 3px solid #ccc; /* 添加一条灰色横线 */
 }
+
 .widget-card-four .w-content .w-info p.value {
-  font-weight: 500;
-  margin-bottom: 0;
-  color: #e95f2b;
-  font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: #e95f2b;
+    font-size: 30px;
 }
+
 .widget-card-four .w-content .w-info p.note {
-  font-weight: 500;
-  margin-bottom: 0;
-  color: #e92b2b;
-  font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: #e92b2b;
+    font-size: 15px;
 }
 
 .widget-card-four .w-content .w-info p.time {
-  font-weight: 500;
-  margin-bottom: 0;
-  color: #e92b2b;
-  font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: #e92b2b;
+    font-size: 15px;
 }
 
 .widget-card-four .alert-content .w-info p.note {
-  font-weight: 500;
-  margin-bottom: 0;
-  color: #e92b2b;
-  font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: #e92b2b;
+    font-size: 15px;
 }
 
 .widget-card-four .alert-content .w-info p.time {
-  font-weight: 500;
-  margin-bottom: 0;
-  color: #e92b2b;
-  font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: #e92b2b;
+    font-size: 15px;
 }
 
 .widget-card-four .w-content .w-info p.value span {
-  font-size: 15px;
-  color: #0e1726;
-  font-weight: 700;
-  letter-spacing: 0;
+    font-size: 15px;
+    color: #0e1726;
+    font-weight: 700;
+    letter-spacing: 0;
 }
+
 .widget-card-four .w-content .w-info p.value svg {
-  width: 16px;
-  height: 16px;
-  color: #009688;
-  margin-top: 7px;
+    width: 16px;
+    height: 16px;
+    color: #009688;
+    margin-top: 7px;
 }
+
 .widget-card-four .w-progress-stats {
-  display: flex;
-  margin-top: 36px;
+    display: flex;
+    margin-top: 36px;
 }
+
 .widget-card-four .w-icon {
-  color: #5f0a87;
-  align-self: center;
-  justify-content: center;
-  border-radius: 50%;
+    color: #5f0a87;
+    align-self: center;
+    justify-content: center;
+    border-radius: 50%;
 }
+
 .widget-card-four .progress {
-  height: 8px;
-  margin-bottom: 0;
-  height: 20px;
-  padding: 4px;
-  border-radius: 20px;
-  width: 100%;
-  align-self: flex-end;
-  margin-right: 22px;
-  background-color: #ebedf2;
+    height: 8px;
+    margin-bottom: 0;
+    height: 20px;
+    padding: 4px;
+    border-radius: 20px;
+    width: 100%;
+    align-self: flex-end;
+    margin-right: 22px;
+    background-color: #ebedf2;
 }
+
 .widget-card-four .progress-bar.bg-gradient-secondary {
-  position: relative;
-  background-color: #fc5296;
-  background-image: linear-gradient(315deg, #805dca 0%, #4361ee 74%);
+    position: relative;
+    background-color: #fc5296;
+    background-image: linear-gradient(315deg, #805dca 0%, #4361ee 74%);
 }
+
 .widget-card-four .progress-bar:before {
-  content: "";
-  height: 6px;
-  width: 6px;
-  background: #fff;
-  position: absolute;
-  right: 3px;
-  border-radius: 50%;
-  top: 3px;
+    content: "";
+    height: 6px;
+    width: 6px;
+    background: #fff;
+    position: absolute;
+    right: 3px;
+    border-radius: 50%;
+    top: 3px;
 }
+
 .widget-card-four .w-icon p {
-  margin-bottom: 0;
-  color: #e95f2b;
-  font-size: 15px;
-  font-weight: 700;
+    margin-bottom: 0;
+    color: #e95f2b;
+    font-size: 15px;
+    font-weight: 700;
 }
 
 
@@ -188,38 +205,48 @@
 /* 气象数据css */
 
 .widget-card-four .weather-data {
-  display: flex;
-  /* justify-content: center; */
-  margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap; /* 如果一行放不下，允许换行 */
+    justify-content: space-around; /* 确保间距均匀分布 */
+    align-items: center; /* 垂直居中对齐 */
+    margin-top: 36px;
 }
 
-.widget-card-four .row{
-  display: flex;
-  margin: 0 15px; /* 添加左右间隔为10像素 */
+.widget-card-four .row {
+    width: 100%;
+    display: flex;
+    justify-content: space-around; /* 保证元素间的间隔均匀 */
 }
 
-.widget-card-four .weather-item{
-  flex: 1; /* 让每个图标占据相同的空间 */
-  margin: 0 15px; /* 添加左右间隔为10像素 */
-  border-radius: 10px;
-  border-color: #ccc; /* 设置边框颜色为灰色 */
-  border-style: solid;
+.widget-card-four .weather-item {
+    flex: 1; /* 保证每个元素均分空间 */
+    margin: 10px; /* 调整边距为10像素，确保元素之间有足够间隔 */
+    border: 1px solid #ccc; /* 维持边框样式 */
+    border-radius: 10px;
+    width: calc(25% - 20px); /* 减去的是水平方向上的间距总和 */
+    height: 125px; /* 根据实际需求调整高度，使其接近正方形 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
+
 .widget-card-four .weather-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .widget-card-four .weather-content .weather-icon {
-  font-size: 50px;
+    font-size: 40px;
 }
 
 .widget-card-four .weather-content .weather-text {
-  margin-top: 5px;
-  font-size: 17px;
+    margin-top: 5px;
+    font-size: 17px;
 }
 
 /*
@@ -236,32 +263,34 @@
 	===============================
 */
 .widget.widget-video {
-  background: #fff;
-  padding: 22px 18px;
-  height: 500px;
+    background: #fff;
+    padding: 25px 18px;
+    height: 500px;
 }
 
 .widget.widget-video .widget-heading {
-  display: block;
-  justify-content: flex-start;
+    display: block;
+    justify-content: flex-start;
 }
 
 .widget.widget-video .widget-heading h6 {
-  color: #0e1726;
-  font-size: 17px;
-  display: block;
-  font-weight: 600;
+    color: #0e1726;
+    font-size: 17px;
+    display: block;
+    font-weight: 600;
 }
 
 .widget.widget-video .video-container {
-  display: block;
-  margin-top: 1em;
+    display: block;
+    margin-top: 1em;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .widget.widget-video .video-container .paginating-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
 }
 
 /*
@@ -271,68 +300,72 @@
 	===============================
 */
 .widget.widget-six {
-  padding: 22px 18px;
-  background: #fff;
-  height: 500px;
+    padding: 22px 18px;
+    background: #fff;
+    height: 500px;
 }
 
 .widget.widget-six .widget-heading {
-  display: block;
-  justify-content: flex-start;
-  margin-bottom: 30px;
+    display: block;
+    justify-content: flex-start;
+    margin-bottom: 30px;
 }
 
 .widget.widget-six .widget-heading h6 {
-  color: #0e1726;
-  font-size: 17px;
-  display: block;
-  font-weight: 600;
+    color: #0e1726;
+    font-size: 17px;
+    display: block;
+    font-weight: 600;
 }
 
-.widget.widget-six .row{
-  margin-top: 10px; /* 上边距 */
-  margin-bottom: 10px; /* 下边距 */
+.widget.widget-six .row {
+ display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
 }
 
 /* 确保 feature-item 的高度固定 */
-.row .feature-item {
-  border-radius: 10px;
-  border-color: #ccc; /* 设置边框颜色为灰色 */
-  border-style: solid;
+.feature-item {
+    display: flex; /*同样设置为弹性盒模型*/
+    flex: 0 0 calc(50% - 20px); /*设置 .feature-item 的基础宽度。这里意味着每个元素将占据其父容器宽度的50%减去20像素的宽度*/
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: #ccc; /* 设置边框颜色为灰色 */
+    border-style: solid;
 }
 
 /* 使用 Flexbox 布局 */
 .feature-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px; /* 上边距 */
-  margin-bottom: 10px; /* 下边距 */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px; /* 上边距 */
+    margin-bottom: 5px; /* 下边距 */
 }
 
 .feature-content-up {
-  display: flex;
-  align-items: center;
-  margin-top: 10px; /* 上边距 */
-  margin-bottom: 10px; /* 下边距 */
+    padding: 10px; /* 调整内边距 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .feature-icon {
-  width: 20px; /* 调整图标的宽度 */
-  margin-right: 8px; /* 调整图标与标题之间的间距 */
-  font-size: 20px;
+    width: 20px; /* 调整图标的宽度 */
+    margin-right: 15px; /* 调整图标与标题之间的间距 */
+    font-size: 20px;
 }
 
 /* 确保文字另起一行并居中 */
 .feature-title,
 .feature-text {
-  text-align: center;
-  width: 100%; /* 使得文字在整个宽度内居中 */
-  display: block; /* 确保文字另起一行 */
+    text-align: center;
+    width: 100%; /* 使得文字在整个宽度内居中 */
+    display: block; /* 确保文字另起一行 */
 }
-
-
 
 
 /*环境监测css
@@ -346,71 +379,69 @@
 	===============================
 */
 .widget-chart-two {
-  padding: 0;
-  background: #fff;
+    padding: 0;
+    background: #fff;
+    height: 100%;
 }
 
 .widget.widget-chart-two .widget-heading {
-  padding: 20px 20px 0 20px;
+    padding: 20px 20px 0 20px;
 }
 
 .widget.widget-chart-two .widget-heading h6 {
-  color: #0e1726;
-  font-size: 17px;
-  display: block;
-  font-weight: 600;
+    color: #0e1726;
+    font-size: 17px;
+    display: block;
+    font-weight: 600;
 }
 
 .widget-chart-two .widget-heading .w-icon a {
-  padding: 6px;
-  border-radius: 10px;
-  padding: 6px;
-  background: #3b3f5c !important;
-  border: none;
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+    padding: 6px;
+    border-radius: 10px;
+    padding: 6px;
+    background: #3b3f5c !important;
+    border: none;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
 }
+
 .widget-chart-two .widget-heading .w-icon a svg {
-  color: #fff;
+    color: #fff;
 }
 
 .widget.widget-chart-two .widget-content {
-  padding: 0 0 20px 0;
+    padding: 0 0 20px 0;
 }
 
 .widget.widget-chart-two .widget-content-text {
-  padding: 20px 20px 0 20px;
+    padding: 20px 20px 0 20px;
 }
 
 .widget.widget-chart-two .widget-content-alert {
-  padding: 0 20px 0 20px;
-  display: flex;
-  justify-content: center;
-  border-top: 3px solid #ccc; /* 添加一条灰色横线 */
+    padding: 0 20px 0 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 3px solid #ccc; /* 添加一条灰色横线 */
 }
 
 .widget.widget-chart-two .widget-content-alert p {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
 }
 
 .widget-chart-two .apexcharts-canvas {
-  margin: 0 auto;
+    margin: 0 auto;
 }
+
 .widget-chart-two .apexcharts-legend-marker {
-  left: -5px !important;
+    left: -5px !important;
 }
 
 [id*=apexcharts-donut-slice-] {
-  filter: none;
+    filter: none;
 }
-
-
-
-
-
 
 
 /*网衣/鱼群css
@@ -424,54 +455,62 @@
 	===============================
 */
 .widget.widget-chart-three {
-  background: #fff;
-  padding: 0;
+    background: #fff;
+    padding: 0;
+    height: 100%;
 }
+
 .widget.widget-chart-three .widget-heading {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 20px;
-  margin-bottom: 0;
-  padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    margin-bottom: 0;
+    padding-bottom: 20px;
 }
+
 .widget.widget-chart-three .widget-heading h6 {
-  color: #0e1726;
-  font-size: 17px;
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0;
+    color: #0e1726;
+    font-size: 17px;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0;
 }
+
 .widget.widget-chart-three .widget-heading .dropdown {
-  align-self: center;
+    align-self: center;
 }
+
 .widget.widget-chart-three .widget-heading .dropdown a svg {
-  color: #888ea8;
-  width: 19px;
-  height: 19px;
+    color: #888ea8;
+    width: 19px;
+    height: 19px;
 }
+
 .widget.widget-chart-three .widget-heading .dropdown .dropdown-menu {
-  min-width: 10rem;
-  border-radius: 6px;
-  transform: translate3d(-142px, 0, 0px);
+    min-width: 10rem;
+    border-radius: 6px;
+    transform: translate3d(-142px, 0, 0px);
 }
+
 .widget.widget-chart-three .apexcharts-legend-marker {
-  left: -5px !important;
+    left: -5px !important;
 }
+
 .widget.widget-chart-three #uniqueVisits {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .widget.widget-chart-three .widget-content-alert {
-  padding: 0 20px 0 20px;
-  display: flex;
-  justify-content: center;
-  border-top: 3px solid #ccc; /* 添加一条灰色横线 */
+    padding: 0 20px 0 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 3px solid #ccc; /* 添加一条灰色横线 */
 }
 
 .widget.widget-chart-three .widget-content-alert p {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
 }
 
 

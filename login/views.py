@@ -1,38 +1,70 @@
 # coding=utf-8
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.decorators import login_required
 from login.models import UserInfo
+from .forms import LoginForm
 
 
 # 处理登陆请求，对应的html文件为auth-cover-signin.html
 # 通过唯一的用户名，使用Django的ORM去数据库中查询用户数据
 # 如果有匹配项，则进行密码对比，如果没有匹配项，说明用户名不存在。如果密码对比错误，说明密码不正确。
+# def signin_view(request):
+#     if request.method == 'POST':
+#         form = LoginForm(request.POST)  # 使用POST数据初始化表单
+#         email = request.POST.get('email', None)
+#         password = request.POST.get('password', None)
+#         if not email or not password:
+#             # 如果邮件或密码未填写，返回错误信息
+#             return render(request, 'html/login/auth-cover-signin.html', {
+#                 "message": "所有字段都必须填写！"
+#             })
+#
+#         # 使用strip()方法去除可能的首尾空格
+#         email = email.strip()
+#         user = authenticate(request, username=email, password=password)
+#         if user is not None:
+#             login(request, user)
+#             if user.is_superuser:
+#                 return redirect('admin:index')  # 如果是管理员，重定向到管理员控制面板
+#             return redirect('index/')  # 对于普通用户，重定向到用户信息页面
+#         else:
+#             # 如果认证失败，返回错误信息
+#             return render(request, 'html/login/auth-cover-signin.html', {
+#                 "message": "用户名或密码不正确！"
+#             })
+#     # 对于请求，只显示登录表单
+#     return render(request, 'html/login/auth-cover-signin.html')
+
 def signin_view(request):
     if request.method == 'POST':
-        email = request.POST.get('email', None)
-        password = request.POST.get('password', None)
-        if not email or not password:
-            # 如果邮件或密码未填写，返回错误信息
+        form = LoginForm(request.POST)  # 使用POST数据初始化表单
+        if form.is_valid():  # 验证表单数据，包括验证码
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=email, password=password)
+            if user is not None:
+                login(request, user)
+                if user.is_superuser:
+                    return redirect('admin:index')  # 如果是管理员，重定向到管理员控制面板
+                return redirect('index/')  # 对于普通用户，重定向到用户信息页面
+            else:
+                # 如果认证失败，返回错误信息
+                return render(request, 'html/login/auth-cover-signin.html', {
+                    "form": form,
+                    "message": "用户名或密码不正确！"
+                })
+        else:
+            # 如果表单验证失败（包括验证码错误）
             return render(request, 'html/login/auth-cover-signin.html', {
-                "message": "所有字段都必须填写！"
+                "form": form,
+                "message": "表单数据有误，请检查输入。"
             })
 
-        # 使用strip()方法去除可能的首尾空格
-        email = email.strip()
-        user = authenticate(request, username=email, password=password)
-        if user is not None:
-            login(request, user)
-            if user.is_superuser:
-                return redirect('admin:index')  # 如果是管理员，重定向到管理员控制面板
-            return redirect('index/')  # 对于普通用户，重定向到用户信息页面
-        else:
-            # 如果认证失败，返回错误信息
-            return render(request, 'html/login/auth-cover-signin.html', {
-                "message": "用户名或密码不正确！"
-            })
-    # 对于请求，只显示登录表单
-    return render(request, 'html/login/auth-cover-signin.html')
+    else:
+        form = LoginForm()  # 对于GET请求，创建一个空的表单实例
+        return render(request, 'html/login/auth-cover-signin.html', {"form": form})
+
 
 def signup_view(request):
     if request.method == 'POST':

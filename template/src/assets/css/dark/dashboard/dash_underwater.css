@@ -329,6 +329,12 @@ body.dark .widget-three .widget-content .w-summary-stats .progress {
         Revenue
     ==================
 */
+body.dark .widget-chart-one {
+  position: relative;
+  padding: 20px;
+  border-radius: 8px;
+  height: 100%;
+}
 body.dark .widget-chart-one .widget-heading {
   display: flex;
   justify-content: space-between;
@@ -375,7 +381,11 @@ body.dark .widget-chart-one .widget-heading .task-action .dropdown-menu {
     =======================
 */
 body.dark .widget-chart-two {
-  padding: 0;
+  height: 100%;
+  position: relative;
+  padding: 0px;
+  border-radius: 8px;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
 }
 body.dark .widget.widget-chart-two .widget-heading {
   padding: 20px 20px 0 20px;
@@ -1263,6 +1273,34 @@ body.dark .widget-table-three .table .td-content a svg.feather-chevrons-right {
 body.dark .widget.widget-card-four {
   padding: 25px 23px;
   height: 100%;
+}
+
+
+body.dark .widget-card-four .w-header {
+  display: flex;
+  justify-content: space-between;
+}
+body.dark .widget-card-four .w-header .w-info {
+  align-self: center;
+}
+body.dark .widget-card-four .w-header .w-info h6 {
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #e0e6ed;
+  font-size: 23px;
+  letter-spacing: 0;
+}
+
+body.dark .widget-card-four .w-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+}
+body.dark .widget-card-four .w-content .w-info p.value {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e95f2b;
+  font-size: 30px;
 }
 
 /*

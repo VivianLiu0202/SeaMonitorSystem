@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 from login import views as login_views
@@ -26,6 +27,7 @@ from extra import views as apps_views
 from allcharts import views as allcharts_views
 
 urlpatterns = [
+    path('captcha/', include('captcha.urls')),  # 验证码相关URL
     path("", login_views.signin_view, name="signin"),  # 使用 signin_view 处理根 URL
     path("signup/", login_views.signup_view, name="signup"),
     path("password_reset/", login_views.password_reset_view, name="password_reset"),
