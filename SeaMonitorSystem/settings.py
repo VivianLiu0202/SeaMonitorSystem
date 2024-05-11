@@ -16,7 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -28,10 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -71,7 +70,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "SeaMonitorSystem.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -85,7 +83,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -105,7 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -119,12 +115,11 @@ USE_L10N = True
 
 USE_TZ = False
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 
-STATIC_URL = '/static/'
+STATIC_URL = '/template/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'template'),
@@ -138,3 +133,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # 修改用户模型，指示 Django 使用你的自定义用户模型
 AUTH_USER_MODEL = 'login.UserInfo'
 
+# ------------------------------SimpleUI 配置------------------------------
+SIMPLEUI_HOME_INFO = False
+SIMPLEUI_LOGO = '/template/admin/src/img/favicon.ico'
+
+SIMPLEUI_CONFIG = {
+    # 是否使用系统默认菜单。
+    'system_keep': True,
+    'menus': [
+        # 这里可以包含你想保留的其他菜单项
+        {
+            'name': '检查用户页面',  # 这里是菜单项显示的名字
+            'url': '/index/',  # 这里是点击后跳转的相对路径
+            'icon': 'fas fa-link',  # 这里可以设置一个图标，使用 Font Awesome 图标类
+        },
+    ],
+}

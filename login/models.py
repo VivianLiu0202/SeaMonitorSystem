@@ -38,16 +38,16 @@ class CustomUserManager(BaseUserManager):
 
 class UserInfo(AbstractUser):
     username = None  # Django 默认的 username 字段可以不使用
-    name = models.CharField(max_length=100, null=True, blank=True)
-    job = models.CharField(max_length=100, null=True, blank=True)
-    nationality = models.CharField(max_length=50, null=True, blank=True)
-    city = models.CharField(max_length=50, null=True, blank=True)
-    birthday = models.DateField(null=True, blank=True)
-    address = models.CharField(max_length=255, null=True, blank=True)
-    email = models.EmailField(unique=True)  # 确保邮箱唯一
-    phone_number = models.CharField(max_length=20, null=True, blank=True)
-    url = models.URLField(blank=True, null=True)
-    c_time = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=100, null=True, blank=True, verbose_name='姓名')
+    job = models.CharField(max_length=100, null=True, blank=True, verbose_name='职业')
+    nationality = models.CharField(max_length=50, null=True, blank=True, verbose_name='国籍')
+    city = models.CharField(max_length=50, null=True, blank=True, verbose_name='城市')
+    birthday = models.DateField(null=True, blank=True, verbose_name='生日')
+    address = models.CharField(max_length=255, null=True, blank=True, verbose_name='地址')
+    email = models.EmailField(unique=True,verbose_name='邮箱')  # 确保邮箱唯一
+    phone_number = models.CharField(max_length=20, null=True, blank=True, verbose_name='电话')
+    url = models.URLField(blank=True, null=True, verbose_name='个人网站')
+    c_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []  # 除 email 和 password 外，不强制要求其他字段
