@@ -329,6 +329,12 @@ body.dark .widget-three .widget-content .w-summary-stats .progress {
         Revenue
     ==================
 */
+body.dark .widget-chart-one {
+  position: relative;
+  padding: 20px;
+  border-radius: 8px;
+  height: 100%;
+}
 body.dark .widget-chart-one .widget-heading {
   display: flex;
   justify-content: space-between;
@@ -345,7 +351,8 @@ body.dark .widget-chart-one .widget-content .apexcharts-canvas svg {
 body.dark .widget-chart-one .apexcharts-legend-marker {
   left: -5px !important;
 }
-body.dark .widget-chart-one .apexcharts-yaxis-title, body.dark .widget-chart-one .apexcharts-xaxis-title {
+body.dark .widget-chart-one .apexcharts-yaxis-title,
+body.dark .widget-chart-one .apexcharts-xaxis-title {
   font-weight: 600;
   fill: #bfc9d4;
 }
@@ -374,7 +381,11 @@ body.dark .widget-chart-one .widget-heading .task-action .dropdown-menu {
     =======================
 */
 body.dark .widget-chart-two {
-  padding: 0;
+  height: 100%;
+  position: relative;
+  padding: 0px;
+  border-radius: 8px;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
 }
 body.dark .widget.widget-chart-two .widget-heading {
   padding: 20px 20px 0 20px;
@@ -889,6 +900,13 @@ body.dark .widget-account-invoice-one .invoice-box .inv-action a {
         Account Info
     =====================
 */
+body.dark .widget.widget-wallet-one{
+  position: relative;
+  padding: 20px;
+  border-radius: 8px;
+  height: 100%;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
+}
 body.dark .widget.widget-wallet-one .wallet-title {
   letter-spacing: 0px;
   font-size: 18px;
@@ -914,7 +932,7 @@ body.dark .widget.widget-wallet-one .wallet-text svg {
   height: 16px;
 }
 body.dark .widget.widget-wallet-one .wallet-action {
-  padding: 4px 0px;
+  padding: 30px 0px;
   border-radius: 10px;
   max-width: 350px;
   margin: 0 auto;
@@ -1250,6 +1268,39 @@ body.dark .widget-table-three .table .td-content a svg.feather-chevrons-right {
   position: absolute;
   left: -20px;
   top: 1px;
+}
+
+body.dark .widget.widget-card-four {
+  padding: 25px 23px;
+  height: 100%;
+}
+
+
+body.dark .widget-card-four .w-header {
+  display: flex;
+  justify-content: space-between;
+}
+body.dark .widget-card-four .w-header .w-info {
+  align-self: center;
+}
+body.dark .widget-card-four .w-header .w-info h6 {
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #e0e6ed;
+  font-size: 23px;
+  letter-spacing: 0;
+}
+
+body.dark .widget-card-four .w-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+}
+body.dark .widget-card-four .w-content .w-info p.value {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e95f2b;
+  font-size: 30px;
 }
 
 /*

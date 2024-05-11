@@ -16,6 +16,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -26,6 +27,7 @@ SECRET_KEY = "django-insecure-2*33fm6uz45%d=r)f!ntt^&@kb@2t*9^-p$5_2jkar20bb*icr
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -38,7 +40,17 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "login",
+    'captcha',
 ]
+
+# 验证码相关
+CAPTCHA_LENGTH = 4  # 验证码长度
+CAPTCHA_FONT_SIZE = 30  # 验证码字体大小
+CAPTCHA_CHALLENGE_FUNCT= 'captcha.helpers.random_char_challenge' #验证码为随机字符串
+CAPTCHA_TIMEOUT = 30
+CAPTCHA_TEXT_FIELD_TEMPLATE= BASE_DIR+ '/template/html/captcha/text_field.html'
+CAPTCHA_OUTPUT_FORMAT = u'%(text_field)s %(image)s %(hidden_field)s'
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -70,6 +82,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "SeaMonitorSystem.wsgi.application"
 
+
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -83,6 +96,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -102,6 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -114,6 +129,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
