@@ -2,19 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import UserInfo
-from django.contrib.admin import AdminSite
 from django.utils.translation import gettext_lazy as _
-
-
-# class UserInfoAdmin(UserAdmin):
-#     model = UserInfo
-#     ordering = ('email',)  # 更新字段名为 'email'
-#     fieldsets = UserAdmin.fieldsets + (
-#         (None, {'fields': ('job', 'nationality', 'city', 'birthday', 'address', 'phone_number', 'url', 'c_time')}),
-#     )
-#     add_fieldsets = UserAdmin.add_fieldsets + (
-#         (None, {'fields': ('job', 'nationality', 'city', 'birthday', 'address', 'phone_number', 'url')}),
-#     )
 
 class UserInfoAdmin(UserAdmin):
     model = UserInfo
