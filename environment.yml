@@ -2,28 +2,28 @@ name: system
 channels:
   - defaults
 dependencies:
-  - bzip2=1.0.8=h80987f9_6
-  - ca-certificates=2024.3.11=hca03da5_0
-  - cffi=1.16.0=py312h80987f9_1
-  - cryptography=42.0.5=py312hd4332d6_1
-  - expat=2.5.0=h313beb8_0
-  - libcxx=14.0.6=h848a8c0_0
-  - libffi=3.4.4=hca03da5_1
-  - ncurses=6.4=h313beb8_0
-  - openssl=3.0.13=h1a28f6b_1
-  - pip=23.3.1=py312hca03da5_0
-  - pycparser=2.21=pyhd3eb1b0_0
-  - pymysql=1.0.2=py312hca03da5_1
-  - python=3.12.2=h99e199e_0
-  - readline=8.2=h1a28f6b_0
-  - setuptools=68.2.2=py312hca03da5_0
-  - sqlite=3.41.2=h80987f9_0
-  - sqlparse=0.4.4=py312hca03da5_0
-  - tk=8.6.12=hb8d0fd4_0
-  - tzdata=2024a=h04d1e81_0
-  - wheel=0.41.2=py312hca03da5_0
-  - xz=5.4.6=h80987f9_1
-  - zlib=1.2.13=h18a0788_1
+  - bzip2=1.0.8
+  - ca-certificates=2024.3.11
+  - cffi=1.16.0
+  - cryptography=42.0.5
+  - expat=2.5.0
+  - libcxx=14.0.6
+  - libffi=3.4.4
+  - ncurses=6.4
+  - openssl=3.0.13
+  - pip=23.3.1
+  - pycparser=2.21
+  - pymysql=1.0.2
+  - python=3.12.2
+  - readline=8.2
+  - setuptools=68.2.2
+  - sqlite=3.41.2
+  - sqlparse=0.4.4
+  - tk=8.6.12
+  - tzdata=2024a
+  - wheel=0.41.2
+  - xz=5.4.6
+  - zlib=1.2.13
   - pip:
       - asgiref==3.8.1
       - django==4.2
@@ -31,4 +31,3 @@ dependencies:
       - django-simple-captcha==0.6.0
       - mysqlclient==1.4.3
       - pillow==10.3.0
-prefix: /Users/liuvivian/anaconda3/envs/system
