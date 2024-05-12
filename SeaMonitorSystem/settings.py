@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'SeaSystem',
         'USER': 'root',
-        'PASSWORD': 'rootroot',
+        'PASSWORD': 'Vivian0202',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -135,7 +135,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 
-STATIC_URL = '/template/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'template'),
@@ -151,7 +151,7 @@ AUTH_USER_MODEL = 'login.UserInfo'
 
 # ------------------------------SimpleUI 配置------------------------------
 SIMPLEUI_HOME_INFO = False
-SIMPLEUI_LOGO = '/template/admin/src/img/favicon.ico'
+SIMPLEUI_LOGO = '/static/admin/src/img/favicon.ico'
 
 SIMPLEUI_CONFIG = {
     # 是否使用系统默认菜单。
