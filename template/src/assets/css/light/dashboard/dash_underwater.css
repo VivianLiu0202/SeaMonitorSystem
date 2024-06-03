@@ -329,6 +329,16 @@
         Revenue
     ==================
 */
+.widget-chart-one {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  height: 100%;
+  border: 1px solid #e0e6ed;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
+}
+
 .widget-chart-one .widget-heading {
   display: flex;
   justify-content: space-between;
@@ -345,7 +355,8 @@
 .widget-chart-one .apexcharts-legend-marker {
   left: -5px !important;
 }
-.widget-chart-one .apexcharts-yaxis-title, .widget-chart-one .apexcharts-xaxis-title {
+.widget-chart-one .apexcharts-yaxis-title,
+.widget-chart-one .apexcharts-xaxis-title {
   font-weight: 600;
   fill: #888e88;
 }
@@ -374,7 +385,13 @@
     =======================
 */
 .widget-chart-two {
-  padding: 0;
+  height: 100%;
+  position: relative;
+  background: #fff;
+  padding: 0px;
+  border-radius: 8px;
+  border: 1px solid #e0e6ed;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
 }
 
 .widget.widget-chart-two .widget-heading {
@@ -894,6 +911,15 @@
         Account Info
     =====================
 */
+.widget.widget-wallet-one{
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  height: 100%;
+  border: 1px solid #e0e6ed;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
+}
 .widget.widget-wallet-one .wallet-title {
   letter-spacing: 0px;
   font-size: 18px;
@@ -920,7 +946,7 @@
   height: 16px;
 }
 .widget.widget-wallet-one .wallet-action {
-  padding: 4px 0px;
+  padding: 30px 0px;
   border-radius: 10px;
   max-width: 350px;
   margin: 0 auto;
@@ -1256,6 +1282,47 @@
   position: absolute;
   left: -20px;
   top: 1px;
+}
+
+.widget.widget-card-four {
+  padding: 25px 23px;
+  background: #fff;
+  height: 100%;
+}
+
+
+.widget-card-four .w-header {
+  display: flex;
+  justify-content: space-between;
+}
+.widget-card-four .w-header .w-info {
+  align-self: center;
+}
+.widget-card-four .w-header .w-info h6 {
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #0e1726;
+  font-size: 23px;
+  letter-spacing: 0;
+}
+
+
+.widget-card-four .w-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+}
+.widget-card-four .w-content .w-info p.value {
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #e95f2b;
+  font-size: 30px;
+}
+.widget-card-four .w-content .w-info p.value span {
+  font-size: 15px;
+  color: #0e1726;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 /*

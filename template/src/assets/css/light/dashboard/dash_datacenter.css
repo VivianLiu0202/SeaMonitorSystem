@@ -50,6 +50,7 @@
 .widget.widget-card-four {
   padding: 25px 23px;
   background: #fff;
+  height: 100%;
 }
 
 .widget-card-four .w-header {
@@ -74,6 +75,7 @@
 .widget-card-four .w-header .task-action .dropdown-menu {
   transform: translate3d(-141px, 0, 0px);
 }
+
 .widget-card-four .w-content {
   display: flex;
   justify-content: space-between;
@@ -138,6 +140,27 @@
   color: #e95f2b;
   font-size: 15px;
   font-weight: 700;
+}
+
+
+.widget.widget-data-map .widget-heading h6 {
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #0e1726;
+  font-size: 23px;
+  letter-spacing: 0;
+}
+
+
+.map-container {
+  width: 100%; /* 设置地图容器宽度为100% */
+}
+
+
+.map-container iframe {
+  width: 100%; /* 设置宽度为父容器宽度的100% */
+  height: 400px; /* 设置一个固定的高度，或者使用其他适当的高度值 */
+  border: none; /* 可选：移除 iframe 的边框 */
 }
 
 /*

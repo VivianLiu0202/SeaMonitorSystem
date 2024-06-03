@@ -31,3 +31,4 @@ dependencies:
       - pillow==10.3.0
       - windows-curses
 prefix: D:\software\python\envs\system
+

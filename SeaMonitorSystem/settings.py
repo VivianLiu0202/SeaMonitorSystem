@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,7 +40,17 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "login",
+    'captcha',
 ]
+
+# 验证码相关
+CAPTCHA_LENGTH = 4  # 验证码长度
+CAPTCHA_FONT_SIZE = 30  # 验证码字体大小
+CAPTCHA_CHALLENGE_FUNCT= 'captcha.helpers.random_char_challenge' #验证码为随机字符串
+CAPTCHA_TIMEOUT = 30
+CAPTCHA_TEXT_FIELD_TEMPLATE= BASE_DIR+ '/template/html/captcha/text_field.html'
+CAPTCHA_OUTPUT_FORMAT = u'%(text_field)s %(image)s %(hidden_field)s'
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -138,3 +149,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # 修改用户模型，指示 Django 使用你的自定义用户模型
 AUTH_USER_MODEL = 'login.UserInfo'
 
+# ------------------------------SimpleUI 配置------------------------------
+SIMPLEUI_HOME_INFO = False
+SIMPLEUI_LOGO = '/static/admin/src/img/favicon.ico'
+
+SIMPLEUI_CONFIG = {
+    # 是否使用系统默认菜单。
+    'system_keep': True,
+    'menus': [
+        # 这里可以包含你想保留的其他菜单项
+        {
+            'name': '检查用户页面',  # 这里是菜单项显示的名字
+            'url': '/index/',  # 这里是点击后跳转的相对路径
+            'icon': 'fas fa-link',  # 这里可以设置一个图标，使用 Font Awesome 图标类
+        },
+    ],
+}
