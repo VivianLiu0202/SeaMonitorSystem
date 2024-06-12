@@ -462,47 +462,53 @@
                         </div>
                     </div>
 
+                    <!--监控视频部分-->
+<div class="col-xl-7 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+    <div class="widget widget-video">
+        <div class="widget-heading">
+            <h6 class="">监控视频</h6>
+        </div>
+        <div class="video-container">
+            <video id="monitorVideo" width="100%" height="100%" controls>
+                <source src="{% static 'src/assets/img/fish1.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="paginating-container pagination-solid">
+                <ul class="pagination">
+                    <li class="prev"><a href="javascript:void(0);" onclick="changeVideo(1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </a></li>
+                    <li><a href="javascript:void(0);" onclick="changeVideo(1)">1</a></li>
+                    <li><a href="javascript:void(0);" onclick="changeVideo(2)">2</a></li>
+                    <li><a href="javascript:void(0);" onclick="changeVideo(3)">3</a></li>
+                    <li><a href="javascript:void(0);" onclick="changeVideo(4)">4</a></li>
+                    <li class="next"><a href="javascript:void(0);" onclick="changeVideo(4)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-                    <!--TODO:监控视频,现在仅仅用图片代替-->
-                    <div class="col-xl-7 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-                        <div class="widget widget-video">
-                            <div class="widget-heading">
-                                <h6 class="">监控视频</h6>
-                            </div>
-                            <div class="video-container">
-                                <video width="100%" height="100%" controls>
-                                    <source src="{% static 'src/assets/img/movie2.mp4' %}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <div class="paginating-container pagination-solid">
-                                    <ul class="pagination">
-                                        <li class="prev"><a href="javascript:void(0);">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="2"
-                                                 stroke-linecap="round" stroke-linejoin="round"
-                                                 class="feather feather-chevron-left">
-                                                <polyline points="15 18 9 12 15 6"></polyline>
-                                            </svg>
-                                        </a></li>
-                                        <li><a href="javascript:void(0);">1</a></li>
-                                        <li class="active"><a href="javascript:void(0);">2</a></li>
-                                        <li><a href="javascript:void(0);">3</a></li>
-                                        <li><a href="javascript:void(0);">4</a></li>
-                                        <li class="next"><a href="javascript:void(0);">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="2"
-                                                 stroke-linecap="round" stroke-linejoin="round"
-                                                 class="feather feather-chevron-right">
-                                                <polyline points="9 18 15 12 9 6"></polyline>
-                                            </svg>
-                                        </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<script>
+    function changeVideo(videoNumber) {
+        var video = document.getElementById('monitorVideo');
+        var sources = [
+            "{% static 'src/assets/img/fish1.mp4' %}",
+            "{% static 'src/assets/img/fish2.mp4' %}",
+            "{% static 'src/assets/img/fish3.mp4' %}",
+            "{% static 'src/assets/img/fish4.mp4' %}"
+        ];
+        video.src = sources[videoNumber - 1];
+        video.load();
+        video.play();
+    }
+</script>
 
 
                     <!--实时数据-->
