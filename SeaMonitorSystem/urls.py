@@ -61,4 +61,7 @@ urlpatterns = [
     # 确保管理员URL配置正确
     path("admin/", admin.site.urls),
 
+    # 额外功能的url
+    path('extra/', include('extra.urls')),
+
 ]
