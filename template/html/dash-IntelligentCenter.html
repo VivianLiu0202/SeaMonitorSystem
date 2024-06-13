@@ -462,7 +462,7 @@
                         </div>
                     </div>
 
-                    <!--监控视频部分-->
+<!--监控视频部分-->
 <div class="col-xl-7 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
     <div class="widget widget-video">
         <div class="widget-heading">
@@ -507,115 +507,150 @@
         video.src = sources[videoNumber - 1];
         video.load();
         video.play();
+        
+        var data = [
+            {
+                id: "fish-8976",
+                species: "moonfish",
+                length: "10寸",
+                weight: "5kg",
+                disease: "疑似患病（眼）",
+                anomaly: "鱼群异常（集群）"
+            },
+            {
+                id: "fish-8977",
+                species: "Bream",
+                length: "12寸",
+                weight: "4kg",
+                disease: "健康",
+                anomaly: "正常"
+            },
+            {
+                id: "fish-8978",
+                species: "Perch",
+                length: "15寸",
+                weight: "8kg",
+                disease: "疑似患病（鳞片）",
+                anomaly: "鱼群异常（散开）"
+            },
+            {
+                id: "fish-8979",
+                species: "catfish",
+                length: "20寸",
+                weight: "10kg",
+                disease: "健康",
+                anomaly: "正常"
+            }
+        ];
+        
+        document.getElementById('fish-id').innerText = data[videoNumber - 1].id;
+        document.getElementById('fish-species').innerText = data[videoNumber - 1].species;
+        document.getElementById('fish-length').innerText = data[videoNumber - 1].length;
+        document.getElementById('fish-weight').innerText = data[videoNumber - 1].weight;
+        document.getElementById('fish-disease').innerText = data[videoNumber - 1].disease;
+        document.getElementById('fish-anomaly').innerText = data[videoNumber - 1].anomaly;
     }
 </script>
 
-
-                    <!--实时数据-->
-                    <div class="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6 layout-spacing">
-                        <div class="widget widget-six">
-                            <div class="widget-heading">
-                                <h6 class="">实时数据</h6>
-                            </div>
-                            <div class="additional-features">
-                                <div class="row">
-                                    <!-- 第一行的四个功能 -->
-                                    <div class="col-6 feature-item">
-                                        <div class="feature-content-up">
-                                            <i class="bi bi-123 feature-icon"></i>
-                                            <span class="feature-title">编号</span>
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-text">fish-8976</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 feature-item">
-                                        <div class="feature-content-up">
-                                            <i class="bi bi-tag feature-icon"></i>
-                                            <span class="feature-title">鱼种</span>
-
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-text">moonfish</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6 feature-item">
-                                        <div class="feature-content-up">
-                                            <i class="bi bi-bounding-box feature-icon"></i>
-                                            <span class="feature-title">体长</span>
-
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-text">10寸</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 feature-item">
-                                        <div class="feature-content-up">
-                                            <i class="bi bi-lightbulb-fill feature-icon"></i>
-                                            <span class="feature-title">体重</span>
-
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-text">5kg</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-                                    <!-- 第二行的四个功能 -->
-                                    <div class="col-6 feature-item">
-                                        <div class="feature-content-up">
-                                            <i class="bi bi-exclamation-circle feature-icon"></i>
-
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-text">疑似患病（眼）</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 feature-item">
-                                        <div class="feature-content-up">
-                                            <i class="bi bi-exclamation-diamond feature-icon"></i>
-
-                                        </div>
-                                        <div class="feature-content">
-                                            <span class="feature-text">鱼群异常（集群）</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6 feature-item">
-                                        <div class="feature-content-up">
-                                            <i class="bi bi-arrow-return-right feature-icon"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <!-- <button class="btn btn-light-primary mb-2 me-4 btn-sm">轨迹追踪</button> -->
-                                            <button class="btn btn-light-primary  mb-2 me-4 btn-sm">
-                                                <i class="bi bi-star"></i>
-                                                <span class="btn-text-inner">轨迹追踪</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 feature-item">
-                                        <div class="feature-content-up">
-                                            <i class="bi bi-graph-up feature-icon"></i>
-                                        </div>
-                                        <div class="feature-content">
-                                            <button class="btn btn-light-primary  mb-2 me-4 btn-sm">
-                                                <i class="bi bi-star"></i>
-                                                <span class="btn-text-inner">轨迹分析</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+<!--实时数据-->
+<div class="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6 layout-spacing">
+    <div class="widget widget-six">
+        <div class="widget-heading">
+            <h6 class="">实时数据</h6>
+        </div>
+        <div class="additional-features">
+            <div class="row">
+                <!-- 第一行的四个功能 -->
+                <div class="col-6 feature-item">
+                    <div class="feature-content-up">
+                        <i class="bi bi-123 feature-icon"></i>
+                        <span class="feature-title">编号</span>
                     </div>
+                    <div class="feature-content">
+                        <span id="fish-id" class="feature-text">fish-8976</span>
+                    </div>
+                </div>
+
+                <div class="col-6 feature-item">
+                    <div class="feature-content-up">
+                        <i class="bi bi-tag feature-icon"></i>
+                        <span class="feature-title">鱼种</span>
+                    </div>
+                    <div class="feature-content">
+                        <span id="fish-species" class="feature-text">moonfish</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 feature-item">
+                    <div class="feature-content-up">
+                        <i class="bi bi-bounding-box feature-icon"></i>
+                        <span class="feature-title">体长</span>
+                    </div>
+                    <div class="feature-content">
+                        <span id="fish-length" class="feature-text">10寸</span>
+                    </div>
+                </div>
+
+                <div class="col-6 feature-item">
+                    <div class="feature-content-up">
+                        <i class="bi bi-lightbulb-fill feature-icon"></i>
+                        <span class="feature-title">体重</span>
+                    </div>
+                    <div class="feature-content">
+                        <span id="fish-weight" class="feature-text">5kg</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- 第二行的四个功能 -->
+                <div class="col-6 feature-item">
+                    <div class="feature-content-up">
+                        <i class="bi bi-exclamation-circle feature-icon"></i>
+                    </div>
+                    <div class="feature-content">
+                        <span id="fish-disease" class="feature-text">疑似患病（眼）</span>
+                    </div>
+                </div>
+                <div class="col-6 feature-item">
+                    <div class="feature-content-up">
+                        <i class="bi bi-exclamation-diamond feature-icon"></i>
+                    </div>
+                    <div class="feature-content">
+                        <span id="fish-anomaly" class="feature-text">鱼群异常（集群）</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 feature-item">
+                    <div class="feature-content-up">
+                        <i class="bi bi-arrow-return-right feature-icon"></i>
+                    </div>
+                    <div class="feature-content">
+                        <!-- <button class="btn btn-light-primary mb-2 me-4 btn-sm">轨迹追踪</button> -->
+                        <button class="btn btn-light-primary mb-2 me-4 btn-sm">
+                            <i class="bi bi-star"></i>
+                            <span class="btn-text-inner">轨迹追踪</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-6 feature-item">
+                    <div class="feature-content-up">
+                        <i class="bi bi-graph-up feature-icon"></i>
+                    </div>
+                    <div class="feature-content">
+                        <button class="btn btn-light-primary mb-2 me-4 btn-sm">
+                            <i class="bi bi-star"></i>
+                            <span class="btn-text-inner">轨迹分析</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
                     <!-- 海洋牧场环境感知得分图表 -->
                     <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
