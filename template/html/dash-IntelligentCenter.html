@@ -31,6 +31,7 @@
 
     <link href="{% static 'src/assets/css/light/elements/custom-pagination.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'src/assets/css/dark/elements/custom-pagination.css' %}" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 </head>
 
@@ -650,6 +651,12 @@
         </div>
     </div>
 </div>
+<script type="application/json" id="temp-data">
+    {{ temp_data|safe }}
+</script>
+<script type="application/json" id="ph-data">
+    {{ ph_data|safe }}
+</script>
 
 
                     <!-- 海洋牧场环境感知得分图表 -->
@@ -678,7 +685,7 @@
                         <div class="widget widget-chart-three">
                             <div class="widget-heading">
                                 <div class="">
-                                    <h6 class="">网衣/鱼群检测</h6>
+                                    <h6 class="">水质预测</h6>
                                 </div>
 
                                 <div class="task-action">
@@ -710,7 +717,7 @@
                                 <div id="uniqueVisits"></div>
                             </div>
                             <div class="widget-content-alert">
-                                <p id="enviroment_alert">网衣破损</p>
+                                <p id="enviroment_alert">PH值过低</p>
                             </div>
                         </div>
 
