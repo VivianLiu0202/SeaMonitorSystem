@@ -50,6 +50,7 @@ body.dark .apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
 body.dark .widget.widget-card-four {
   padding: 25px 23px;
   background: #0e1726;
+  height: 100%;
 }
 body.dark .widget-card-four .w-header {
   display: flex;

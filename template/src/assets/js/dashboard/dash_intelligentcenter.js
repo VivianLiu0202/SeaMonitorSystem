@@ -13,9 +13,15 @@ var value = 90; // 这里替换为你的实际数值
 // 计算中间颜色
 var middleColor = calculateMiddleColor(value);
 
+var temp_data = JSON.parse(document.getElementById('temp-data').textContent);
+var ph_data = JSON.parse(document.getElementById('ph-data').textContent);
 
-window.addEventListener("load", function(){
+
+window.addEventListener("DOMContentLoaded", function(){
     try {
+        console.log(temp_data); // 确认温度数据
+        console.log(ph_data);   // 确认PH值数据
+
 
         getcorkThemeObject = localStorage.getItem("theme");
         getParseObject = JSON.parse(getcorkThemeObject)
@@ -116,6 +122,7 @@ window.addEventListener("load", function(){
                   Unique Visitors | Options
               ===================================
             */
+            
 
             var d_1options1 = {
                 chart: {
@@ -162,14 +169,14 @@ window.addEventListener("load", function(){
                     colors: ['transparent']
                 },
                 series: [{
-                    name: '网衣',
-                    data: [58, 44, 55, 57, 56, 61, 58, 63, 60, 66, 56, 63]
+                    name: '温度',
+                    data: temp_data  // 替换为从后端传递的TEMP数据数组
                 }, {
-                    name: '鱼群',
-                    data: [91, 76, 85, 101, 98, 87, 105, 91, 114, 94, 66, 70]
+                    name: 'PH值',
+                    data: ph_data  // 替换为从后端传递的PH数据数组
                 }],
                 xaxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    categories: ['day1','day2', 'day3', 'day4', 'day5', 'day6', 'day7'],
                 },
                 fill: {
                     type: 'gradient',
@@ -352,14 +359,14 @@ window.addEventListener("load", function(){
                     colors: ['transparent']
                 },
                 series: [{
-                    name: '网页',
-                    data: [58, 44, 55, 57, 56, 61, 58, 63, 60, 66, 56, 63]
+                    name: '温度',
+                    data: temp_data  // 替换为从后端传递的TEMP数据数组
                 }, {
-                    name: '鱼群',
-                    data: [91, 76, 85, 101, 98, 87, 105, 91, 114, 94, 66, 70]
+                    name: 'PH值',
+                    data: ph_data  // 替换为从后端传递的PH数据数组
                 }],
                 xaxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    categories: ['day1','day2', 'day3', 'day4', 'day5', 'day6', 'day7'],
                 },
                 fill: {
                     type: 'gradient',
