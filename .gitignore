@@ -3,6 +3,7 @@ results/
 
 # 不添加extra里面的代码和权重内容
 extra/
+!extra
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
