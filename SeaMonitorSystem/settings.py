@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "login",
     'captcha',
+    'underwater',
 ]
 
 # 验证码相关
