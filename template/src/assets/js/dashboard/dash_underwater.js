@@ -356,7 +356,7 @@ window.addEventListener("load", function () {
                     width: 370,
                     height: 430
                 },
-                colors: ['#622bd7', '#e2a03f', '#e7515a', '#e2a03f'],
+                colors: ['#622bd7', '#e2a03f', '#e7515a', '#1abc9c', '#3498db', '#9b59b6', '#f1c40f'],
                 dataLabels: {
                     enabled: false
                 },
@@ -608,6 +608,27 @@ window.addEventListener("load", function () {
                     Revenue Monthly | Options
                 =================================
             */
+                   // 初始化图表数据对象
+            var chartData = {};
+
+            // 遍历数据并初始化图表数据对象
+            Object.keys(allSpeciesData).forEach(function(species, index) {
+                var data = allSpeciesData[species];
+                chartData["chartData" + (index + 1)] = {
+                    series: [{
+                        name: species,
+                        data: data.weight_counts 
+                    }],
+                    labels:data.weight_ranges.map(function(range) {
+                        return range.join(' - ');  // 根据需要处理标签
+                    }),
+                    yaxis: {
+                        min: Math.min(...data.weight_counts) === 0 ? 0 : Math.min(...data.weight_counts) - 2,
+                        max: Math.max(...data.weight_counts) + 2,
+                    }, 
+                };
+            });
+                
             var options1 = {
                 chart: {
                     fontFamily: 'Nunito, sans-serif',
@@ -676,11 +697,8 @@ window.addEventListener("load", function () {
                     width: 2,
                     lineCap: 'square'
                 },
-                series: [{
-                    name: 'Expenses',
-                    data: [168, 168, 155, 148, 155, 170, 210]
-                }],
-                labels: ['0', '25', '50', '75', '100', '125', '150'],
+                series:chartData.chartData1.series,
+                labels:chartData.chartData1.labels,
                 xaxis: {
                     axisBorder: {
                         show: false
@@ -701,10 +719,12 @@ window.addEventListener("load", function () {
                         },
                     }
                 },
-                /*yaxis: {
-                  labels: {
+                yaxis: {
+                    min:chartData.chartData1.yaxis.min,
+                    max: chartData.chartData1.yaxis.max,
+                    labels: {
                     formatter: function(value, index) {
-                      return (value / 1000) + 'K'
+                        return value 
                     },
                     offsetX: -15,
                     offsetY: 0,
@@ -713,8 +733,8 @@ window.addEventListener("load", function () {
                         fontFamily: 'Nunito, sans-serif',
                         cssClass: 'apexcharts-yaxis-title',
                     },
-                  }
-                },*/
+                    }
+                }, 
                 grid: {
                     borderColor: '#e0e6ed',
                     strokeDashArray: 5,
@@ -786,7 +806,8 @@ window.addEventListener("load", function () {
                         },
                     },
                 }]
-            }
+            } 
+
 
             var options11 = {
                 chart: {
@@ -980,7 +1001,7 @@ window.addEventListener("load", function () {
                     width: 370,
                     height: 430
                 },
-                colors: ['#622bd7', '#e2a03f', '#e7515a', '#e2a03f'],
+                colors: ['#622bd7', '#e2a03f', '#e7515a', '#e2a03f','#e2a03f'],
                 dataLabels: {
                     enabled: false
                 },
@@ -1044,8 +1065,8 @@ window.addEventListener("load", function () {
                     width: 15,
                     colors: '#fff'
                 },
-                series: [985, 737, 270],
-                labels: ['鱼群1', '鱼群2', '鱼群3'],
+                series: [985, 737, 270,100],
+                labels: ['鱼群1', '鱼群2', '鱼群3','鱼群4'],
 
                 responsive: [
                     {
@@ -1073,6 +1094,53 @@ window.addEventListener("load", function () {
             }
         }
 
+        // 提取标签（鱼类名称）和数据（总数量）
+        var labels = Object.keys(allSpeciesData);
+        var series = labels.map(function(species) {
+            return allSpeciesData[species]['total_count'];
+        });
+        var radialChart = {
+            chart: {
+                height: 350,
+                type: 'radialBar',
+                toolbar: {
+                  show: false,
+                }
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        name: {
+                            fontSize: '22px',
+                        },
+                        value: {
+                            fontSize: '16px',
+                            formatter: function (val) {
+                                return val.toString(); // 直接返回具体数量
+                            }
+                        },
+                        total: {
+                            show: true,
+                            label: 'Total',
+                            formatter: function (w) {
+                                return w.globals.seriesTotals.reduce(function (a, b) {
+                                    return a + b
+                                }, 0)
+                            }
+                        }
+                    }
+                }
+            },
+            series:  series,
+            labels: labels,    
+        }
+        
+        var chart = new ApexCharts(
+            document.querySelector("#radial-chart"),
+            radialChart
+        );
+        
+        chart.render();
 
         /**
          ==============================
@@ -1102,38 +1170,6 @@ window.addEventListener("load", function () {
                 Revenue Monthly | Render
             ================================
         */
-        var chartData1 = {
-            series: [{
-                name: 'Expenses',
-                data: [168, 168, 155, 148, 155, 170, 210]
-            }]
-        };
-
-        var chartData2 = {
-            series: [{
-                name: 'Expen',
-                data: [200, 200, 200, 150, 200, 200, 200]
-            }]
-        };
-
-        var chartData3 = {
-            series: [{
-                name: 'Expen',
-                data: [300, 300, 300, 150, 300, 300, 300]
-            }]
-        };
-        var chartData4 = {
-            series: [{
-                name: 'Expen',
-                data: [400, 400, 400, 150, 400, 400, 400]
-            }]
-        };
-        var chartData5 = {
-            series: [{
-                name: 'Expen',
-                data: [500, 500, 500, 150, 500, 500, 500]
-            }]
-        };
 
         var chartData11 = {
             series: [{
@@ -1183,29 +1219,71 @@ window.addEventListener("load", function () {
 
         chart2.render();
 
-        document.querySelector("#fish1").addEventListener('click', function () {
-            chart1.updateOptions({
-                series: chartData1.series,
+        // 更新图表数据的函数
+        function updateChartData(dataType) {
+            Object.keys(allSpeciesData).forEach(function(species, index) {
+                var data = allSpeciesData[species];
+                chartData["chartData" + (index + 1)] = {
+                    series: [{
+                        name: species,
+                        data: data[dataType + '_counts'] // 根据类型选择数据
+                    }],
+                    labels: data[dataType + '_ranges'].map(function(range) {
+                        return range.join(' - ');
+                    }),
+                    yaxis:{
+                        min: Math.min(...data[dataType + '_counts']) == 0 ? 0 : Math.min(...[dataType + '_counts']) - 2,
+                        max: Math.max(...data[dataType + '_counts']) + 2,
+                    },
+                };
             });
-        });
-        document.querySelector("#fish2").addEventListener('click', function () {
+        }
+
+        // 更新图表显示的函数
+        function updateChart(speciesIndex) {
             chart1.updateOptions({
-                series: chartData2.series,
+                series: chartData["chartData" + speciesIndex].series,
+                labels: chartData["chartData" + speciesIndex].labels,
+                yaxis: chartData["chartData" + speciesIndex].yaxis,
             });
+        }
+
+        // 处理下拉菜单点击事件
+        function changeChart(dataType) {
+            // 更新图表数据
+            updateChartData(dataType);
+
+            // 默认更新到第一个物种的数据
+            updateChart(1);
+        }
+
+        // 绑定按钮点击事件
+        document.querySelector("#fish1").addEventListener('click', function() {
+            updateChart(1);
         });
-        document.querySelector("#fish3").addEventListener('click', function () {
-            chart1.updateOptions({
-                series: chartData3.series,
-            });
+        document.querySelector("#fish2").addEventListener('click', function() {
+            updateChart(2);
         });
-        document.querySelector("#fish4").addEventListener('click', function () {
-            chart1.updateOptions({
-                series: chartData4.series,
-            });
+        document.querySelector("#fish3").addEventListener('click', function() {
+            updateChart(3);
         });
-        document.querySelector("#fish5").addEventListener('click', function () {
-            chart1.updateOptions({
-                series: chartData5.series,
+        document.querySelector("#fish4").addEventListener('click', function() {
+            updateChart(4);
+        });
+        document.querySelector("#fish5").addEventListener('click', function() {
+            updateChart(5);
+        });
+        document.querySelector("#fish6").addEventListener('click', function() {
+            updateChart(6);
+        });
+        document.querySelector("#fish7").addEventListener('click', function() {
+            updateChart(7);
+        });
+
+        document.querySelectorAll('.dropdown-item').forEach(function(item) { // 修改选择器
+            item.addEventListener('click', function(event) {
+                var dataType = event.target.getAttribute('data-type'); // 获取 data-type 属性
+                changeChart(dataType);
             });
         });
 
