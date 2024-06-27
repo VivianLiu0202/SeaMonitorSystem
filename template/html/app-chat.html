@@ -23,87 +23,90 @@
     <link href="{% static 'src/assets/css/dark/apps/chat.css' %}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL STYLES -->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 </head>
 
 <body>
-    <!-- BEGIN LOADER -->
-    <div id="load_screen">
-        <div class="loader">
-            <div class="loader-content">
-                <div class="spinner-grow align-self-center"></div>
-            </div>
+<!-- BEGIN LOADER -->
+<div id="load_screen">
+    <div class="loader">
+        <div class="loader-content">
+            <div class="spinner-grow align-self-center"></div>
         </div>
     </div>
-    <!--  END LOADER -->
+</div>
+<!--  END LOADER -->
 
-    <!--  BEGIN NAVBAR  -->
-    <div class="header-container container-xxl">
-        <header class="header navbar navbar-expand-sm expand-header">
+<!--  BEGIN NAVBAR  -->
+<div class="header-container container-xxl">
+    <header class="header navbar navbar-expand-sm expand-header">
 
-            <a href="javascript:void(0);" class="sidebarCollapse">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-menu">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </a>
+        <a href="javascript:void(0);" class="sidebarCollapse">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-menu">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </a>
 
-            <div class="search-animated toggle-search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-search">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <form class="form-inline search-full form-inline search" role="search">
-                    <div class="search-bar">
-                        <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="搜索...">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-x search-close">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                    </div>
-                </form>
-                <span class="badge badge-secondary">Ctrl + /</span>
-            </div>
+        <div class="search-animated toggle-search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-search">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <form class="form-inline search-full form-inline search" role="search">
+                <div class="search-bar">
+                    <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="搜索...">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-x search-close">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </div>
+            </form>
+            <span class="badge badge-secondary">Ctrl + /</span>
+        </div>
 
-            <ul class="navbar-item flex-row ms-lg-auto ms-0">
-                <li class="nav-item theme-toggle-item">
-                    <a href="javascript:void(0);" class="nav-link theme-toggle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-moon dark-mode">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-sun light-mode">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </a>
-                </li>
+        <ul class="navbar-item flex-row ms-lg-auto ms-0">
+            <li class="nav-item theme-toggle-item">
+                <a href="javascript:void(0);" class="nav-link theme-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-moon dark-mode">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-sun light-mode">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </a>
+            </li>
 
-                <li class="nav-item dropdown user-profile-dropdown  order-lg-0 order-1">
-                    <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="avatar-container">
-                            <div class="avatar avatar-sm avatar-indicators avatar-online">
-                                <img alt="avatar" src="{% static 'src/assets/img/boy-1.png' %}" class="rounded-circle">
-                            </div>
+            <li class="nav-item dropdown user-profile-dropdown  order-lg-0 order-1">
+                <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown"
+                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar-container">
+                        <div class="avatar avatar-sm avatar-indicators avatar-online">
+                            <img alt="avatar" src="{% static 'src/assets/img/boy-1.png' %}" class="rounded-circle">
                         </div>
-                    </a>
+                    </div>
+                </a>
 
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                         <div class="user-profile-section">
@@ -613,6 +616,78 @@
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="{% static 'src/assets/js/apps/chat.js' %}"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
+
+<!-- AJAX 脚本 -->
+<script>
+    $(document).ready(function () {
+        var temp_input;
+        var temp_image;
+        $('.mail-write-box').on('input', function () {
+            // 更新一个变量或直接处理
+            console.log("Input value:", $(this).val());
+            temp_input = $(this).val();
+        });
+
+        // 图片上传
+        document.getElementById('imageUpload').addEventListener('change', function () {
+            var file = this.files[0];
+            temp_image = file;
+            if (file) {
+                var formData = new FormData();
+                formData.append('file', file);
+            }
+        });
+
+        // 修改keypress事件处理
+        $('.mail-write-box').keypress(function (event) {
+            if (event.which === 13) {  // 回车键的键码为 13
+                console.log("Temp input value:", temp_input);
+                console.log("Temp image value:", temp_image);
+                event.preventDefault(); // 防止回车键默认的提交行为
+                // 延迟提交表单，确保输入值被捕获
+                setTimeout(function () {
+                    $('#submitBtn').click(); // 触发隐藏的提交按钮的点击事件
+                }, 100); // 延迟100毫秒
+            }
+        });
+
+        $('#chatForm').on('submit', function (e) {
+            e.preventDefault();
+            var formData = new FormData();
+            formData.append('text_input', temp_input);
+            formData.append('file', temp_image);
+            for (var pair of formData.entries()) {
+                console.log("In AJAX:" + pair[0] + ': ' + pair[1]);
+            }
+
+            // 发送 AJAX 请求
+            $.ajax({
+                type: "POST",
+                url: "/extra/send-message/",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    console.log("Response from server:", response);
+                    // var extractedResponse = response.response;
+                    var gptMessageHtml = '<div class="bubble you">' + response.response + '</div>';
+                    $('.active-chat').append(gptMessageHtml);
+
+                    // 滚动到底部
+                    var getScrollContainer = document.querySelector('.chat-conversation-box');
+                    getScrollContainer.scrollTop = getScrollContainer.scrollHeight;
+
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error:", error);
+                }
+            });
+        });
+
+
+    });
+</script>
+
 
 </body>
 

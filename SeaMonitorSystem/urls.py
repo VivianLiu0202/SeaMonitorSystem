@@ -63,4 +63,8 @@ urlpatterns = [
 
     path('get_water_quality_statistics/', maininfo_views.get_water_quality_statistics, name='get_water_quality_statistics'),
 
+    # 额外功能的url
+    path('extra/', include('extra.urls')),
+
+
 ]

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'captcha',
     'maininfo',
     'corsheaders',
+    'intelligent',
 ]
 
 # 验证码相关
