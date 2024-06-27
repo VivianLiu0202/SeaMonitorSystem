@@ -66,5 +66,4 @@ urlpatterns = [
     # 额外功能的url
     path('extra/', include('extra.urls')),
 
-
 ]
