@@ -201,6 +201,7 @@
     padding-left: 20px; /* 留出空间放置圆形图标 */
 }
 
+
 .list-group-item .feature-icon {
     margin-right: 10px; /* 圆形图标和文本之间的间距 */
     font-size: 1rem; /* 图标大小 */
@@ -222,6 +223,14 @@
 
 .list-group-item .text-red {
     color: red;
+}
+
+.list-group-item .alert-status.error {
+    color: red; /* 将文字颜色设置为红色 */
+}
+
+.list-group-item .alert-status.low {
+    color: blue; /* 示范用法，可以根据需要改变颜色 */
 }
 
 /*
@@ -312,7 +321,9 @@
 .widget.widget-video {
     padding: 22px 18px;
     background: #fff;
+    position: relative; /* 设置相对定位，以便于内部的绝对定位 */
     height: 420px;
+    overflow: hidden; /* 防止内容溢出 */
 }
 
 .widget.widget-video .widget-heading {
@@ -328,15 +339,42 @@
 }
 
 .widget.widget-video .video-container {
-    display: block;
+    position: relative; /* 设置相对定位，便于内部元素定位 */
+    width: 100%; /* 或具体宽度 */
+    height: calc(350px - 50px); /* 减去分页器的高度，确保分页器有足够空间显示 */
     margin-top: 1em;
 }
 
-.widget.widget-video .video-container .paginating-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 1em;
+.video-container video, .video-container #camera-status-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* 初始都不显示 */
 }
+
+#camera-status-message {
+    display: flex; /* 使用 Flexbox 居中文本 */
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.8); /* 半透明背景，增强可读性 */
+    display: none; /* 默认不显示 */
+}
+
+/* 分页容器样式 */
+.widget.widget-video .video-container .paginating-container {
+    position: absolute; /* 绝对定位，使其不受视频显示状态影响 */
+    bottom: -49px; /* 放置在视频容器外部的下方 */
+    left: 0;
+    width: 100%; /* 宽度为容器宽度 */
+    display: flex;
+    height: 40px;
+    justify-content: center;
+}
+
 
 /*
   海洋牧场定位css

@@ -61,4 +61,6 @@ urlpatterns = [
     # 确保管理员URL配置正确
     path("admin/", admin.site.urls),
 
+    path('get_water_quality_statistics/', maininfo_views.get_water_quality_statistics, name='get_water_quality_statistics'),
+
 ]
