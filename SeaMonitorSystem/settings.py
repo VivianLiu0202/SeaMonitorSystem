@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'captcha',
     'underwater',
     'intelligent',
+    'datacenter',
 ]
 
 # 验证码相关
@@ -93,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'SeaSystem',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

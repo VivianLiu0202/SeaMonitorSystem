@@ -12,6 +12,7 @@
     <link href="{% static 'layouts/modern-light-menu/css/light/loader.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'layouts/modern-light-menu/css/dark/loader.css' %}" rel="stylesheet" type="text/css" />
     <script src="{% static 'layouts/modern-light-menu/loader.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
@@ -35,7 +36,32 @@
     <link href="{% static 'src/assets/css/dark/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'src/plugins/css/dark/apex/custom-apexcharts.css' %}" rel="stylesheet" type="text/css">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #007BFF; 
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px #0056b3; 
+        }
 
+        .button:hover {
+            background-color: #0056b3; 
+        }
+
+        .button:active {
+            background-color: #0056b3; 
+            box-shadow: 0 2px #003f7f; 
+            transform: translateY(2px);
+        }
+    </style>
 </head>
 
 <body class="layout-boxed">
@@ -84,7 +110,9 @@
                 </form>
                 <span class="badge badge-secondary">Ctrl + /</span>
             </div>
-
+            <form action="{% url 'download_ohio_csv' %}" method="get">
+                <button type="submit" class="button" style="font-size: inherit; padding: inherit;">下载 Ohio 数据</button>
+            </form>
             <ul class="navbar-item flex-row ms-lg-auto ms-0">
 
                 <!--主题切换-->
@@ -365,8 +393,230 @@
             <div class="layout-px-spacing">
 
                 <div class="middle-content container-xxl p-0">
-
+                    <button class="button" onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/datacenter/ohio/'">修改数据</button>
                     <div class="row layout-top-spacing">
+
+                        
+
+
+                        <!--地图-->
+                        <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                            <div class="widget widget-map">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>数据中心分布</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="map-container" id="data-map" style="display: flex; justify-content: center; align-items: center;">
+                                    <iframe src="https://map.baidu.com/" style="width:90%; height:400px; justify-content: center; align-items:center;"></iframe> 
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- <div id="chartRadial" class="col-xl-12 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>各渔业养殖组KPI完成情况</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content widget-content-area">
+                                    <div id="radial-chart" class=""></div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div id="chartpyr" class="col-xl-12 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>3cm_size_class分布</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content widget-content-area">
+                                    <div id="chart"></div>
+                                    <script>
+                                        var sizeClassNames = {{ size_class_names|safe }};
+                                        var sizeClassCounts = {{ size_class_counts|safe }};
+                                
+                                        var chartOptions = {
+                                            series: [{
+                                                data: sizeClassCounts
+                                            }],
+                                            chart: {
+                                                type: 'bar',
+                                                height: 350
+                                            },
+                                            plotOptions: {
+                                                bar: {
+                                                    borderRadius: 0,
+                                                    horizontal: true,
+                                                    distributed: true,
+                                                    barHeight: '80%',
+                                                    isFunnel: true
+                                                }
+                                            },
+                                            colors: [
+                                                '#F44F5E',
+                                                '#E55A89',
+                                                '#D863B1',
+                                                '#CA6CD8',
+                                                '#B57BED',
+                                                '#8D95EB',
+                                                '#62ACEA',
+                                                '#4BC3E6'
+                                            ],
+                                            dataLabels: {
+                                                enabled: true,
+                                                formatter: function (val, opt) {
+                                                    return opt.w.globals.labels[opt.dataPointIndex];
+                                                },
+                                                dropShadow: {
+                                                    enabled: true
+                                                }
+                                            },
+                                            xaxis: {
+                                                categories: sizeClassNames
+                                            },
+                                            legend: {
+                                                show: false
+                                            }
+                                        };
+                                
+                                        var chart = new ApexCharts(document.querySelector("#chart"), chartOptions);
+                                        chart.render();
+                                    </script>
+            
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!--数据交汇处理-->
+                        <!-- <div id="chartPyramid" class="col-xl-12 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>数据交汇处理</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content widget-content-area">
+                                    <div id="pyramid-chart" class=""></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="chart"></div>
+
+    <script>
+        var sizeClassNames = {{ size_class_names|safe }};
+        var sizeClassCounts = {{ size_class_counts|safe }};
+
+        var chartOptions = {
+            series: [{
+                data: sizeClassCounts
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            xaxis: {
+                categories: sizeClassNames
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), chartOptions);
+        chart.render();
+    </script> -->
+                        <!--数据类型占比-->
+                        <!-- <div id="chartRadar" class="col-xl-8 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>数据类型占比</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content widget-content-area">
+                                    <div id="radar-chart" class=""></div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div id="chartBar" class="col-xl-12 layout-spacing">
+                            <div class="statbox widget box box-shadow">
+                                <div class="widget-header">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <h4>拉丁文名分布</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content widget-content-area">
+                                    <div id="bar-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                var barChart = {
+                                    series: [
+                                        {
+                                            name: '数量',
+                                            data: [
+                                                {% for count in latin_names_counts %}
+                                                    {{ count }},
+                                                {% endfor %}
+                                            ]
+                                        }
+                                    ],
+                                    chart: {
+                                        type: 'bar',
+                                        height: 350
+                                    },
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 4,
+                                            horizontal: true,
+                                        }
+                                    },
+                                    dataLabels: {
+                                        enabled: true,
+                                        formatter: function (val) {
+                                            return val
+                                        },
+                                        offsetY: -20,
+                                        style: {
+                                            fontSize: '12px',
+                                            colors: [
+                                        '#F44F5E',
+                                        '#E55A89',
+                                        '#D863B1',
+                                        '#CA6CD8',
+                                        '#B57BED',
+                                        '#8D95EB',
+                                    ]
+                                        }
+                                    },
+                                    xaxis: {
+                                        categories: [
+                                            {% for name in latin_names_names %}
+                                                "{{ name }}",
+                                            {% endfor %}
+                                        ],
+                                    }
+                                };
+                    
+                                var chart = new ApexCharts(document.querySelector("#bar-chart"), barChart);
+                                chart.render();
+                            });
+                        </script>
 
                         <!--数据库查询数据-->
                         <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
@@ -479,70 +729,6 @@
                             </div>
                         </div>
 
-
-                        <!--地图-->
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                            <div class="widget widget-map">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>数据中心分布</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="map-container" id="data-map" style="display: flex; justify-content: center; align-items: center;">
-                                    <iframe src="https://map.baidu.com/" style="width:90%; height:400px; justify-content: center; align-items:center;"></iframe> 
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- <div id="chartRadial" class="col-xl-12 layout-spacing">
-                            <div class="statbox widget box box-shadow">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>各渔业养殖组KPI完成情况</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content widget-content-area">
-                                    <div id="radial-chart" class=""></div>
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <!--数据交汇处理-->
-                        <div id="chartPyramid" class="col-xl-12 layout-spacing">
-                            <div class="statbox widget box box-shadow">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>数据交汇处理</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content widget-content-area">
-                                    <div id="pyramid-chart" class=""></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--数据类型占比-->
-                        <div id="chartRadar" class="col-xl-8 layout-spacing">
-                            <div class="statbox widget box box-shadow">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>数据类型占比</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content widget-content-area">
-                                    <div id="radar-chart" class=""></div>
-                                </div>
-                            </div>
-                        </div>
-
                         <!--硬件信息统计-->
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget-four">
@@ -649,7 +835,7 @@
                         </div>
 
                         <!--结构化数据树形图-->
-                        <div id="chartTreemap" class="col-xl-12 layout-spacing">
+                        <!-- <div id="chartTreemap" class="col-xl-12 layout-spacing">
                             <div class="statbox widget box box-shadow">
                                 <div class="widget-header">
                                     <div class="row">
@@ -662,10 +848,10 @@
                                     <div id="treemap-chart" class=""></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!--数据总量-->
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                        <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-chart-three">
                                 <div class="widget-heading">
                                     <div class="">
@@ -699,9 +885,9 @@
                                     <div id="uniqueVisits"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!--传感器信息-->
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-card-four">
                                 <div class="widget-content">
                                 <div class="w-header">
@@ -723,7 +909,7 @@
                         </div>
 
                         <!--传感器设备日志-->
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-activity-five">
 
                                 <div class="widget-heading">

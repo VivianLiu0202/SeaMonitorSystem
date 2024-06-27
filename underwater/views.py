@@ -226,3 +226,35 @@ def monitor_waterquality(request):
 
     return render(request, 'html/dash-UnderwaterSystem.html', {'results': results})
 '''
+
+
+from django.http import HttpResponse
+from underwater.models import Fish, WaterQuality, Sensor
+import csv
+
+def download_fish_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="fish_data.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['Species', 'Weight', 'Length1', 'Length2', 'Length3', 'Height', 'Width'])
+    for fish in Fish.objects.all():
+        writer.writerow([fish.species, fish.weight, fish.length1, fish.length2, fish.length3, fish.height, fish.width])
+    return response
+
+def download_waterquality_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="water_quality_data.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['Section Name', 'Monitoring Time', 'Water Quality Category', 'Water Temperature', 'pH', 'Dissolved Oxygen', 'Conductivity', 'Turbidity', 'Permanganate Index', 'Ammonia Nitrogen', 'Total Phosphorus', 'Total Nitrogen', 'Site Status'])
+    for quality in WaterQuality.objects.all():
+        writer.writerow([quality.section_name, quality.monitoring_time, quality.water_quality_category, quality.water_temperature, quality.pH, quality.dissolved_oxygen, quality.conductivity, quality.turbidity, quality.permanganate_index, quality.ammonia_nitrogen, quality.total_phosphorus, quality.total_nitrogen, quality.site_status])
+    return response
+
+def download_sensor_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="sensor_data.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['Sensor ID', 'Type', 'Battery Level', 'Next Maintenance Date', 'Warranty Expiration Date', 'Start Date'])
+    for sensor in Sensor.objects.all():
+        writer.writerow([sensor.sensor_id, sensor.type, sensor.battery_level, sensor.next_maintenance_date, sensor.warranty_expiration_date, sensor.start_date])
+    return response

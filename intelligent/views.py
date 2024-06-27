@@ -22,3 +22,16 @@ def intelligent(request):
         'ph_data': json.dumps(ph_data),
     }
     return render(request, 'html/dash-IntelligentCenter.html', context)
+
+from django.http import HttpResponse
+from intelligent.models import WaterQualityPredict
+import csv
+
+def download_predict_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="predict_data.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['Species', 'Weight', 'Length1', 'Length2', 'Length3', 'Height', 'Width'])
+    for predict in WaterQualityPredict.objects.all():
+        writer.writerow([predict.TEMP, predict.PH, predict.DO, predict.Cond, predict.NTU, predict.Mn, predict.NH3])
+    return response

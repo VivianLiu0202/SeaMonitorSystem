@@ -25,7 +25,10 @@ from underwater import views as underwater_views
 from datacenter import views as datacenter_views
 from extra import views as apps_views
 from allcharts import views as allcharts_views
-
+from django.urls import path
+from underwater.views import download_fish_csv, download_waterquality_csv, download_sensor_csv
+from intelligent.views import download_predict_csv
+from datacenter.views import download_ohio_csv
 urlpatterns = [
     path('captcha/', include('captcha.urls')),  # 验证码相关URL
     path("", login_views.signin_view, name="signin"),  # 使用 signin_view 处理根 URL
@@ -64,4 +67,10 @@ urlpatterns = [
     # 额外功能的url
     path('extra/', include('extra.urls')),
 
+    # 数据上传和下载
+    path('download-fish-csv/', download_fish_csv, name='download_fish_csv'),
+    path('download-waterquality-csv/', download_waterquality_csv, name='download_waterquality_csv'),
+    path('download-sensor-csv/', download_sensor_csv, name='download_sensor_csv'),
+    path('download-predict-csv/', download_predict_csv, name='download_predict_csv'),
+    path('download-ohio-csv/', download_ohio_csv, name='download_ohio_csv'),
 ]
