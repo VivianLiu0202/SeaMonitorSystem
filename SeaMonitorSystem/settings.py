@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'intelligent',
     'underwater',
-    'underwater',
 ]
 
 # 验证码相关
