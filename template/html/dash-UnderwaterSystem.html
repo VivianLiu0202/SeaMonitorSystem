@@ -51,6 +51,33 @@
     
     <link href="../src/assets/css/light/elements/custom-typography.css" rel="stylesheet" type="text/css" />
     <link href="../src/assets/css/dark/elements/custom-typography.css" rel="stylesheet" type="text/css" />
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #007BFF; 
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px #0056b3; 
+        }
+
+        .button:hover {
+            background-color: #0056b3; 
+        }
+
+        .button:active {
+            background-color: #0056b3; 
+            box-shadow: 0 2px #003f7f; 
+            transform: translateY(2px);
+        }
+    </style>
+    
 </head>
 
 <body class=" layout-boxed">
@@ -98,7 +125,16 @@
             </form>
             <span class="badge badge-secondary">Ctrl + /</span>
         </div>
-
+            
+        <form action="{% url 'download_fish_csv' %}" method="get">
+            <button type="submit" class="button" style="font-size: inherit; padding: inherit;">下载 Fish 数据</button>
+        </form>
+        <form action="{% url 'download_waterquality_csv' %}" method="get">
+            <button type="submit" class="button" style="font-size: inherit; padding: inherit;">下载 WaterQuality 数据</button>
+        </form>
+        <form action="{% url 'download_sensor_csv' %}" method="get">
+            <button type="submit" class="button" style="font-size: inherit; padding: inherit;">下载 Sensor 数据</button>
+        </form>
         <ul class="navbar-item flex-row ms-lg-auto ms-0">
 
             <li class="nav-item theme-toggle-item">
@@ -381,7 +417,9 @@
         <div class="layout-px-spacing">
 
             <div class="middle-content container-xxl p-0">
-
+                <button class="button" onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/underwater/fish/'">修改鱼类数据</button>
+                <button class="button" onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/underwater/sensor/'">修改传感器数据</button>
+                <button class="button" onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/underwater/waterquality/'">修改水质数据</button>
                 <div class="row layout-top-spacing">
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-three">

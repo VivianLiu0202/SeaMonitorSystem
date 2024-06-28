@@ -15,17 +15,12 @@ window.addEventListener("load", function () {
             Apex.tooltip = {
                 theme: 'dark'
             }
-
+            var latinNames = {{ latin_names_names|safe }};
+            var latinCounts = {{ latin_names_counts|safe }};
             var radarChart = {
                 series: [{
-                  name: '系列 1',
-                  data: [80, 50, 30, 40, 100, 20],
-                }, {
-                  name: '系列 2',
-                  data: [20, 30, 40, 80, 20, 80],
-                }, {
-                  name: '系列 3',
-                  data: [44, 76, 78, 13, 43, 10],
+                  name: '数量',
+                  data: latinCounts,
                 }],
                 chart: {
                   height: 350,
@@ -53,7 +48,7 @@ window.addEventListener("load", function () {
                   stepSize: 20
                 },
                 xaxis: {
-                  categories: ['2011年', '2012年', '2013年', '2014年', '2015年', '2016年']
+                  categories: latinNames
                 }
               };
 
@@ -135,7 +130,7 @@ window.addEventListener("load", function () {
                 series: [
                   {
                     name: "",
-                    data: [200, 330, 548, 740, 880, 990, 1100, 1380],
+                    data: {{ size_class_counts|safe }},
                   },
                 ],
                 chart: {
@@ -176,7 +171,7 @@ window.addEventListener("load", function () {
                   align: 'middle',
                 },
                 xaxis: {
-                  categories: ['甜食', '加工食品', '健康脂肪', '肉类', '豆类和豆类制品', '乳制品', '水果和蔬菜', '谷物'],
+                  categories: {{ size_class_names|safe }},
                 },
                 legend: {
                   show: false,
@@ -712,18 +707,14 @@ window.addEventListener("load", function () {
                   show: false,
                 },
               };
-            
+              
+              var latinNames = {{ latin_names_names|safe }};
+              var latinCounts = {{ latin_names_counts|safe }};
               var radarChart = {
                 series: [{
-                  name: '系列 1',
-                  data: [80, 50, 30, 40, 100, 20],
-                }, {
-                  name: '系列 2',
-                  data: [20, 30, 40, 80, 20, 80],
-                }, {
-                  name: '系列 3',
-                  data: [44, 76, 78, 13, 43, 10],
-                }],
+                    name: '数量',
+                    data: latinCounts,
+                  }],
                 chart: {
                   height: 350,
                   type: 'radar',
@@ -750,7 +741,7 @@ window.addEventListener("load", function () {
                   stepSize: 20
                 },
                 xaxis: {
-                  categories: ['2011年', '2012年', '2013年', '2014年', '2015年', '2016年']
+                  categories: latinNames
                 }
               };
             

@@ -32,7 +32,32 @@
     <link href="{% static 'src/assets/css/light/elements/custom-pagination.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'src/assets/css/dark/elements/custom-pagination.css' %}" rel="stylesheet" type="text/css"/>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #007BFF; 
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px #0056b3; 
+        }
 
+        .button:hover {
+            background-color: #0056b3; 
+        }
+
+        .button:active {
+            background-color: #0056b3; 
+            box-shadow: 0 2px #003f7f; 
+            transform: translateY(2px);
+        }
+    </style>
 </head>
 
 <body class="layout-boxed">
@@ -81,7 +106,7 @@
             </form>
             <span class="badge badge-secondary">Ctrl + /</span>
         </div>
-
+        <button type="submit" class="button" style="font-size: inherit; padding: inherit;">下载 Fish 数据</button>
         <ul class="navbar-item flex-row ms-lg-auto ms-0">
 
             <!--主题切换-->
@@ -374,7 +399,7 @@
         <div class="layout-px-spacing">
 
             <div class="middle-content container-xxl p-0">
-
+                <button class="button" onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/intelligent/waterqualitypredict'">修改预测数据</button>
                 <div class="row layout-top-spacing">
 
                     <!-- 修改的内容（极度粗糙版） -->
