@@ -55,11 +55,20 @@ def index(request):
 def get_water_quality_statistics(request):
     # 定义水质类别到数值的映射
     quality_to_number = {
-        'I': 1, 'II': 2, 'III': 3, 'IV': 4, 'V': 5, '劣V': 6
+        # 这里需要注意全角和半角字符
+        'Ⅰ': 1, 'Ⅱ': 2, 'Ⅲ': 3, 'Ⅳ': 4, 'Ⅴ': 5, '劣Ⅴ': 6
     }
 
     # 将水质类别转换为数值
     cases = [When(water_quality_category=k, then=Value(v)) for k, v in quality_to_number.items()]
+    # 生成一个注释查询，以便检查映射是否正确
+    test_results = WaterQuality.objects.annotate(
+        quality_as_number=Case(*cases, output_field=IntegerField())
+    ).values('water_quality_category', 'quality_as_number')
+
+    # 打印出映射前后的数据对比
+    for result in test_results:
+        print(result)
 
     # 聚合查询，按省份和流域分组
     results = WaterQuality.objects.exclude(

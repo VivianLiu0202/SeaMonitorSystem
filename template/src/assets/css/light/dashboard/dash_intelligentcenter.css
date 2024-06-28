@@ -38,6 +38,38 @@
     border-bottom: 1px solid #191e3a;
 }
 
+
+.list-group-item .feature-icon {
+    margin-right: 10px; /* 圆形图标和文本之间的间距 */
+    font-size: 1rem; /* 图标大小 */
+    display: inline-block; /* 让图标和文字在同一行显示 */
+}
+
+.list-group-item span {
+    margin-right: 20px; /* 文本之间的间距，如果需要的话 */
+}
+
+.list-group-item .span-tab {
+    display: block; /* 让每个span元素显示在新的行上 */
+    margin-left: 30px; /* 创建空格效果 */
+}
+
+.list-group-item .text-green {
+    color: green;
+}
+
+.list-group-item .text-red {
+    color: red;
+}
+
+.list-group-item .alert-status.error {
+    color: red; /* 将文字颜色设置为红色 */
+}
+
+.list-group-item .alert-status.low {
+    color: blue; /* 示范用法，可以根据需要改变颜色 */
+}
+
 /*
 	===============================
 			@Import	Function
@@ -65,7 +97,7 @@
 
 .widget-card-four .w-header .w-info h6 {
     font-weight: 600;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     color: #0e1726;
     font-size: 17px;
     letter-spacing: 0;
@@ -84,7 +116,6 @@
 .widget-card-four .w-content {
     display: flex;
     justify-content: space-between;
-    margin-top: 36px;
 }
 
 .widget-card-four .alert-content {
@@ -319,10 +350,10 @@
 }
 
 .widget.widget-six .row {
- display: flex;
-  flex-wrap: wrap;
-  margin-right: -10px;
-  margin-left: -10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -10px;
+    margin-left: -10px;
 }
 
 /* 确保 feature-item 的高度固定 */

@@ -25,13 +25,18 @@
           type="text/css"/>
     <link href="{% static 'src/assets/css/dark/dashboard/dash_intelligentcenter.css' %}" rel="stylesheet"
           type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'src/assets/css/light/elements/alert.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'src/assets/css/dark/elements/alert.css' %}">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <!-- 通过 Bootstrap Icons CDN 引入图标 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
     <link href="{% static 'src/assets/css/light/elements/custom-pagination.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'src/assets/css/dark/elements/custom-pagination.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'src/assets/css/light/components/tabs.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'src/assets/css/dark/components/tabs.css' %}" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .button {
             display: inline-block;
@@ -42,19 +47,19 @@
             text-decoration: none;
             outline: none;
             color: #fff;
-            background-color: #007BFF; 
+            background-color: #007BFF;
             border: none;
             border-radius: 15px;
-            box-shadow: 0 4px #0056b3; 
+            box-shadow: 0 4px #0056b3;
         }
 
         .button:hover {
-            background-color: #0056b3; 
+            background-color: #0056b3;
         }
 
         .button:active {
-            background-color: #0056b3; 
-            box-shadow: 0 2px #003f7f; 
+            background-color: #0056b3;
+            box-shadow: 0 2px #003f7f;
             transform: translateY(2px);
         }
     </style>
@@ -399,35 +404,63 @@
         <div class="layout-px-spacing">
 
             <div class="middle-content container-xxl p-0">
-                <button class="button" onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/intelligent/waterqualitypredict'">修改预测数据</button>
+                <!--                <button class="button"-->
+                <!--                        onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/intelligent/waterqualitypredict'">-->
+                <!--                    修改预测数据-->
+                <!--                </button>-->
                 <div class="row layout-top-spacing">
 
                     <!-- 修改的内容（极度粗糙版） -->
                     <!-- AI决策部分 -->
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                         <div class="widget widget-card-four">
+                            <div class="w-header">
+                                <div class="w-info">
+                                    <h6 class="value">AI决策</h6>
+                                </div>
+                            </div>
+                            <br>
                             <div class="widget-content">
-                                <div class="w-header">
-                                    <div class="w-info">
-                                        <h6 class="value">AI决策</h6>
-                                    </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <i class="bi bi-thermometer-half feature-icon"></i>
+                                        <span>温度：</span>
+                                        <span id="temperature">10-20</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="bi bi-sun-fill feature-icon"></i>
+                                        <span>光照：</span>
+                                        <span id="sunset">20-100</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="bi bi-droplet-fill feature-icon"></i>
+                                        <span>溶解氧：</span>
+                                        <span id="oxygen">0.2-0.5</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="bi bi-speedometer2 feature-icon"></i>
+                                        <span>pH：</span>
+                                        <span id="PH">8-8.7</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="bi bi-moisture feature-icon"></i>
+                                        <span>盐度：</span>
+                                        <span id="salinity">0.01-0.03</span>
+                                    </li>
+                                </ul>
+
+                                <div class="alert alert-arrow-right alert-icon-right alert-light-danger alert-dismissible fade show mb-4"
+                                     role="alert">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="feather feather-alert-circle">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                                        <line x1="12" y1="16" x2="12" y2="16"></line>
+                                    </svg>
+                                    <strong>Warning!</strong> 未来几天可能降雨，请确保温度、风度正常~
                                 </div>
 
-                                <div class="w-content">
-                                    <div class="w-info">
-                                        <p id="temperature">温度：10-20</p>
-                                        <p id="sunset">光照：20-100</p>
-                                        <p id="oxygen">溶解氧：0.2-0.5</p>
-                                        <p id="PH">pH：8-8.7</p>
-                                        <p id="salinity">盐度：0.01-0.03</p>
-                                    </div>
-                                </div>
-
-                                <div class="w-content">
-                                    <div class="w-info">
-                                        <p id="notice" class="note">未来几天可能降雨，请确保温度、风度正常</p>
-                                    </div>
-                                </div>
 
                             </div>
                         </div>
@@ -443,44 +476,93 @@
                                     </div>
                                 </div>
 
-                                <div class="weather-data">
-                                    <div class="row">
-                                        <div class="weather-item">
-                                            <div class="weather-content">
-                                                <i class="bi bi-thermometer weather-icon"></i>
-                                                <span id=temperatureNumber class="weather-text">0~7℃</span>
-                                            </div>
+                                <div class="simple-pill">
+
+                                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="pills-home-icon-tab"
+                                                    data-bs-toggle="pill" data-bs-target="#pills-home-icon"
+                                                    type="button" role="tab" aria-controls="pills-home-icon"
+                                                    aria-selected="true">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-thermometer">
+                                                    <path d="M14 14.76V3.5a2 2 0 0 0-4 0v11.26a4 4 0 1 0 4 0z"></path>
+                                                </svg>
+                                                温度
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="pills-profile-icon-tab" data-bs-toggle="pill"
+                                                    data-bs-target="#pills-profile-icon" type="button" role="tab"
+                                                    aria-controls="pills-profile-icon" aria-selected="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-wind">
+                                                    <path d="M17.7 19a1.7 1.7 0 1 0 0-3.4A4.5 4.5 0 1 1 11.2 9.6"></path>
+                                                    <path d="M12 2v12"></path>
+                                                </svg>
+                                                风力
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="pills-contact-icon-tab" data-bs-toggle="pill"
+                                                    data-bs-target="#pills-contact-icon" type="button" role="tab"
+                                                    aria-controls="pills-contact-icon" aria-selected="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-droplet">
+                                                    <path d="M12 2.69l5.45 9.39a8 8 0 1 1-10.9 0z"></path>
+                                                </svg>
+                                                降水与气压
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="pills-disabled-icon-tab" data-bs-toggle="pill"
+                                                    data-bs-target="#pills-disabled-icon" type="button" role="tab"
+                                                    aria-controls="pills-disabled-icon" aria-selected="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-cloud">
+                                                    <path d="M17.7 19a5.4 5.4 0 0 0 0-10.8 5.7 5.7 0 0 0-11.4 0A4.6 4.6 0 0 0 2 13.1a4.6 4.6 0 0 0 9.2 0"></path>
+                                                </svg>
+                                                未来24小时温度预测
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div class="tab-pane fade show active" id="pills-home-icon" role="tabpanel"
+                                             aria-labelledby="pills-home-icon-tab" tabindex="0">
+                                            <p class="mt-3">正在加载中...</p>
+                                            <p class="mt-3">当前温度：<span id="current-temperature"></span>°C</p>
+                                            <p class="mt-3">体感温度：<span id="apparent-temperature"></span>°C</p>
+                                            <p class="mt-3">相对湿度：<span id="relative-humidity"></span>%</p>
                                         </div>
-                                        <div class="weather-item">
-                                            <div class="weather-content">
-                                                <i class="bi bi-wind weather-icon"></i>
-                                                <span id=wind class="weather-text">东北风5级</span>
-                                            </div>
+                                        <div class="tab-pane fade" id="pills-profile-icon" role="tabpanel"
+                                             aria-labelledby="pills-profile-icon-tab" tabindex="0">
+                                            <p class="mt-3">正在加载中...</p>
+                                            <p class="mt-3">风速：<span id="wind-speed"></span> km/h</p>
+                                            <p class="mt-3">风向：<span id="wind-direction"></span>°</p>
+                                            <p class="mt-3">风阵：<span id="wind-gusts"></span> km/h</p>
                                         </div>
-
-                                        <div class="weather-item">
-                                            <div class="weather-content">
-                                                <i class="bi bi-moisture weather-icon"></i>
-                                                <span id=moisture class="weather-text">96%</span>
-                                            </div>
+                                        <div class="tab-pane fade" id="pills-contact-icon" role="tabpanel"
+                                             aria-labelledby="pills-contact-icon-tab" tabindex="0">
+                                            <p class="mt-3">正在加载中...</p>
+                                            <p class="mt-3">雨量：<span id="rain"></span> mm</p>
+                                            <p class="mt-3">阵雨：<span id="showers"></span> mm</p>
+                                            <p class="mt-3">降雪：<span id="snowfall"></span> cm</p>
+                                            <p class="mt-3">云量覆盖率：<span id="cloud-cover"></span>%</p>
+                                            <p class="mt-3">海平面上的气压：<span id="pressure-msl"></span> hPa</p>
+                                            <p class="mt-3">地表气压：<span id="surface-pressure"></span> hPa</p>
                                         </div>
-
-                                        <div class="weather-item">
-                                            <div class="weather-content">
-                                                <i class="bi bi-cloud weather-icon"></i>
-                                                <span id=air_quality class="weather-text">78 良</span>
-                                            </div>
+                                        <div class="tab-pane fade" id="pills-disabled-icon" role="tabpanel"
+                                             aria-labelledby="pills-disabled-icon-tab" tabindex="0">
+                                            <canvas id="temperature-chart" width="400" height="200"></canvas>
                                         </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="alert-content">
-
-                                    <div class="w-info">
-                                        <p id="notice_alert" class="note">海啸警报</p>
-                                        <p id="time" class="time">time</p>
-                                        <p id="notice_from" class="note">国家海洋局发布</p>
                                     </div>
                                 </div>
 
@@ -488,201 +570,264 @@
                         </div>
                     </div>
 
-<!--监控视频部分-->
-<div class="col-xl-7 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-    <div class="widget widget-video">
-        <div class="widget-heading">
-            <h6 class="">监控视频</h6>
-        </div>
-        <!--TODO:分页器修改-->
-        <div class="video-container">
-            <video id="monitorVideo" width="100%" height="100%" controls>
-                <source src="{% static 'src/assets/img/fish1.mp4' %}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="paginating-container pagination-solid">
-                <ul class="pagination">
-                    <li class="prev"><a href="javascript:void(0);" onclick="changeVideo(1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </a></li>
-                    <li><a href="javascript:void(0);" onclick="changeVideo(1)">1</a></li>
-                    <li><a href="javascript:void(0);" onclick="changeVideo(2)">2</a></li>
-                    <li><a href="javascript:void(0);" onclick="changeVideo(3)">3</a></li>
-                    <li><a href="javascript:void(0);" onclick="changeVideo(4)">4</a></li>
-                    <li class="next"><a href="javascript:void(0);" onclick="changeVideo(4)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+                    <!--监控视频部分-->
+                    <div class="col-xl-7 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+                        <div class="widget widget-video">
+                            <div class="widget-heading">
+                                <h6 class="">监控视频</h6>
+                            </div>
+                            <div class="video-container">
+                                <video id="monitorVideo" width="100%" height="100%" controls>
+                                    <source src="{% static 'src/assets/img/fish1.mp4' %}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="paginating-container pagination-solid">
+                                    <ul class="pagination">
+                                        <li class="prev"><a href="javascript:void(0);">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-chevron-left">
+                                                <polyline points="15 18 9 12 15 6"></polyline>
+                                            </svg>
+                                        </a></li>
+                                        <li class = "active"><a href="javascript:void(0);" data-video-index="0"
+                                               data-video-src="{% static 'src/assets/img/fish1.mp4' %}">1</a></li>
+                                        <li><a href="javascript:void(0);" data-video-index="1"
+                                               data-video-src="{% static 'src/assets/img/fish2.mp4' %}">2</a></li>
+                                        <li><a href="javascript:void(0);" data-video-index="2"
+                                               data-video-src="{% static 'src/assets/img/fish3.mp4' %}">3</a></li>
+                                        <li><a href="javascript:void(0);" data-video-index="3"
+                                               data-video-src="{% static 'src/assets/img/fish4.mp4' %}">4</a>
+                                        </li>
+                                        <li class="next"><a href="javascript:void(0);">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-chevron-right">
+                                                <polyline points="9 18 15 12 9 6"></polyline>
+                                            </svg>
+                                        </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-<script>
-    function changeVideo(videoNumber) {
-        var video = document.getElementById('monitorVideo');
-        var sources = [
-            "{% static 'src/assets/img/fish1.mp4' %}",
-            "{% static 'src/assets/img/fish2.mp4' %}",
-            "{% static 'src/assets/img/fish3.mp4' %}",
-            "{% static 'src/assets/img/fish4.mp4' %}"
-        ];
-        video.src = sources[videoNumber - 1];
-        video.load();
-        video.play();
-        
-        var data = [
-            {
-                id: "fish-8976",
-                species: "moonfish",
-                length: "10寸",
-                weight: "5kg",
-                disease: "疑似患病（眼）",
-                anomaly: "鱼群异常（集群）"
-            },
-            {
-                id: "fish-8977",
-                species: "Bream",
-                length: "12寸",
-                weight: "4kg",
-                disease: "健康",
-                anomaly: "正常"
-            },
-            {
-                id: "fish-8978",
-                species: "Perch",
-                length: "15寸",
-                weight: "8kg",
-                disease: "疑似患病（鳞片）",
-                anomaly: "鱼群异常（散开）"
-            },
-            {
-                id: "fish-8979",
-                species: "catfish",
-                length: "20寸",
-                weight: "10kg",
-                disease: "健康",
-                anomaly: "正常"
-            }
-        ];
-        
-        document.getElementById('fish-id').innerText = data[videoNumber - 1].id;
-        document.getElementById('fish-species').innerText = data[videoNumber - 1].species;
-        document.getElementById('fish-length').innerText = data[videoNumber - 1].length;
-        document.getElementById('fish-weight').innerText = data[videoNumber - 1].weight;
-        document.getElementById('fish-disease').innerText = data[videoNumber - 1].disease;
-        document.getElementById('fish-anomaly').innerText = data[videoNumber - 1].anomaly;
-    }
-</script>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const videoElement = document.getElementById('monitorVideo');
+                            const paginationLinks = document.querySelectorAll('.pagination a[data-video-src]');
+                            const nextButton = document.querySelector('.pagination .next a');
+                            const prevButton = document.querySelector('.pagination .prev a');
 
-<!--实时数据-->
-<div class="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6 layout-spacing">
-    <div class="widget widget-six">
-        <div class="widget-heading">
-            <h6 class="">实时数据</h6>
-        </div>
-        <div class="additional-features">
-            <div class="row">
-                <!-- 第一行的四个功能 -->
-                <div class="col-6 feature-item">
-                    <div class="feature-content-up">
-                        <i class="bi bi-123 feature-icon"></i>
-                        <span class="feature-title">编号</span>
-                    </div>
-                    <div class="feature-content">
-                        <span id="fish-id" class="feature-text">fish-8976</span>
-                    </div>
-                </div>
+                            // 视频数据和鱼类信息
+                            const sources = [
+                                "{% static 'src/assets/img/fish1.mp4' %}",
+                                "{% static 'src/assets/img/fish2.mp4' %}",
+                                "{% static 'src/assets/img/fish3.mp4' %}",
+                                "{% static 'src/assets/img/fish4.mp4' %}"
+                            ];
+                            const fishData = [
+                                {
+                                    id: "fish-8976",
+                                    species: "moonfish",
+                                    length: "10寸",
+                                    weight: "5kg",
+                                    disease: "疑似患病（眼）",
+                                    anomaly: "鱼群异常（集群）"
+                                },
+                                {
+                                    id: "fish-8977",
+                                    species: "Bream",
+                                    length: "12寸",
+                                    weight: "4kg",
+                                    disease: "健康",
+                                    anomaly: "正常"
+                                },
+                                {
+                                    id: "fish-8978",
+                                    species: "Perch",
+                                    length: "15寸",
+                                    weight: "8kg",
+                                    disease: "疑似患病（鳞片）",
+                                    anomaly: "鱼群异常（散开）"
+                                },
+                                {
+                                    id: "fish-8979",
+                                    species: "catfish",
+                                    length: "20寸",
+                                    weight: "10kg",
+                                    disease: "健康",
+                                    anomaly: "正常"
+                                }
+                            ];
 
-                <div class="col-6 feature-item">
-                    <div class="feature-content-up">
-                        <i class="bi bi-tag feature-icon"></i>
-                        <span class="feature-title">鱼种</span>
-                    </div>
-                    <div class="feature-content">
-                        <span id="fish-species" class="feature-text">moonfish</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 feature-item">
-                    <div class="feature-content-up">
-                        <i class="bi bi-bounding-box feature-icon"></i>
-                        <span class="feature-title">体长</span>
-                    </div>
-                    <div class="feature-content">
-                        <span id="fish-length" class="feature-text">10寸</span>
-                    </div>
-                </div>
+                            // 初始化当前视频索引
+                            let currentIndex = 0;
 
-                <div class="col-6 feature-item">
-                    <div class="feature-content-up">
-                        <i class="bi bi-lightbulb-fill feature-icon"></i>
-                        <span class="feature-title">体重</span>
-                    </div>
-                    <div class="feature-content">
-                        <span id="fish-weight" class="feature-text">5kg</span>
-                    </div>
-                </div>
-            </div>
+                            // 更新视频和鱼类信息的函数
+                            function updateVideoAndData(index) {
+                                videoElement.src = sources[index];
+                                videoElement.load();
+                                videoElement.play();
 
-            <div class="row">
-                <!-- 第二行的四个功能 -->
-                <div class="col-6 feature-item">
-                    <div class="feature-content-up">
-                        <i class="bi bi-exclamation-circle feature-icon"></i>
+                                // 更新鱼类信息
+                                document.getElementById('fish-id').innerText = fishData[index].id;
+                                document.getElementById('fish-species').innerText = fishData[index].species;
+                                document.getElementById('fish-length').innerText = fishData[index].length;
+                                document.getElementById('fish-weight').innerText = fishData[index].weight;
+                                document.getElementById('fish-disease').innerText = fishData[index].disease;
+                                document.getElementById('fish-anomaly').innerText = fishData[index].anomaly;
+
+                                // 更新分页链接的激活状态
+                                paginationLinks.forEach((link, idx) => {
+                                    if (idx === index) {
+                                        link.parentElement.classList.add('active');
+                                    } else {
+                                        link.parentElement.classList.remove('active');
+                                    }
+                                });
+                            }
+
+                            // 分页链接点击事件
+                            paginationLinks.forEach((link, index) => {
+                                link.addEventListener('click', function (e) {
+                                    e.preventDefault();
+                                    currentIndex = index; // 更新当前索引
+                                    updateVideoAndData(currentIndex);
+                                });
+                            });
+
+                            // "下一个"按钮点击事件
+                            nextButton.addEventListener('click', function (e) {
+                                e.preventDefault();
+                                currentIndex = (currentIndex + 1) % sources.length; // 循环列表
+                                updateVideoAndData(currentIndex);
+                            });
+
+                            // "前一个"按钮点击事件
+                            prevButton.addEventListener('click', function (e) {
+                                e.preventDefault();
+                                currentIndex = (currentIndex - 1 + sources.length) % sources.length; // 循环列表
+                                updateVideoAndData(currentIndex);
+                            });
+                        });
+                    </script>
+
+                    <!--实时数据-->
+                    <div class="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6 layout-spacing">
+                        <div class="widget widget-six">
+                            <div class="widget-heading">
+                                <h6 class="">实时数据</h6>
+                            </div>
+                            <div class="additional-features">
+                                <div class="row">
+                                    <!-- 第一行的四个功能 -->
+                                    <div class="col-6 feature-item">
+                                        <div class="feature-content-up">
+                                            <i class="bi bi-123 feature-icon"></i>
+                                            <span class="feature-title">编号</span>
+                                        </div>
+                                        <div class="feature-content">
+                                            <span id="fish-id" class="feature-text">fish-8976</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 feature-item">
+                                        <div class="feature-content-up">
+                                            <i class="bi bi-tag feature-icon"></i>
+                                            <span class="feature-title">鱼种</span>
+                                        </div>
+                                        <div class="feature-content">
+                                            <span id="fish-species" class="feature-text">moonfish</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 feature-item">
+                                        <div class="feature-content-up">
+                                            <i class="bi bi-bounding-box feature-icon"></i>
+                                            <span class="feature-title">体长</span>
+                                        </div>
+                                        <div class="feature-content">
+                                            <span id="fish-length" class="feature-text">10寸</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 feature-item">
+                                        <div class="feature-content-up">
+                                            <i class="bi bi-lightbulb-fill feature-icon"></i>
+                                            <span class="feature-title">体重</span>
+                                        </div>
+                                        <div class="feature-content">
+                                            <span id="fish-weight" class="feature-text">5kg</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- 第二行的四个功能 -->
+                                    <div class="col-6 feature-item">
+                                        <div class="feature-content-up">
+                                            <i class="bi bi-exclamation-circle feature-icon"></i>
+                                        </div>
+                                        <div class="feature-content">
+                                            <span id="fish-disease" class="feature-text">疑似患病（眼）</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 feature-item">
+                                        <div class="feature-content-up">
+                                            <i class="bi bi-exclamation-diamond feature-icon"></i>
+                                        </div>
+                                        <div class="feature-content">
+                                            <span id="fish-anomaly" class="feature-text">鱼群异常（集群）</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 feature-item">
+                                        <div class="feature-content-up">
+                                            <i class="bi bi-arrow-return-right feature-icon"></i>
+                                        </div>
+                                        <div class="feature-content">
+                                            <!-- <button class="btn btn-light-primary mb-2 me-4 btn-sm">轨迹追踪</button> -->
+                                            <button class="btn btn-light-primary mb-2 me-4 btn-sm">
+                                                <i class="bi bi-star"></i>
+                                                <span class="btn-text-inner">轨迹追踪</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 feature-item">
+                                        <div class="feature-content-up">
+                                            <i class="bi bi-graph-up feature-icon"></i>
+                                        </div>
+                                        <div class="feature-content">
+                                            <button class="btn btn-light-primary mb-2 me-4 btn-sm">
+                                                <i class="bi bi-star"></i>
+                                                <span class="btn-text-inner">轨迹分析</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-content">
-                        <span id="fish-disease" class="feature-text">疑似患病（眼）</span>
-                    </div>
-                </div>
-                <div class="col-6 feature-item">
-                    <div class="feature-content-up">
-                        <i class="bi bi-exclamation-diamond feature-icon"></i>
-                    </div>
-                    <div class="feature-content">
-                        <span id="fish-anomaly" class="feature-text">鱼群异常（集群）</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 feature-item">
-                    <div class="feature-content-up">
-                        <i class="bi bi-arrow-return-right feature-icon"></i>
-                    </div>
-                    <div class="feature-content">
-                        <!-- <button class="btn btn-light-primary mb-2 me-4 btn-sm">轨迹追踪</button> -->
-                        <button class="btn btn-light-primary mb-2 me-4 btn-sm">
-                            <i class="bi bi-star"></i>
-                            <span class="btn-text-inner">轨迹追踪</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-6 feature-item">
-                    <div class="feature-content-up">
-                        <i class="bi bi-graph-up feature-icon"></i>
-                    </div>
-                    <div class="feature-content">
-                        <button class="btn btn-light-primary mb-2 me-4 btn-sm">
-                            <i class="bi bi-star"></i>
-                            <span class="btn-text-inner">轨迹分析</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script type="application/json" id="temp-data">
-    {{ temp_data|safe }}
-</script>
-<script type="application/json" id="ph-data">
-    {{ ph_data|safe }}
-</script>
+
+                    <script type="application/json" id="temp-data">
+                        {{
+                            temp_data
+                            |
+                            safe
+                        }}
+                    </script>
+                    <script type="application/json" id="ph-data">
+                        {{
+                            ph_data
+                            |
+                            safe
+                        }}
+                    </script>
 
 
                     <!-- 海洋牧场环境感知得分图表 -->
@@ -789,6 +934,64 @@
 <script src="{% static 'src/plugins/src/apex/apexcharts.min.js' %}"></script>
 <script src="{% static 'src/assets/js/dashboard/dash_intelligentcenter.js' %}"></script>
 <script src="{% static 'src/plugins/src/global/vendors.min.js' %}"></script>
+<script>
+    const apiUrl = 'https://api.open-meteo.com/v1/forecast?latitude=39.9075&longitude=116.3972&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,snowfall,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m&forecast_days=1';
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const current = data.current;
+            const hourly = data.hourly;
+
+            // 更新HTML元素以显示数据
+            document.getElementById('pills-home-icon').innerHTML = `
+                <p class="mt-3">当前温度: ${current.temperature_2m}°C</p>
+                <p class="mt-3">体感温度: ${current.apparent_temperature}°C</p>
+                <p class="mt-3">相对湿度: ${current.relative_humidity_2m}%</p>`;
+
+            document.getElementById('pills-profile-icon').innerHTML = `
+                <p class="mt-3">风速: ${current.wind_speed_10m} km/h</p>
+                <p class="mt-3">风向: ${current.wind_direction_10m}°</p>
+                <p class="mt-3">风阵: ${current.wind_gusts_10m} km/h</p>`;
+
+            document.getElementById('pills-contact-icon').innerHTML = `
+                <p class="mt-3">雨量: ${current.rain} mm</p>
+                <p class="mt-3">阵雨: ${current.showers} mm</p>
+                <p class="mt-3">降雪: ${current.snowfall} cm</p>
+                <p class="mt-3">云量覆盖率: ${current.cloud_cover}%</p>
+                <p class="mt-3">海平面气压: ${current.pressure_msl} hPa</p>
+                <p class="mt-3">地表气压: ${current.surface_pressure} hPa</p>`;
+
+            // 绘制温度预测图表
+            var ctx = document.getElementById('temperature-chart').getContext('2d');
+            var temperatureChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: hourly.time,
+                    datasets: [{
+                        label: '24小时温度预测',
+                        data: hourly.temperature_2m,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: false
+                            }
+                        }]
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('获取天气数据失败:', error);
+            // document.getElementById('pills-home-icon').innerHTML = `<p class="mt-3">无法获取数据</p>`;
+        });
+</script>
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
 </body>
