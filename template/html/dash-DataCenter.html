@@ -22,7 +22,6 @@
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="{% static 'src/plugins/src/apex/apexcharts.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'src/assets/css/light/dashboard/dash_datacenter.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'src/assets/css/dark/dashboard/dash_datacenter.css' %}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
@@ -38,32 +37,32 @@
     <link href="{% static 'src/assets/css/light/elements/search.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'src/assets/css/dark/elements/search.css' %}" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <style>
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 4px #0056b3;
-        }
+<!--    <style>-->
+<!--        .button {-->
+<!--            display: inline-block;-->
+<!--            padding: 10px 20px;-->
+<!--            font-size: 16px;-->
+<!--            cursor: pointer;-->
+<!--            text-align: center;-->
+<!--            text-decoration: none;-->
+<!--            outline: none;-->
+<!--            color: #fff;-->
+<!--            background-color: #007BFF;-->
+<!--            border: none;-->
+<!--            border-radius: 15px;-->
+<!--            box-shadow: 0 4px #0056b3;-->
+<!--        }-->
 
-        .button:hover {
-            background-color: #0056b3;
-        }
+<!--        .button:hover {-->
+<!--            background-color: #0056b3;-->
+<!--        }-->
 
-        .button:active {
-            background-color: #0056b3;
-            box-shadow: 0 2px #003f7f;
-            transform: translateY(2px);
-        }
-    </style>
+<!--        .button:active {-->
+<!--            background-color: #0056b3;-->
+<!--            box-shadow: 0 2px #003f7f;-->
+<!--            transform: translateY(2px);-->
+<!--        }-->
+<!--    </style>-->
 </head>
 
 <body class="layout-boxed">
@@ -410,27 +409,29 @@
                                                 <div class="w-100">
                                                     <input type="text" class="w-100 form-control product-search br-30"
                                                            id="searchInput" placeholder="输入鱼种类...">
-                                                    <button class="btn btn-primary" type="button"> <!-- 确保按钮不提交表单 -->
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                             stroke-width="2" stroke-linecap="round"
-                                                             stroke-linejoin="round"
-                                                             class="feather feather-search">
-                                                            <circle cx="11" cy="11" r="8"></circle>
-                                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                                        </svg>
+                                                    <button class="btn btn-primary" type="submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                         class="feather feather-search">
+                                                        <circle cx="11" cy="11" r="8"></circle>
+                                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                    </svg>
                                                     </button>
                                                     <br>
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="searchable-container">
+                                        <div class="col-lg-12">
+                                            <div class="searchable-container">
+
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="searchable-items" id="result">
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -993,6 +994,7 @@
     <script src="{% static 'src/plugins/src/mousetrap/mousetrap.min.js' %}"></script>
     <script src="{% static 'src/plugins/src/waves/waves.min.js' %}"></script>
     <script src="{% static 'layouts/modern-light-menu/app.js' %}"></script>
+    <script src="{% static 'src/plugins/src/global/vendors.min.js' %}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
@@ -1000,7 +1002,8 @@
     <script src="{% static 'src/assets/js/dashboard/dash_datacenter.js' %}"></script>
     <script src="{% static 'src/plugins/src/apex/daat_apexcharts.js' %}"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'src/assets/js/elements/custom-search.js' %}"></script>
 <script>
     $(document).ready(function () {
         $('#searchInput').on('keyup', function (e) {

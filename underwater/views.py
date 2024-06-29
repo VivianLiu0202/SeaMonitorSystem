@@ -1,9 +1,15 @@
 # coding=utf-8
 from django.shortcuts import render, redirect
 from django.db.models import Max, Min, Count
-from .models import Fish, WaterQuality, Sensor
 import json
 from datetime import datetime
+from django.http import JsonResponse
+from .models import WaterQualityDetail
+
+from django.http import HttpResponse
+from underwater.models import Fish, WaterQuality, Sensor
+import csv
+
 
 WATER_QUALITY_STANDARDS = {
     'Ⅰ': {
@@ -129,27 +135,29 @@ def underwater(request):
 
     results = []
     alerts = []
+    results_init = []
+
+
+    #初始化表格的数据
+    results_init = WaterQuality.objects.filter(
+                    monitoring_time__month=4,
+                    monitoring_time__day=1,
+                    section_name='大红桥'
+                )
 
     if request.method == 'POST':
         date_input = request.POST.get('date')
         province = request.POST.get('province')
         river_basin = request.POST.get('river_basin')
         section_name = request.POST.get('section_name')
-        print(f"Received data - Data: {date_input}, Province: {province}, River: {river_basin}, Section: {section_name}")
+        print(
+            f"Received data - Data: {date_input}, Province: {province}, River: {river_basin}, Section: {section_name}")
 
         # 验证表单数据,日期可以为空
         if province and river_basin and section_name:
-            try:
-                monitoring_date = datetime.strptime(date_input, '%Y-%m-%d')
-
-                if date_input is None:
-                    results = WaterQualityDetail.objects.filter(
-                        province=province,
-                        river_basin=river_basin,
-                        section_name=section_name
-                    )
-
-                else:
+            if date_input:
+                try:
+                    monitoring_date = datetime.strptime(date_input, '%Y-%m-%d')
                     results = WaterQualityDetail.objects.filter(
                         monitoring_time__year=monitoring_date.year,
                         monitoring_time__month=monitoring_date.month,
@@ -157,56 +165,64 @@ def underwater(request):
                         province=province,
                         river_basin=river_basin,
                         section_name=section_name
-                    )
+                )
+                except ValueError:
+                    # 处理无效的日期输入
+                    pass
+            else:
+                # 日期为空，查询不考虑日期
+                results = WaterQualityDetail.objects.filter(
+                    province=province,
+                    river_basin=river_basin,
+                    section_name=section_name
+                )
 
-                # 检查每个结果是否符合标准
-                for result in results:
-                    category = result.water_quality_category
-                    standards = WATER_QUALITY_STANDARDS.get(category)
-                    if standards:
-                        if not (standards['ph_min'] <= result.pH <= standards['ph_max']):
-                            ph_diff = result.pH - standards['ph_max'] if result.pH > standards[
-                                'ph_max'] else result.ph - standards['ph_min']
-                            alerts.append(
-                                f"PH value out of range for {category} in {section_name} on {result.monitoring_time} 超出范围： {ph_diff:.2f}")
-                        if result.dissolved_oxygen < standards['dissolved_oxygen']:
-                            do_diff = standards['dissolved_oxygen'] - result.dissolved_oxygen
-                            alerts.append(
-                                f"Dissolved Oxygen below minimum for {category} in {section_name} on {result.monitoring_time} 超出范围： -{do_diff:.2f}")
-                        if result.permanganate_index > standards['permanganate_index']:
-                            pi_diff = result.permanganate_index - standards['permanganate_index']
-                            alerts.append(
-                                f"Permanganate Index above maximum for {category} in {section_name} on {result.monitoring_time} 超出范围： +{pi_diff:.2f}")
-                        if result.ammonia_nitrogen > standards['ammonia_nitrogen']:
-                            an_diff = result.ammonia_nitrogen - standards['ammonia_nitrogen']
-                            alerts.append(
-                                f"Ammonia Nitrogen above maximum for {category} in {section_name} on {result.monitoring_time} 超出范围： +{an_diff:.2f}")
-                        if result.total_phosphorus > standards['total_phosphorus']:
-                            tp_diff = result.total_phosphorus - standards['total_phosphorus']
-                            alerts.append(
-                                f"Total Phosphorus above maximum for {category} in {section_name} on {result.monitoring_time} 超出范围： +{tp_diff:.2f}")
+            print (results)
 
-            except ValueError:
-                pass
+            # 检查每个结果是否符合标准
+            for result in results:
+                category = result.water_quality_category
+                standards = WATER_QUALITY_STANDARDS.get(category)
+                if standards:
+                    if not (standards['ph_min'] <= result.pH <= standards['ph_max']):
+                        ph_diff = result.pH - standards['ph_max'] if result.pH > standards[
+                            'ph_max'] else result.ph - standards['ph_min']
+                        alerts.append(
+                            f"PH value out of range for {category} in {section_name} on {result.monitoring_time} 超出范围： {ph_diff:.2f}")
+                    if result.dissolved_oxygen is not None and result.dissolved_oxygen < standards['dissolved_oxygen']:
+                        do_diff = standards['dissolved_oxygen'] - result.dissolved_oxygen
+                        alerts.append(
+                            f"Dissolved Oxygen below minimum for {category} in {section_name} on {result.monitoring_time} 超出范围： -{do_diff:.2f}")
+                    if result.permanganate_index is not None and result.permanganate_index > standards['permanganate_index']:
+                        pi_diff = result.permanganate_index - standards['permanganate_index']
+                        alerts.append(
+                            f"Permanganate Index above maximum for {category} in {section_name} on {result.monitoring_time} 超出范围： +{pi_diff:.2f}")
+                    if result.ammonia_nitrogen is not None and result.ammonia_nitrogen > standards['ammonia_nitrogen']:
+                        an_diff = result.ammonia_nitrogen - standards['ammonia_nitrogen']
+                        alerts.append(
+                            f"Ammonia Nitrogen above maximum for {category} in {section_name} on {result.monitoring_time} 超出范围： +{an_diff:.2f}")
+                    if result.total_phosphorus is not None and result.total_phosphorus > standards['total_phosphorus']:
+                        tp_diff = result.total_phosphorus - standards['total_phosphorus']
+                        alerts.append(
+                            f"Total Phosphorus above maximum for {category} in {section_name} on {result.monitoring_time} 超出范围： +{tp_diff:.2f}")
+
+
 
     sensors = Sensor.objects.all()
 
     provinces = WaterQualityDetail.objects.values_list('province', flat=True).distinct()
+    print (alerts)
     context = {
         'all_species_data': json.dumps(all_species_data),
         'total_species_count': len(species_list),
         'total_fish_count': total_fish_count,
         'results': results,
         'alerts': json.dumps(alerts),
+        #'alerts': alerts,
         'sensors': sensors,
         'provinces': provinces,
     }
     return render(request, 'html/dash-UnderwaterSystem.html', context)
-
-
-from django.http import HttpResponse
-from underwater.models import Fish, WaterQuality, Sensor
-import csv
 
 
 def download_fish_csv(request):
@@ -247,10 +263,6 @@ def download_sensor_csv(request):
     return response
 
 
-from django.http import JsonResponse
-from .models import WaterQualityDetail
-
-
 def load_river_basins(request):
     province = request.GET.get('province')
     river_basins = WaterQualityDetail.objects.filter(province=province).distinct().values_list('river_basin', flat=True)
@@ -262,4 +274,3 @@ def load_section_names(request):
     section_names = WaterQualityDetail.objects.filter(river_basin=river_basin).distinct().values_list('section_name',
                                                                                                       flat=True)
     return JsonResponse(list(section_names), safe=False)
-

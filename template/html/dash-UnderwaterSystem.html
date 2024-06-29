@@ -687,6 +687,8 @@
                                         </a>
                                         <div class="dropdown-menu left" aria-labelledby="renvenue"
                                              style="will-change: transform;">
+                                            <a class="dropdown-item" href="{% url 'download_fish_csv' %}"
+                                               data-type="width">数据下载</a>
                                             <a class="dropdown-item" href="javascript:void(0);"
                                                data-type="weight">鱼重量</a>
                                             <a class="dropdown-item" href="javascript:void(0);"
@@ -769,6 +771,7 @@
 
                                 </form>
 
+                                <div id="alerts-container"></div>
 
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
@@ -987,15 +990,6 @@
                 </div>
 
             </div>
-            <button class="button"
-                    onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/underwater/fish/'">修改鱼类数据
-            </button>
-            <button class="button"
-                    onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/underwater/sensor/'">修改传感器数据
-            </button>
-            <button class="button"
-                    onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/underwater/waterquality/'">修改水质数据
-            </button>
 
             <!--  BEGIN FOOTER  -->
             <div class="footer-wrapper">
@@ -1047,19 +1041,61 @@
     });
 </script>
 
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function () {-->
+<!--        const alerts = JSON.parse('{{ alerts|safe }}'); // 确保这里正确地将 alerts 变量从 Django 传递到 JavaScript-->
+<!--        if (alerts && alerts.length > 0) {  // 检查 alerts 是否非空且长度大于0-->
+<!--            let alertMessage = "Water Quality Alerts:\n\n";-->
+<!--            alerts.forEach(alert => {-->
+<!--                alertMessage += alert + "\n";-->
+<!--            });-->
+<!--            alert(alertMessage);-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+<!--<script>-->
+<!--document.addEventListener('DOMContentLoaded', function() {-->
+<!--    const alerts = JSON.parse('{{ alerts|safe }}');  // 从后端获取警告数组-->
+<!--    const alertsContainer = document.getElementById('alerts-container');  // 假设你有一个容器元素用于显示警告-->
+
+<!--    if (alerts && alerts.length > 0) {-->
+<!--        alerts.forEach(alert => {-->
+<!--            const alertDiv = document.createElement('div');-->
+<!--            alertDiv.className = 'alert alert-warning';-->
+<!--            alertDiv.textContent = alert;  // 将整个警告信息作为文本内容添加-->
+<!--            alertsContainer.appendChild(alertDiv);-->
+<!--        });-->
+<!--    }-->
+<!--});-->
+<!--</script>-->
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const alerts = JSON.parse('{{ alerts|safe }}'); // 确保这里正确地将 alerts 变量从 Django 传递到 JavaScript
-        if (alerts && alerts.length > 0) {  // 检查 alerts 是否非空且长度大于0
-            let alertMessage = "Water Quality Alerts:\n\n";
-            alerts.forEach(alert => {
-                alertMessage += alert + "\n";
-            });
-            alert(alertMessage);
-        }
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    const alerts = JSON.parse('{{ alerts|safe }}');  // 确保这里正确地将 alerts 变量从 Django 传递到 JavaScript
+    const alertsContainer = document.getElementById('alerts-container');  // 假设你有一个容器元素用于显示警告
+
+    if (alerts && alerts.length > 0) {
+        alerts.forEach(alert => {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-light-danger alert-dismissible fade show border-0 mb-4';
+            alertDiv.setAttribute('role', 'alert');
+            alertDiv.innerHTML = `
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <strong>Error!</strong> ${alert}
+            `;
+            alertsContainer.appendChild(alertDiv);
+        });
+    }
+});
 </script>
 
+<!-- 传感器信息 -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // 默认显示第一个传感器的数据

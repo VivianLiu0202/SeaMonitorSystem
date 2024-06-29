@@ -11,6 +11,42 @@
 /*
   Live Search
 */
+.filtered-list-search {
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+.filtered-list-search form > div {
+  position: relative;
+}
+.filtered-list-search form input {
+  border: 1px solid #e0e6ed;
+}
+.filtered-list-search form input:focus {
+  box-shadow: 0 0 4px 2px rgba(31, 45, 61, 0.1);
+}
+.filtered-list-search form button {
+  border-radius: 50%;
+  padding: 6px 7px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.filtered-list-search form input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #bfc9d4;
+}
+.filtered-list-search form input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #bfc9d4;
+}
+.filtered-list-search form input:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #bfc9d4;
+}
+.filtered-list-search form input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #bfc9d4;
+}
 
 .searchable-container {
   max-width: 1140px;
@@ -58,7 +94,14 @@
   transform: translateY(0) scale(1.03);
   transform: translateY(0) scale(1.01);
 }
-
+.searchable-container .items .user-profile {
+  display: flex;
+}
+.searchable-container .items .user-profile img {
+  width: 43px;
+  height: 43px;
+  border-radius: 5px;
+}
 .searchable-container .items .user-name p, .searchable-container .items .user-work p, .searchable-container .items .user-email p {
   margin-bottom: 0;
   color: #888ea8;
