@@ -442,11 +442,27 @@
 }
 
 .widget.widget-chart-two .widget-content {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* 确保容器宽度为100% */
     padding: 0 0 20px 0;
+    margin-top: 2em;
 }
 
 .widget.widget-chart-two .widget-content-text {
     padding: 20px 20px 0 20px;
+}
+/*.widget.widget-chart-two .widget-content-text .this-alert {*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    width: 50%; !* 或你需要的任何宽度 *!*/
+/*}*/
+
+.alert-container {
+    display: flex;
+    justify-content: center;  /* 水平居中 */
+    width: 100%;  /* 宽度设置为100%，这样它会占据全部的可用宽度 */
+    margin-top: 2em;
 }
 
 .widget.widget-chart-two .widget-content-alert {

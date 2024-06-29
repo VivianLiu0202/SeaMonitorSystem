@@ -66,9 +66,6 @@ def get_water_quality_statistics(request):
         quality_as_number=Case(*cases, output_field=IntegerField())
     ).values('water_quality_category', 'quality_as_number')
 
-    # 打印出映射前后的数据对比
-    for result in test_results:
-        print(result)
 
     # 聚合查询，按省份和流域分组
     results = WaterQuality.objects.exclude(

@@ -1,4 +1,7 @@
 # coding=utf-8
+import json
+
+from django.db.models.query_utils import Q
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from datacenter.models import Ohio
@@ -17,7 +20,6 @@ def datacenter(request):
     latin_names_names = [latin['latin_name'] for latin in latin_names_classes]
     latin_names_counts = [latin['count'] for latin in latin_names_classes]
 
-    # 将数据传递到模板
     context = {
         'size_class_names': size_class_names,
         'size_class_counts': size_class_counts,
@@ -28,17 +30,16 @@ def datacenter(request):
     return render(request, 'html/dash-DataCenter.html', context)
 
 
-def ohio_data_api(request):
-    # 查询数据库
-    data = Ohio.objects.all().values(
+def ohio_api(request):
+    search_query = request.GET.get('search', '')  # 确保这里使用的参数名与前端一致
+    # 查询并排序，根据需要选择合适的字段排序，这里假设按照常见名字排序
+    data = list(Ohio.objects.filter(
+        Q(common_name__icontains=search_query) |
+        Q(latin_name__icontains=search_query)
+    ).order_by('common_name')[:5].values(
         'common_name', 'latin_name', '_3cm_size_class', 'length_cm', 'weight_kg'
-    )
-
-    # 将QuerySet转换为列表，因为QuerySet不是直接可序列化的
-    data_list = list(data)
-
-    # 返回JSON响应
-    return JsonResponse(data_list, safe=False)
+    ))
+    return JsonResponse(data, safe=False)
 
 
 # 下载CSV文件视图：将Ohio数据导出为CSV文件
@@ -54,15 +55,30 @@ def download_ohio_csv(request):
     return response
 
 
+# 鱼类匹配
+# def search_species(request):
+#     search_query = request.GET.get('search', '')  # 确保这里使用的参数名与前端一致
+#     # 查询并排序，根据需要选择合适的字段排序，这里假设按照常见名字排序
+#     data = list(Ohio.objects.filter(
+#         Q(common_name__icontains=search_query) |
+#         Q(latin_name__icontains=search_query)
+#     ).order_by('_3cm_size_class')[:5].values(
+#         'common_name', 'latin_name', '_3cm_size_class', 'length_cm', 'weight_kg'
+#     ))
+#     return JsonResponse(data, safe=False)
+
 def search_species(request):
-    query = request.GET.get('query', '')
-    if query:
-        species = Ohio.objects.filter(common_name__icontains=query)[:5]
-        data = [{
-            'latin_name': sp.latin_name,
-            'length_cm': sp.length_cm,
-            'weight_kg': sp.weight_kg
-        } for sp in species]
-    else:
-        data = []
+    search_query = request.GET.get('search', '')  # 确保这里使用的参数名与前端一致
+    # 过滤出符合条件的记录，并按常见名称排序
+    data = list(Ohio.objects.filter(
+        Q(common_name__icontains=search_query) |
+        Q(latin_name__icontains=search_query)
+    ).exclude(
+        Q(common_name__isnull=True) | Q(common_name__exact='') |
+        Q(latin_name__isnull=True) | Q(latin_name__exact='') |
+        Q(_3cm_size_class__isnull=True) | Q(_3cm_size_class__exact='') |
+        Q(weight_kg__isnull=True) | Q(weight_kg=0)
+    ).order_by('common_name')[:5].values(
+        'common_name', 'latin_name', '_3cm_size_class', 'length_cm', 'weight_kg', 'date', 'count'
+    ))
     return JsonResponse(data, safe=False)

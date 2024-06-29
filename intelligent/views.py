@@ -1,5 +1,7 @@
+# coding=utf-8
 from django.shortcuts import render,redirect
-
+from django.http import HttpResponse, JsonResponse
+import pandas as pd
 # Create your views here.
 # def intelligent(request):
 #     return render(request, 'html/dash-IntelligentCenter.html')
@@ -35,3 +37,23 @@ def download_predict_csv(request):
     for predict in WaterQualityPredict.objects.all():
         writer.writerow([predict.TEMP, predict.PH, predict.DO, predict.Cond, predict.NTU, predict.Mn, predict.NH3])
     return response
+
+
+def upload_csv(request):
+    if request.method == 'POST':
+        file = request.FILES.get('file')
+        if file:
+            df = pd.read_csv(file)
+            # 假设你有TEMP和PH列，你可以执行一些数据处理或者分析
+            temp_data = df['TEMP'].tolist()
+            ph_data = df['PH'].tolist()
+            # 数据处理 TODO: 这里可以添加更多的数据处理代码
+
+            # 返回处理后的数据
+            return JsonResponse({
+                'temp_data': temp_data,
+                'ph_data': ph_data
+            })
+        else:
+            return JsonResponse({'error': 'No file provided'}, status=400)
+    return JsonResponse({'error': 'Invalid request'}, status=400)

@@ -60,3 +60,28 @@ class Sensor(models.Model):
         running_time = current_date - self.start_date
         print(f"Current date: {current_date}, Start date: {self.start_date}, Running time: {running_time.days}")
         return running_time.days
+
+
+from django.db import models
+
+class WaterQualityDetail(models.Model):
+    province = models.CharField(max_length=100)
+    river_basin = models.CharField(max_length=100)
+    section_name = models.CharField(max_length=100)
+    monitoring_time = models.DateTimeField(null=True, blank=True)
+    water_quality_category = models.CharField(max_length=10, blank=True)
+    water_temperature = models.FloatField(null=True, blank=True)  # In degrees Celsius
+    pH = models.FloatField(null=True, blank=True)
+    dissolved_oxygen = models.FloatField(null=True, blank=True)  # In mg/L
+    conductivity = models.FloatField(null=True, blank=True)  # In μS/cm
+    turbidity = models.FloatField(null=True, blank=True)  # In NTU
+    permanganate_index = models.FloatField(null=True, blank=True)  # In mg/L
+    ammonia_nitrogen = models.FloatField(null=True, blank=True)  # In mg/L
+    total_phosphorus = models.FloatField(null=True, blank=True)  # In mg/L
+    total_nitrogen = models.FloatField(null=True, blank=True)  # In mg/L
+    chlorophyll_a = models.FloatField(null=True, blank=True)  # In mg/L
+    algae_density = models.FloatField(null=True, blank=True)  # In cells/L
+    site_status = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return f'{self.section_name} - {self.monitoring_time.strftime("%Y-%m-%d %H:%M")}'
