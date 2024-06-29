@@ -16,6 +16,58 @@ var middleColor = calculateMiddleColor(value);
 var temp_data = JSON.parse(document.getElementById('temp-data').textContent);
 var ph_data = JSON.parse(document.getElementById('ph-data').textContent);
 
+var  d_1C_3
+$(document).ready(function () {
+    var temp_image;
+
+    // 点击图片选择框触发文件选择
+    $('#imageDisplay').on('click', function () {
+        $('#imageUpload').click();
+    });
+
+    // 图片上传
+    $('#imageUpload').on('change', function () {
+        var file = this.files[0];
+        temp_image = file;
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imageDisplay').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // 提交表单时触发
+    $('#imageForm').on('submit', function (e) {
+        e.preventDefault(); // 防止表单默认的提交行为，防止刷新页面
+        var formData = new FormData();
+        formData.append('file', temp_image);
+
+        // 发送 AJAX 请求
+        $.ajax({
+            type: "POST",
+            url: "/extra/detect-image/",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // 返回的图像数据更新图片展示区域
+                $('#imageDisplay').attr('src', 'data:image/jpeg;base64,' + response.image);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    });
+
+    // 提交按钮点击时触发
+    $('#submitBtn').on('click', function (e) {
+        e.preventDefault(); // 防止按钮默认的提交行为，防止刷新页面
+        $('#imageForm').submit(); // 手动触发表单提交事件
+    });
+});
+
 
 window.addEventListener("DOMContentLoaded", function(){
     try {
@@ -104,10 +156,10 @@ window.addEventListener("DOMContentLoaded", function(){
               stops: [0, 50, 100],
               colorStops: [{
                 offset: 0,
-                color: middleColor 
+                color: middleColor
             },{
                 offset: 100,
-                color: '#FF0000' 
+                color: '#FF0000'
             }]
             },
           },
@@ -122,7 +174,7 @@ window.addEventListener("DOMContentLoaded", function(){
                   Unique Visitors | Options
               ===================================
             */
-            
+
 
             var d_1options1 = {
                 chart: {
@@ -294,10 +346,10 @@ window.addEventListener("DOMContentLoaded", function(){
               stops: [0, 35, 70, 100],
               colorStops: [{
                 offset: 0,
-                color: middleColor 
+                color: middleColor
             },{
                 offset: 100,
-                color: '#FF0000' 
+                color: '#FF0000'
             }]
             },
           },
@@ -430,11 +482,12 @@ window.addEventListener("DOMContentLoaded", function(){
             ===================================
         */
 
-        var d_1C_3 = new ApexCharts(
+            d_1C_3 = new ApexCharts(
             document.querySelector("#uniqueVisits"),
             d_1options1
         );
         d_1C_3.render();
+
 
 
 

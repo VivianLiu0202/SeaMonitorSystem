@@ -144,8 +144,8 @@
                                     &#x1F44B;
                                 </div>
                                 <div class="media-body">
-                                    <h5>李大壮</h5>
-                                    <p>池塘清扫员</p>
+                                    <h5>{{ user_info.name }}</h5>
+                                    <p>{{ user_info.job }}</p>
                                 </div>
                             </div>
                         </div>
@@ -231,8 +231,8 @@
                             <img src="{% static 'src/assets/img/boy-1.png' %}" alt="avatar">
                         </div>
                         <div class="profile-content">
-                            <h6 class="">李大壮</h6>
-                            <p class="">池塘清洁员</p>
+                            <h6 class="">{{ user_info.name }}</h6>
+                            <p class="">{{ user_info.job }}</p>
                         </div>
                     </div>
                 </div>
@@ -495,7 +495,7 @@
                                                                                     <input type="text"
                                                                                         class="form-control mb-3"
                                                                                         id="fullName" placeholder="全名"
-                                                                                        value="李大壮">
+                                                                                        value="{{ user_info.name }}">
                                                                                 </div>
                                                                             </div>
 
@@ -809,6 +809,7 @@
     <script src="{% static 'src/plugins/src/notification/snackbar/snackbar.min.js' %}"></script>
 
     <script src="{% static 'src/assets/js/scrollspyNav.js' %}"></script>
+    <script src="{% static 'src/assets/js/searchNav.js' %}"></script>
     <!--<script src="../src/plugins/src/sweetalerts2/sweetalerts2.min.js"></script>-->
     <!--<script src="../src/plugins/src/sweetalerts2/custom-sweetalert.js"></script>-->
     <script src="{% static 'src/assets/js/users/account-settings.js' %}"></script>

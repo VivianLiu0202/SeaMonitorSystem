@@ -1,3 +1,17 @@
+function calculateMiddleColor(value) {
+    // 计算红色和绿色的RGB值
+    var red = Math.floor((255 * (100 - value)) / 100);
+    var green = Math.floor((255 * value) / 100);
+    // 构造中间颜色字符串
+    var middleColor = 'rgb(' + red + ',' + green + ',0)';
+    return middleColor;
+}
+
+// 获取数值
+var value = 90; // 这里替换为你的实际数值
+
+// 计算中间颜色
+var middleColor = calculateMiddleColor(value);
 window.addEventListener("load", function(){
     try {
 
@@ -24,6 +38,73 @@ window.addEventListener("load", function(){
                   Visitor Statistics | Options
               ======================================
             */
+
+            var en_options = {
+            series: [90],
+            chart: {
+            type: 'radialBar',
+            offsetY: -20,
+            sparkline: {
+              enabled: true
+            }
+          },
+          plotOptions: {
+            radialBar: {
+              startAngle: -90,
+              endAngle: 90,
+              track: {
+                background: "#e7e7e7",
+                strokeWidth: '97%',
+                margin: 5, // margin is in pixels
+                dropShadow: {
+                  enabled: true,
+                  top: 2,
+                  left: 0,
+                  color: '#999',
+                  opacity: 1,
+                  blur: 2
+                }
+              },
+              dataLabels: {
+                name: {
+                  show: false
+                },
+                value: {
+                  offsetY: -2,
+                  fontSize: '22px',
+                  color: '#808a87', // 修改这里的颜色值为你想要的颜色
+                  formatter: function (val) {
+                    return val.toFixed(0); // 返回四舍五入的整数值，去掉百分号
+                }
+                }
+              }
+            }
+          },
+          grid: {
+            padding: {
+              top: -10
+            }
+          },
+          fill: {
+            type: 'gradient',
+            gradient: {
+              shade: 'light',
+              shadeIntensity: 0.4,
+              inverseColors: false,
+              opacityFrom: 1,
+              opacityTo: 1,
+              stops: [0, 50, 100],
+              colorStops: [{
+                offset: 0,
+                color: middleColor
+            },{
+                offset: 100,
+                color: '#FF0000'
+            }]
+            },
+          },
+          labels: ['Average Results'],
+          };
 
 
             // Total Visits
@@ -517,6 +598,73 @@ window.addEventListener("load", function(){
               ======================================
             */
 
+            var en_options = {
+            series: [90],
+            chart: {
+            type: 'radialBar',
+            offsetY: -20,
+            sparkline: {
+              enabled: true
+            }
+          },
+          plotOptions: {
+            radialBar: {
+              startAngle: -90,
+              endAngle: 90,
+              track: {
+                background: "#e7e7e7",
+                strokeWidth: '97%',
+                margin: 5, // margin is in pixels
+                dropShadow: {
+                  enabled: true,
+                  top: 2,
+                  left: 0,
+                  color: '#999',
+                  opacity: 1,
+                  blur: 2
+                }
+              },
+              dataLabels: {
+                name: {
+                  show: false
+                },
+                value: {
+                  offsetY: -2,
+                  fontSize: '22px',
+                  color: '#808a87', // 修改这里的颜色值为你想要的颜色
+                  formatter: function (val) {
+                    return val.toFixed(0); // 返回四舍五入的整数值，去掉百分号
+                }
+                }
+              }
+            }
+          },
+          grid: {
+            padding: {
+              top: -10
+            }
+          },
+          fill: {
+            type: 'gradient',
+            gradient: {
+              shade: 'light',
+              shadeIntensity: 0.4,
+              inverseColors: false,
+              opacityFrom: 1,
+              opacityTo: 1,
+              stops: [0, 35, 70, 100],
+              colorStops: [{
+                offset: 0,
+                color: middleColor
+            },{
+                offset: 100,
+                color: '#FF0000'
+            }]
+            },
+          },
+          labels: ['Average Results'],
+          };
+
 
             // Total Visits
 
@@ -1003,6 +1151,8 @@ window.addEventListener("load", function(){
             ======================================
         */
 
+        var enviroment = new ApexCharts(document.querySelector("#enviroment"), en_options);
+        enviroment.render();
         // Total Visits
         d_1C_1 = new ApexCharts(document.querySelector("#total-users"), spark1);
         d_1C_1.render();

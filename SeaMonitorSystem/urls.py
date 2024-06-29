@@ -27,8 +27,10 @@ from extra import views as apps_views
 from allcharts import views as allcharts_views
 from django.urls import path
 from underwater.views import download_fish_csv, download_waterquality_csv, download_sensor_csv
-from intelligent.views import download_predict_csv
-from datacenter.views import download_ohio_csv
+from underwater.views import load_river_basins, load_section_names
+from intelligent.views import download_predict_csv, upload_csv
+from datacenter.views import download_ohio_csv, ohio_api, search_species
+
 urlpatterns = [
     path('captcha/', include('captcha.urls')),  # 验证码相关URL
     path("", login_views.signin_view, name="signin"),  # 使用 signin_view 处理根 URL
@@ -64,13 +66,32 @@ urlpatterns = [
     # 确保管理员URL配置正确
     path("admin/", admin.site.urls),
 
+    path('get_water_quality_statistics/', maininfo_views.get_water_quality_statistics,
+         name='get_water_quality_statistics'),
+
     # 额外功能的url
+    # 额外功能的url，子模块的url全集成过来
     path('extra/', include('extra.urls')),
 
+    path('api/ohio/', ohio_api, name='ohio-api'),
+    path('search_species/', search_species, name='search_species'),
     # 数据上传和下载
     path('download-fish-csv/', download_fish_csv, name='download_fish_csv'),
     path('download-waterquality-csv/', download_waterquality_csv, name='download_waterquality_csv'),
     path('download-sensor-csv/', download_sensor_csv, name='download_sensor_csv'),
     path('download-predict-csv/', download_predict_csv, name='download_predict_csv'),
     path('download-ohio-csv/', download_ohio_csv, name='download_ohio_csv'),
+    path('upload-csv/', upload_csv, name='upload_csv'),
+
+    # 搜索表格
+    path('ajax/load-river-basins/', load_river_basins, name='ajax_load_river_basins'),
+    path('ajax/load-section-names/', load_section_names, name='ajax_load_section_names'),
+    # 其他 URL 配置
+    path('login/', include('login.urls')),  # 确保包含login应用的urls
+
+
+
+    # 动态展示
+
+
 ]

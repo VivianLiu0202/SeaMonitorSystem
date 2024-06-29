@@ -113,3 +113,17 @@ def lockscreen_view(request):
 
 def two_step_verification_view(request):
     return render(request, 'html/login/auth-cover-two-step-verification.html')
+
+
+
+@login_required
+def dashboard_view(request):
+    # 获取当前用户的UserInfo对象
+    user_info = UserInfo.objects.get(user=request.user)
+
+    # 将数据传递到模板
+    context = {
+        'user_info': user_info,
+    }
+    print("contxt:", context)
+    return render(request, 'dash-MainInfo.html', context)

@@ -1294,6 +1294,7 @@
 .widget-card-four .w-header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .widget-card-four .w-header .w-info {
   align-self: center;
@@ -1305,6 +1306,8 @@
   font-size: 23px;
   letter-spacing: 0;
 }
+
+
 
 
 .widget-card-four .w-content {

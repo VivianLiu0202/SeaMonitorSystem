@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 {% load static %}
 
 <head>
@@ -14,6 +14,13 @@
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet'/>
+
+
+    <!-- 引入 ECharts.js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.min.js"></script>
     <link href="{% static 'src/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'layouts/modern-light-menu/css/light/plugins.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'layouts/modern-light-menu/css/dark/plugins.css' %}" rel="stylesheet" type="text/css"/>
@@ -28,6 +35,7 @@
 
 
     <!--switch开关的css-->
+    <link href="{% static 'src/plugins/src/leaflet/leaflet.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'src/assets/css/light/scrollspyNav.css' %}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="{% static 'src/assets/css/light/forms/switches.css' %}">
 
@@ -36,6 +44,40 @@
 
     <link href="{% static 'src/assets/css/light/elements/custom-pagination.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'src/assets/css/dark/elements/custom-pagination.css' %}" rel="stylesheet" type="text/css"/>
+
+    <style>
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+
+        .legend {
+            text-align: left;
+            line-height: 18px;
+            color: #555;
+        }
+
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+
+        .leaflet-map {
+            border-radius: 8px;
+        }
+    </style>
 
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 </head>
@@ -130,8 +172,8 @@
                                 &#x1F44B;
                             </div>
                             <div class="media-body">
-                                <h5>李大壮</h5>
-                                <p>池塘清扫员</p>
+                                <h5>{{ user_info.name }}</h5>
+                                <p>{{ user_info.job }}</p>
                             </div>
                         </div>
                     </div>
@@ -218,8 +260,8 @@
                         <img src="{% static 'src/assets/img/boy-1.png' %}" alt="avatar">
                     </div>
                     <div class="profile-content">
-                        <h6 class="">李大壮</h6>
-                        <p class="">池塘清扫员</p>
+                        <h6 class="">{{ user_info.name }}</h6>
+                        <p class="">{{ user_info.job }}</p>
                     </div>
                 </div>
             </div>
@@ -439,37 +481,86 @@
                                     </div>
                                     <div class="tab-pane fade" id="time-tab-pane" role="tabpanel"
                                          aria-labelledby="time-tab" tabindex="0">
-                                        <p class="mt-3">Aliquam at sem nunc. Maecenas tincidunt lacus justo, non
-                                            ultrices mauris egestas eu. Vestibulum ut ipsum ac eros rutrum blandit
-                                            in eget quam. Nullam et lobortis nunc. Nam sodales, ante sed sodales
-                                            rhoncus, diam ipsum faucibus mauris, non interdum nisl lacus vel justo.
-                                        </p>
-                                        <p>Sed imperdiet mi tincidunt mauris convallis, ut ullamcorper nunc
-                                            interdum. Praesent maximus massa eu varius gravida. Nullam in malesuada
-                                            enim. Morbi commodo pellentesque velit sodales pretium. Mauris
-                                            scelerisque augue vel est pulvinar laoreet.</p>
+                                        <button id="time-button" class="btn btn-outline-primary mt-1"
+                                                onclick="manualCalibration()">手动校准时间
+                                        </button>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <i class="bi bi-clock-fill feature-icon"></i>
+                                                <span>系统时钟</span>
+                                                <span id="current-time">UTC+8</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="bi bi-calendar-check-fill feature-icon"></i>
+                                                <span>最后校准时间</span>
+                                                <span id="last-calibration-time">2024-06-26 10:00</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="bi bi-broadcast feature-icon"></i>
+                                                <span>校准源</span>
+                                                <span>GPS时间信号</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="bi bi-exclamation-circle-fill feature-icon"></i>
+                                                <span>时间偏差</span>
+                                                <span>±0.2秒</span>
+                                            </li>
+                                        </ul>
                                     </div>
                                     <div class="tab-pane fade" id="channel-tab-pane" role="tabpanel"
                                          aria-labelledby="channel-tab" tabindex="0">
-                                        <p class="mt-3">In diam odio, ullamcorper vitae dolor vel, lobortis rhoncus
-                                            odio. Nullam lacinia euismod ex vitae ullamcorper. Integer fringilla
-                                            arcu nunc, et tempus sapien ornare sed. Nam fringilla velit nec bibendum
-                                            consectetur. Etiam pellentesque eu nulla vel tincidunt. </p>
-                                        <p>Ut nec nunc sed risus viverra vehicula non non purus. Nunc semper sem ut
-                                            ante suscipit vulputate. Integer tempus ornare ligula, sed lacinia leo
-                                            posuere eu. </p>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <i class="bi bi-camera-video feature-icon"></i>
+                                                <span>视频输入通道</span>
+                                                <span>状态：正常</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="bi bi-thermometer-half feature-icon"></i>
+                                                <span>温度传感器通道</span>
+                                                <span>数据流：稳定</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="bi bi-moisture feature-icon"></i>
+                                                <span>湿度感应通道</span>
+                                                <span class="alert-status error">状态：校准待完成</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="bi bi-speedometer2 feature-icon"></i>
+                                                <span>压力传感器通道</span>
+                                                <span>响应速度：快速</span>
+                                            </li>
+                                        </ul>
                                     </div>
                                     <div class="tab-pane fade" id="alarm-tab-pane" role="tabpanel"
                                          aria-labelledby="alarm-tab" tabindex="0">
-                                        <p class="mt-3">Nullam feugiat, sapien a lacinia condimentum, libero nibh
-                                            fermentum lectus, eu dictum justo ex sit amet neque. Sed felis arcu,
-                                            efficitur eget diam eget, maximus dapibus enim. Sed vitae varius lorem.
-                                            Fusce non accumsan diam, quis porttitor dolor. </p>
-                                        <p>Aenean ut aliquet dolor. Integer accumsan odio non dignissim lobortis.
-                                            Sed rhoncus ante eros, vel ullamcorper orci molestie congue. Phasellus
-                                            vel faucibus dolor. Morbi magna eros, vulputate eu sem nec, venenatis
-                                            egestas quam. Maecenas hendrerit mollis eros, eget faucibus quam
-                                            dignissim vel.</p>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <i class="bi bi-bell-fill feature-icon"></i>
+                                                <span>告警级别</span>
+                                                <span class="alert-status low">当前：低</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="bi bi-exclamation-triangle-fill feature-icon"></i>
+                                                <span>最新告警</span>
+                                                <span class="alert-status">无最近警报</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="bi bi-clock-history feature-icon"></i>
+                                                <span>告警历史记录</span>
+                                                <span class="alert-status error">2023-06-20 水温异常 - 已处理</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="bi bi-gear-fill feature-icon"></i>
+                                                <span>告警阈值设置</span>
+                                                <span>可通过界面调整</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="bi bi-envelope-fill feature-icon"></i>
+                                                <span>响应措施</span>
+                                                <span>邮件通知管理员并记录</span>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -592,31 +683,38 @@
                                 <h6 class="">监控视频</h6>
                             </div>
                             <div class="video-container">
-                                <video width="100%" height="100%" controls>
-                                    <source src="{% static 'src/assets/img/movie2.mp4' %}" type="video/mp4">
-                                    Your browser does not support the video tag.
+                                <video width="100%" height="100%" controls style="display: none;">
+                                    <source src="{% static 'src/assets/monitorvideo/视频2.mp4' %}" type="video/mp4">
+                                    您的浏览器不支持视频标签。
                                 </video>
+                                <p id="camera-status-message" style="display: none;">摄像头已关闭</p> <!-- 新增状态信息元素 -->
                                 <div class="paginating-container pagination-solid">
                                     <ul class="pagination">
                                         <li class="prev"><a href="javascript:void(0);">
-                                            <svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-chevron-left">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-chevron-left">
                                                 <polyline points="15 18 9 12 15 6"></polyline>
                                             </svg>
                                         </a></li>
-                                        <li><a href="javascript:void(0);">1</a></li>
-                                        <li class="active"><a href="javascript:void(0);">2</a></li>
-                                        <li><a href="javascript:void(0);">3</a></li>
-                                        <li><a href="javascript:void(0);">4</a></li>
+                                        <li><a href="javascript:void(0);"
+                                               data-video-src="{% static 'src/assets/monitorvideo/视频1.mp4' %}">1</a>
+                                        </li>
+                                        <li class="active"><a href="javascript:void(0);"
+                                                              data-video-src="{% static 'src/assets/monitorvideo/视频2.mp4' %}">2</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                               data-video-src="{% static 'src/assets/monitorvideo/视频3.mp4' %}">3</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);"
+                                               data-video-src="{% static 'src/assets/monitorvideo/视频4.mp4' %}">4</a>
+                                        </li>
                                         <li class="next"><a href="javascript:void(0);">
-                                            <svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-chevron-right">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-chevron-right">
                                                 <polyline points="9 18 15 12 9 6"></polyline>
                                             </svg>
                                         </a></li>
@@ -638,228 +736,25 @@
                         </div>
                     </div>
 
-                    <!--历史数据-->
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                        <div class="widget widget-chart-three">
-                            <div class="widget-heading">
-                                <div class="">
-                                    <h5 class="">历史数据</h5>
+                    <div id="mapInteractive" class="col-lg-12 layout-spacing">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <h4>近日全国水文信息地图</h4>
+                                    </div>
                                 </div>
                             </div>
-
-                            <!--历史数据的图表，在js文件中定义-->
-                            <div class="widget-content">
-                                <div id="historydata"></div>
+                            <div class="widget-content widget-content-area">
+                                <div id="interactive-map" class="leaflet-map" style="height: 550px;"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!--TODO:水文气象，需要根据后端数据进行调整-->
-                    <!--这里最好把百分比放在进度条最右侧的上面对齐-->
-                    <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                        <div class="widget-four">
-                            <div class="widget-heading">
-                                <h5 class="">水文气象</h5>
-                            </div>
-                            <div class="widget-content">
-                                <div class="hydrometeorology">
-                                    <div class="browser-list">
-                                        <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                 class="feather feather-battery">
-                                                <rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect>
-                                                <line x1="23" y1="13" x2="23" y2="11"></line>
-                                            </svg>
-                                        </div>
-                                        <div class="w-browser-details">
-                                            <div class="w-browser-info">
-                                                <h6>电池电压(V)</h6>
-                                                <p class="browser-count">55%</p>
-                                            </div>
-                                            <div class="w-browser-stats">
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-primary" role="progressbar"
-                                                         style="width: 55%" aria-valuenow="90" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                                <span class="progress-value">25.90</span> <!-- 新添加的部分 -->
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="browser-list">
-                                        <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                 class="feather feather-box">
-                                                <path
-                                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                                                </path>
-                                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                                            </svg>
-                                        </div>
-                                        <div class="w-browser-details">
-
-                                            <div class="w-browser-info">
-                                                <h6>盐度(‰)</h6>
-                                                <p class="browser-count">60%</p>
-                                            </div>
-
-                                            <div class="w-browser-stats">
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-danger" role="progressbar"
-                                                         style="width: 60%" aria-valuenow="65" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                                <span class="progress-value">34.16</span> <!-- 新添加的部分 -->
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="browser-list">
-                                        <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                 class="feather feather-layers">
-                                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                                                <polyline points="2 17 12 22 22 17"></polyline>
-                                                <polyline points="2 12 12 17 22 12"></polyline>
-                                            </svg>
-                                        </div>
-                                        <div class="w-browser-details">
-
-                                            <div class="w-browser-info">
-                                                <h6>溶解氧(mg/L)</h6>
-                                                <p class="browser-count">0%</p>
-                                            </div>
-
-                                            <div class="w-browser-stats">
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-warning" role="progressbar"
-                                                         style="width: 0%" aria-valuenow="15" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                                <span class="progress-value">0.00</span> <!-- 新添加的部分 -->
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="browser-list">
-                                        <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                 class="feather feather-wind">
-                                                <path
-                                                        d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                        <div class="w-browser-details">
-
-                                            <div class="w-browser-info">
-                                                <h6>浊度</h6>
-                                                <p class="browser-count">10%</p>
-                                            </div>
-
-                                            <div class="w-browser-stats">
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-primary" role="progressbar"
-                                                         style="width: 10%" aria-valuenow="15" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                                <span class="progress-value">2.05</span> <!-- 新添加的部分 -->
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="browser-list">
-                                        <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                 class="feather feather-smile">
-                                                <circle cx="12" cy="12" r="10"></circle>
-                                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                                            </svg>
-                                        </div>
-                                        <div class="w-browser-details">
-
-                                            <div class="w-browser-info">
-                                                <h6>pH</h6>
-                                                <p class="browser-count">40</p>
-                                            </div>
-
-                                            <div class="w-browser-stats">
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-danger" role="progressbar"
-                                                         style="width: 40%" aria-valuenow="15" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                                <span class="progress-value">8.37</span> <!-- 新添加的部分 -->
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="browser-list">
-                                        <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                 class="feather feather-package">
-                                                <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
-                                                <path
-                                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                                                </path>
-                                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                                            </svg>
-                                        </div>
-                                        <div class="w-browser-details">
-
-                                            <div class="w-browser-info">
-                                                <h6>水温(°C)</h6>
-                                                <p class="browser-count">30%</p>
-                                            </div>
-
-                                            <div class="w-browser-stats">
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-warning" role="progressbar"
-                                                         style="width: 30%" aria-valuenow="15" aria-valuemin="0"
-                                                         aria-valuemax="100"></div>
-                                                </div>
-                                                <span class="progress-value">15</span> <!-- 新添加的部分 -->
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
-
             </div>
-
         </div>
+
+
         <!--  BEGIN FOOTER  -->
         <div class="footer-wrapper">
             <div class="footer-section f-section-1">
@@ -875,7 +770,6 @@
 <!-- END MAIN CONTAINER -->
 
 
-<!--todo done 新增签到功能，按钮变化，弹窗-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="{% static 'src/assets/js/Hu/signInScript.js' %}"></script>
 
@@ -886,6 +780,7 @@
 <script src="{% static 'src/plugins/src/mousetrap/mousetrap.min.js' %}"></script>
 <script src="{% static 'src/plugins/src/waves/waves.min.js' %}"></script>
 <script src="{% static 'layouts/modern-light-menu/app.js' %}"></script>
+<script src="{% static 'src/assets/js/custom.js' %}"></script>
 <!-- END GLOBAL MANDATORY SCRIPTS -->
 
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
@@ -894,10 +789,20 @@
 <script src="{% static 'src/assets/js/dashboard/dash_maininfo.js' %}"></script>
 
 <script src="{% static 'src/assets/js/scrollspyNav.js' %}"></script>
+<script src="{% static 'src/assets/js/searchNav.js' %}"></script>
 <script src="{% static 'src/plugins/src/splide/splide.min.js' %}"></script>
 <script src="{% static 'src/plugins/src/splide/custom-splide.js' %}"></script>
 <script src="{% static 'src/plugins/src/highlight/highlight.pack.js' %}"></script>
-<!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+
+<script src="{% static 'src/plugins/src/leaflet/us-states.js' %}"></script>
+<script src="{% static 'src/plugins/src/leaflet/eu-countries.js' %}"></script>
+<script src="{% static 'src/plugins/src/leaflet/leaflet.js' %}"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!--  BEGIN CUSTOM SCRIPTS FILE  -->
+<script src="{% static 'src/plugins/src/leaflet/leaflet_china.js' %}"></script>
+<!--<script src="{% static 'src/assets/js/dashboard/china_leaflet.js' %}"></script> -->
+<!--  END CUSTOM SCRIPTS FILE  -->
 
 <script type="text/javascript">
     //创建和初始化地图函数：
@@ -966,12 +871,164 @@
             type: BMAP_NAVIGATION_CONTROL_LARGE
         });
         map.addControl(navControl);
-        var overviewControl = new BMap.OverviewMapControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: true});
+        var overviewControl = new BMap.OverviewMapControl({
+            anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+            isOpen: true
+        });
         map.addControl(overviewControl);
     }
 
     var map;
     initMap();
+</script>
+
+<script>
+    // 用于在页面加载时初始化视频状态
+    document.addEventListener('DOMContentLoaded', function () {
+        const videoElement = document.querySelector('.video-container video');
+        const statusMessage = document.getElementById('camera-status-message');
+        const cameraSwitch = document.getElementById('form-custom-switch1'); // 获取摄像机开关
+
+        // 设置初始状态
+        updateVideoDisplay(cameraSwitch.checked);
+
+        // 添加事件监听器以响应开关的更改
+        cameraSwitch.addEventListener('change', function () {
+            updateVideoDisplay(this.checked);
+        });
+
+        function updateVideoDisplay(isCameraOn) {
+            if (isCameraOn) {
+                videoElement.style.display = 'block';  // 显示视频
+                statusMessage.style.display = 'none';  // 隐藏状态信息
+                videoElement.play();  // 播放视频
+            } else {
+                videoElement.style.display = 'none';  // 隐藏视频
+                videoElement.pause();  // 暂停视频
+                statusMessage.style.display = 'flex';  // 显示状态信息，使用 flex 以居中文本
+                statusMessage.innerText = '摄像头已关闭';  // 设置状态信息文本
+            }
+        }
+    });
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const videoElement = document.querySelector('.video-container video');
+        const sourceElement = videoElement.querySelector('source');
+        const paginationLinks = document.querySelectorAll('.pagination a[data-video-src]');
+        const nextButton = document.querySelector('.pagination .next a');
+        const prevButton = document.querySelector('.pagination .prev a');
+
+        // 为每个分页链接添加事件监听器
+        paginationLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault(); // 防止默认链接跳转
+                changeVideo(this.getAttribute('data-video-src'));
+                updateActiveClass(this.parentNode);
+            });
+        });
+
+        // “下一个”按钮的事件监听
+        nextButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            navigatePagination(1); // 向前翻页
+        });
+
+        // “上一个”按钮的事件监听
+        prevButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            navigatePagination(-1); // 向后翻页
+        });
+
+        // 更换视频源并播放
+        function changeVideo(src) {
+            if (src && src !== sourceElement.src) {
+                sourceElement.src = src;
+                videoElement.load();
+                videoElement.play();
+            }
+        }
+
+        // 更新激活的分页器样式
+        function updateActiveClass(activeLi) {
+            const currentActive = document.querySelector('.pagination li.active');
+            if (currentActive) {
+                currentActive.classList.remove('active');
+            }
+            activeLi.classList.add('active');
+        }
+
+        // 导航分页器
+        function navigatePagination(direction) {
+            const currentActive = document.querySelector('.pagination li.active');
+            let newActive = (direction === 1) ? currentActive.nextElementSibling : currentActive.previousElementSibling;
+
+            // 处理循环翻页
+            if (newActive && !newActive.querySelector('a[data-video-src]')) {
+                newActive = (direction === 1) ? currentActive.parentNode.firstElementChild.nextElementSibling : currentActive.parentNode.lastElementChild.previousElementSibling;
+            }
+
+            if (newActive && newActive.querySelector('a[data-video-src]')) {
+                newActive.querySelector('a').click();
+            }
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const videoElement = document.querySelector('.video-container video');
+        const videoPlaybackSwitch = document.getElementById('form-custom-switch4'); // 视频回放开关的ID
+
+        // 监听视频回放开关状态变化
+        videoPlaybackSwitch.addEventListener('change', function () {
+            if (this.checked) {
+                videoElement.currentTime = 0; // 将视频重置到开始位置
+                videoElement.play(); // 开始播放视频
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const clockElement = document.getElementById('current-time');
+        const lastCalibrationTime = document.getElementById('last-calibration-time');
+
+        function updateTime() {
+            const now = new Date();
+            clockElement.textContent = 'UTC+8 ' + now;
+        }
+
+        function manualCalibration() {
+            const now = new Date();
+            lastCalibrationTime.textContent = formatDate(now);
+            console.log("手动时间校准操作触发。校准时间：" + formatDate(now));
+        }
+
+        // 格式化日期为 YYYY-MM-DD HH:MM
+        function formatDate(date) {
+            return date.getFullYear() + '-' +
+                (date.getMonth() + 1).toString().padStart(2, '0') + '-' +
+                date.getDate().toString().padStart(2, '0') + ' ' +
+                date.getHours().toString().padStart(2, '0') + ':' +
+                date.getMinutes().toString().padStart(2, '0');
+        }
+
+        // 每秒更新时间
+        setInterval(updateTime, 1000);
+
+        // 模拟每24小时自动校准
+        setInterval(() => {
+            const now = new Date();
+            lastCalibrationTime.textContent = formatDate(now);
+            console.log("自动校准时间。校准时间：" + formatDate(now));
+        }, 86400000);  // 24小时的毫秒数
+
+        window.manualCalibration = manualCalibration;  // 使函数在全局范围内可用
+    });
 </script>
 
 

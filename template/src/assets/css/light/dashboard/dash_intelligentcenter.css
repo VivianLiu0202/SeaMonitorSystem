@@ -38,6 +38,38 @@
     border-bottom: 1px solid #191e3a;
 }
 
+
+.list-group-item .feature-icon {
+    margin-right: 10px; /* 圆形图标和文本之间的间距 */
+    font-size: 1rem; /* 图标大小 */
+    display: inline-block; /* 让图标和文字在同一行显示 */
+}
+
+.list-group-item span {
+    margin-right: 20px; /* 文本之间的间距，如果需要的话 */
+}
+
+.list-group-item .span-tab {
+    display: block; /* 让每个span元素显示在新的行上 */
+    margin-left: 30px; /* 创建空格效果 */
+}
+
+.list-group-item .text-green {
+    color: green;
+}
+
+.list-group-item .text-red {
+    color: red;
+}
+
+.list-group-item .alert-status.error {
+    color: red; /* 将文字颜色设置为红色 */
+}
+
+.list-group-item .alert-status.low {
+    color: blue; /* 示范用法，可以根据需要改变颜色 */
+}
+
 /*
 	===============================
 			@Import	Function
@@ -65,7 +97,7 @@
 
 .widget-card-four .w-header .w-info h6 {
     font-weight: 600;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     color: #0e1726;
     font-size: 17px;
     letter-spacing: 0;
@@ -84,7 +116,6 @@
 .widget-card-four .w-content {
     display: flex;
     justify-content: space-between;
-    margin-top: 36px;
 }
 
 .widget-card-four .alert-content {
@@ -302,7 +333,6 @@
 .widget.widget-six {
     padding: 22px 18px;
     background: #fff;
-    height: 500px;
 }
 
 .widget.widget-six .widget-heading {
@@ -319,10 +349,10 @@
 }
 
 .widget.widget-six .row {
- display: flex;
-  flex-wrap: wrap;
-  margin-right: -10px;
-  margin-left: -10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -10px;
+    margin-left: -10px;
 }
 
 /* 确保 feature-item 的高度固定 */
@@ -411,11 +441,27 @@
 }
 
 .widget.widget-chart-two .widget-content {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* 确保容器宽度为100% */
     padding: 0 0 20px 0;
+    margin-top: 2em;
 }
 
 .widget.widget-chart-two .widget-content-text {
     padding: 20px 20px 0 20px;
+}
+/*.widget.widget-chart-two .widget-content-text .this-alert {*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    width: 50%; !* 或你需要的任何宽度 *!*/
+/*}*/
+
+.alert-container {
+    display: flex;
+    justify-content: center;  /* 水平居中 */
+    width: 100%;  /* 宽度设置为100%，这样它会占据全部的可用宽度 */
+    margin-top: 2em;
 }
 
 .widget.widget-chart-two .widget-content-alert {

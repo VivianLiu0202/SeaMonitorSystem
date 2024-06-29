@@ -16,7 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = "django-insecure-2*33fm6uz45%d=r)f!ntt^&@kb@2t*9^-p$5_2jkar20bb*icr
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -41,19 +39,20 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "login",
     'captcha',
-    'underwater',
+    'maininfo',
+    'corsheaders',
     'intelligent',
+    'underwater',
     'datacenter',
 ]
 
 # 验证码相关
 CAPTCHA_LENGTH = 4  # 验证码长度
 CAPTCHA_FONT_SIZE = 30  # 验证码字体大小
-CAPTCHA_CHALLENGE_FUNCT= 'captcha.helpers.random_char_challenge' #验证码为随机字符串
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'  # 验证码为随机字符串
 CAPTCHA_TIMEOUT = 30
-CAPTCHA_TEXT_FIELD_TEMPLATE= BASE_DIR+ '/template/html/captcha/text_field.html'
+CAPTCHA_TEXT_FIELD_TEMPLATE = BASE_DIR + '/template/html/captcha/text_field.html'
 CAPTCHA_OUTPUT_FORMAT = u'%(text_field)s %(image)s %(hidden_field)s'
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -63,7 +62,12 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'extra.middleware.RestrictAccessMiddleware',  # 添加你的中间件
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True  # 生产环境中你可能需要调整此设置
 
 ROOT_URLCONF = "SeaMonitorSystem.urls"
 
@@ -85,7 +89,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "SeaMonitorSystem.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -94,12 +97,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'SeaSystem',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'rootroot',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -119,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -132,7 +133,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

@@ -27,30 +27,18 @@
     <link href="{% static 'src/assets/css/dark/dashboard/dash_underwater.css' %}" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
-    <link rel="icon" type="image/x-icon" href="../src/assets/img/favicon.ico"/>
-    <link href="../layouts/vertical-dark-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
-    <link href="../layouts/vertical-dark-menu/css/dark/loader.css" rel="stylesheet" type="text/css" />
-    <script src="../layouts/vertical-dark-menu/loader.js"></script>
-   
-    <link href="../layouts/vertical-dark-menu/css/light/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="../layouts/vertical-dark-menu/css/dark/plugins.css" rel="stylesheet" type="text/css" />
-    <!-- END GLOBAL MANDATORY STYLES -->
+    <link rel="icon" type="image/x-icon" href="{% static 'src/assets/img/favicon.ico' %}"/>
 
-    <link href="../src/assets/css/light/scrollspyNav.css" rel="stylesheet" type="text/css" />
-    <link href="../src/plugins/css/light/apex/custom-apexcharts.css" rel="stylesheet" type="text/css">
-    <link href="../src/assets/css/dark/scrollspyNav.css" rel="stylesheet" type="text/css" />
-    <link href="../src/plugins/css/dark/apex/custom-apexcharts.css" rel="stylesheet" type="text/css">
+    <link href="{% static 'src/assets/css/light/scrollspyNav.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'src/plugins/css/light/apex/custom-apexcharts.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'src/assets/css/dark/scrollspyNav.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'src/plugins/css/dark/apex/custom-apexcharts.css' %}" rel="stylesheet" type="text/css">
 
-   
-    <link href="../layouts/vertical-light-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
-    <link href="../layouts/vertical-light-menu/css/dark/loader.css" rel="stylesheet" type="text/css" />
-    <script src="../layouts/vertical-light-menu/loader.js"></script>
-   
-    <link href="../layouts/vertical-light-menu/css/light/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="../layouts/vertical-light-menu/css/dark/plugins.css" rel="stylesheet" type="text/css" />
-    
-    <link href="../src/assets/css/light/elements/custom-typography.css" rel="stylesheet" type="text/css" />
-    <link href="../src/assets/css/dark/elements/custom-typography.css" rel="stylesheet" type="text/css" />
+
+    <link href="{% static 'src/assets/css/light/elements/custom-typography.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'src/assets/css/dark/elements/custom-typography.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'src/assets/css/light/elements/alert.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'src/assets/css/dark/elements/alert.css' %}">
     <style>
         .button {
             display: inline-block;
@@ -61,23 +49,23 @@
             text-decoration: none;
             outline: none;
             color: #fff;
-            background-color: #007BFF; 
+            background-color: #007BFF;
             border: none;
             border-radius: 15px;
-            box-shadow: 0 4px #0056b3; 
+            box-shadow: 0 4px #0056b3;
         }
 
         .button:hover {
-            background-color: #0056b3; 
+            background-color: #0056b3;
         }
 
         .button:active {
-            background-color: #0056b3; 
-            box-shadow: 0 2px #003f7f; 
+            background-color: #0056b3;
+            box-shadow: 0 2px #003f7f;
             transform: translateY(2px);
         }
     </style>
-    
+
 </head>
 
 <body class=" layout-boxed">
@@ -125,16 +113,7 @@
             </form>
             <span class="badge badge-secondary">Ctrl + /</span>
         </div>
-            
-        <form action="{% url 'download_fish_csv' %}" method="get">
-            <button type="submit" class="button" style="font-size: inherit; padding: inherit;">下载 Fish 数据</button>
-        </form>
-        <form action="{% url 'download_waterquality_csv' %}" method="get">
-            <button type="submit" class="button" style="font-size: inherit; padding: inherit;">下载 WaterQuality 数据</button>
-        </form>
-        <form action="{% url 'download_sensor_csv' %}" method="get">
-            <button type="submit" class="button" style="font-size: inherit; padding: inherit;">下载 Sensor 数据</button>
-        </form>
+
         <ul class="navbar-item flex-row ms-lg-auto ms-0">
 
             <li class="nav-item theme-toggle-item">
@@ -177,8 +156,8 @@
                                 &#x1F44B;
                             </div>
                             <div class="media-body">
-                                <h5>李大壮</h5>
-                                <p>池塘清扫员</p>
+                                <h5>{{ user_info.name }}</h5>
+                                <p>{{ user_info.job }}</p>
                             </div>
                         </div>
                     </div>
@@ -264,8 +243,8 @@
                         <img src="{% static 'src/assets/img/boy-1.png' %}" alt="avatar">
                     </div>
                     <div class="profile-content">
-                        <h6 class="">李大壮</h6>
-                        <p class="">池塘清扫员</p>
+                        <h6 class="">{{ user_info.name }}</h6>
+                        <p class="">{{ user_info.job }}</p>
                     </div>
                 </div>
             </div>
@@ -417,10 +396,9 @@
         <div class="layout-px-spacing">
 
             <div class="middle-content container-xxl p-0">
-                <button class="button" onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/underwater/fish/'">修改鱼类数据</button>
-                <button class="button" onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/underwater/sensor/'">修改传感器数据</button>
-                <button class="button" onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/underwater/waterquality/'">修改水质数据</button>
                 <div class="row layout-top-spacing">
+
+                    <!--鱼类信息-->
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-three">
                             <div class="widget-heading">
@@ -492,12 +470,13 @@
 
                                     </div>
 
-                             </div>
+                                </div>
 
                             </div>
                         </div>
                     </div>
 
+                    <!--设备信息-->
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-three">
                             <div class="widget-heading">
@@ -599,7 +578,8 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+                    <!--传感器信息-->
+                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                         <div class="widget widget-table-one">
                             <div class="widget-heading">
                                 <h5 id="sensor-title"></h5>
@@ -608,7 +588,7 @@
                                         <a class="dropdown-toggle" href="#" role="button" id="pendingTask" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
                                         </a>
-                
+
                                         <div class="dropdown-menu left" aria-labelledby="pendingTask" style="will-change: transform;">
                                             {% for sensor in sensors %}
                                             <a class="dropdown-item" href="javascript:void(0);" onclick="showSensorInfo('{{ sensor.sensor_id }}')">{{ sensor.sensor_id }}</a>
@@ -617,7 +597,7 @@
                                     </div>
                                 </div>
                             </div>
-                
+
                             <div class="widget-content">
                                 {% for sensor in sensors %}
                                 <div id="{{ sensor.sensor_id }}" class="sensor-info" style="display:none;">
@@ -688,8 +668,7 @@
                     </div>
 
 
-
-                    <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                         <div class="widget widget-chart-one">
                             <div class="widget-heading">
                                 <h5 class="">鱼群属性分布曲线</h5>
@@ -708,9 +687,14 @@
                                         </a>
                                         <div class="dropdown-menu left" aria-labelledby="renvenue"
                                              style="will-change: transform;">
-                                            <a class="dropdown-item" href="javascript:void(0);" data-type="weight">鱼重量</a>
-                                            <a class="dropdown-item" href="javascript:void(0);" data-type="length">鱼尺寸</a>
-                                            <a class="dropdown-item" href="javascript:void(0);" data-type="width">鱼宽度</a>
+                                            <a class="dropdown-item" href="{% url 'download_fish_csv' %}"
+                                               data-type="width">数据下载</a>
+                                            <a class="dropdown-item" href="javascript:void(0);"
+                                               data-type="weight">鱼重量</a>
+                                            <a class="dropdown-item" href="javascript:void(0);"
+                                               data-type="length">鱼尺寸</a>
+                                            <a class="dropdown-item" href="javascript:void(0);"
+                                               data-type="width">鱼宽度</a>
                                         </div>
                                     </div>
                                 </div>
@@ -729,20 +713,22 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                         <div class="widget widget-chart-two">
-                            <div class="widget-heading">
-                                <h5 class="">鱼群种类统计</h5>
-                            </div>
-                            <div class="widget-content">
-                                <div id="radial-chart" class=""></div>
-                            </div>
-                        </div>
-                    </div>
+                    <!--                    &lt;!&ndash;鱼群种类信息&ndash;&gt;-->
+                    <!--                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">-->
+                    <!--                        <div class="widget widget-chart-two">-->
+                    <!--                            <div class="widget-heading">-->
+                    <!--                                <h5 class="">鱼群种类统计</h5>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="widget-content">-->
+                    <!--                                <div id="radial-chart" class=""></div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
 
+                    <!--水质数据-->
                     <div class="col-lg-12 col-12 layout-spacing">
                         <div class="statbox widget box box-shadow">
-                            <div class="widget-header">                                
+                            <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>水质数据</h4>
@@ -753,100 +739,110 @@
                                 <form action="{% url 'underwater' %}" method="post">
                                     <div class="row mb-4">
                                         <div class="col">
-                                            <input type="text" class="form-control" placeholder="Month" name="month">
-                                        </div>
-                
-                                        <div class="col">
-                                            <input type="text" class="form-control" placeholder="date" name="date">
+                                            <input type="date" class="form-control" placeholder="date" name="date">
                                         </div>
 
-                                        <div class="col-5" name="area">
-                                            <select class="form-control" name="area">
-                                                <option value="" disabled selected>Select Area</option>
-                                                <option value="北洋桥">北洋桥</option>
-                                                <option value="大红桥">大红桥</option>
-                                                <option value="大套桥">大套桥</option>
-                                                <option value="海河大闸">海河大闸</option>
-                                                <option value="万家码头">万家码头</option>
+                                        <div class="col-2">
+                                            <select class="form-control" id="province-select" name="province">
+                                                <option value="">选择省份</option>
+                                                {% for province in provinces %}
+                                                <option value="{{ province }}">{{ province }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="col-2">
+                                            <!-- 流域选择 -->
+                                            <select class="form-control" id="river-basin-select" name="river_basin">
+                                                <option value="">选择流域</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-2">
+                                            <!-- 断面名称选择 -->
+                                            <select class="form-control" id="section-name-select" name="section_name">
+                                                <option value="">选择断面名称</option>
                                             </select>
                                         </div>
 
                                         <div class="col">
-                                        <input type="submit" name="time" class="btn btn-primary">
+                                            <input type="submit" name="time" class="btn btn-primary" value="查询">
                                         </div>
                                     </div>
-                                    
+
                                 </form>
+
+                                <div id="alerts-container"></div>
 
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <thead>
-                                            <tr>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Date</th>
-                                                <th class="text-center" scope="col">PH</th>
-                                                <th class="text-center" scope="col">溶解氧</th>
-                                                <th class="text-center" scope="col">高锰酸盐指数</th>
-                                                <th class="text-center" scope="col">氨氮</th>
-                                                <th class="text-center" scope="col">总磷</th>
-                                                <th class="text-center" scope="col">站点情况</th>
-                                            </tr>
+                                        <tr>
+                                            <th class="text-center" scope="col">地点</th>
+                                            <th class="text-center" scope="col">时间</th>
+                                            <th class="text-center" scope="col">PH</th>
+                                            <th class="text-center" scope="col">溶解氧</th>
+                                            <th class="text-center" scope="col">高锰酸盐指数</th>
+                                            <th class="text-center" scope="col">氨氮</th>
+                                            <th class="text-center" scope="col">总磷</th>
+                                            <th class="text-center" scope="col">站点情况</th>
+                                        </tr>
                                         </thead>
 
                                         <tbody>
-                                            {% for result in results %}
-                                            <tr>
-                                                <td>{{ result.section_name }}</td>
-                                                <td>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                                    <span class="table-inner-text">{{ result.monitoring_time }}</span>
-                                                </td>
-                                                <td class="text-center">{{ result.pH }}</td>
-                                                <td class="text-center">{{ result.dissolved_oxygen }}</td>
-                                                <td class="text-center">{{ result.permanganate_index }}</td>
-                                                <td class="text-center">{{ result.ammonia_nitrogen }}</td>
-                                                <td class="text-center">{{ result.total_phosphorus }}</td>
-                                                {% if result.site_status == '正常' %}
-                                                <td class="text-center">
-                                                    <span class="badge badge-light-success">{{ result.site_status }}</span>
-                                                </td>
-                                                {% elif result.site_status == '维护' %}
-                                                <td class="text-center">
-                                                    <span class="badge badge-light-danger">{{ result.site_status }}</span>
-                                                </td>
-                                                {% else %}
-                                                <td class="text-center">
-                                                    <span class="badge badge-light-secondary">{{ result.site_status }}</span>
-                                                </td>
-                                                {% endif %}
-                                                
-                                            </tr>
-                                            {% empty %}
-                                            <tr>
-                                                <td colspan="7" class="text-center">No results found</td>
-                                            </tr>
-                                            {% endfor %}
+                                        {% for result in results %}
+                                        <tr>
+                                            <td>{{ result.section_name }}</td>
+                                            <td>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-calendar">
+                                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                                </svg>
+                                                <span class="table-inner-text">{{ result.monitoring_time }}</span>
+                                            </td>
+                                            <td class="text-center">{{ result.pH }}</td>
+                                            <td class="text-center">{{ result.dissolved_oxygen }}</td>
+                                            <td class="text-center">{{ result.permanganate_index }}</td>
+                                            <td class="text-center">{{ result.ammonia_nitrogen }}</td>
+                                            <td class="text-center">{{ result.total_phosphorus }}</td>
+                                            {% if result.site_status == '正常' %}
+                                            <td class="text-center">
+                                                <span class="badge badge-light-success">{{ result.site_status }}</span>
+                                            </td>
+                                            {% elif result.site_status == '维护' %}
+                                            <td class="text-center">
+                                                <span class="badge badge-light-danger">{{ result.site_status }}</span>
+                                            </td>
+                                            {% else %}
+                                            <td class="text-center">
+                                                <span class="badge badge-light-secondary">{{ result.site_status }}</span>
+                                            </td>
+                                            {% endif %}
+
+                                        </tr>
+                                        {% empty %}
+                                        <tr>
+                                            <td colspan="8" class="text-center">No results found</td>
+                                        </tr>
+                                        {% endfor %}
                                         </tbody>
-                                        
-                                        
+
+
                                     </table>
                                 </div>
                             </div>
-                            
                         </div>
-                        
                     </div>
 
-
-
-
                     <!--  修改：硬件信息    -->
-                    
-
-                    <div class="row layout-top-spacing">
-                        
-                        <div id="typographyLists" class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-                            <div class="statbox widget box box-shadow">
+                    <div class="row layout-top-spacing" >
+                        <!--网箱信息-->
+                        <div id="info-net" class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing" >
+                            <div class="widget  widget-card-four" >
                                 <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
@@ -854,110 +850,168 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-content widget-content-area">
-    
+                                <div class="widget-content" >
+
                                     <div class="row">
                                         <div class="col-xl-12 mx-auto">
-                                            <div class="element-background">
+                                            <div class="element-background" >
                                                 <ul class="list-icon">
                                                     <li>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                             stroke-width="2" stroke-linecap="round"
+                                                             stroke-linejoin="round"
+                                                             class="feather feather-arrow-right">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
                                                         <span class="list-text">网箱长度：100m</span>
                                                     </li>
                                                     <li>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                             stroke-width="2" stroke-linecap="round"
+                                                             stroke-linejoin="round"
+                                                             class="feather feather-arrow-right">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
                                                         <span class="list-text">网箱宽度：50m</span>
                                                     </li>
                                                     <li>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                             stroke-width="2" stroke-linecap="round"
+                                                             stroke-linejoin="round"
+                                                             class="feather feather-arrow-right">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
                                                         <span class="list-text">网箱深度：30m</span>
                                                     </li>
                                                     <li>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                             stroke-width="2" stroke-linecap="round"
+                                                             stroke-linejoin="round"
+                                                             class="feather feather-arrow-right">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
                                                         <span class="list-text">网箱经度：128.034</span>
                                                     </li>
                                                     <li>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                             stroke-width="2" stroke-linecap="round"
+                                                             stroke-linejoin="round"
+                                                             class="feather feather-arrow-right">
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </svg>
                                                         <span class="list-text">网箱维度：56.123</span>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
-    
+
                                 </div>
                             </div>
                         </div>
-                        <div id="typographyLists" class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-                            <div class="statbox widget box box-shadow">
+                        <!--水质标准-->
+                        <div id="waterQualityStandards" class="col-xl-8 col-lg-6 col-md-6 col-sm-12 layout-spacing">
+                            <div class="statbox widget box box-shadow widget-card-four" >
                                 <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>水质标准（Ⅰ；Ⅱ；Ⅲ；Ⅳ；Ⅴ）</h4>
-                                        </div>
-                                    </div>
+                                    <h4>水质标准</h4>
                                 </div>
                                 <div class="widget-content widget-content-area">
-    
-                                    <div class="row">
-                                        <div class="col-xl-12 mx-auto">
-                                            <div class="element-background">
-                                                <ul class="list-icon">
-                                                    <li>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                        <span class="list-text">pH（6~9）</span>
-                                                    </li>
-                                                    <li>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                        <span class="list-text">溶氧量>=(7.5；6；5；3；2)</span>
-                                                    </li>
-                                                    <li>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                        <span class="list-text">高锰酸钾指数<=(2；4；6；10；15)</span>
-                                                    </li>
-                                                    <li>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                        <span class="list-text">氨氮<=(0.15；0.5；1.0；1.5；2.0)</span>
-                                                    </li>
-                                                    <li>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                        <span class="list-text">总磷<=(0.02；0.1；0.2；0.3；0.4)</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center" scope="col">水质等级</th>
+                                                    <th class="text-center" scope="col">pH</th>
+                                                    <th class="text-center" scope="col">溶氧量 (mg/L)</th>
+                                                    <th class="text-center" scope="col">高锰酸钾指数 (mg/L)</th>
+                                                    <th class="text-center" scope="col">氨氮 (mg/L)</th>
+                                                    <th class="text-center" scope="col">总磷 (mg/L)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">Ⅰ</td>
+                                                    <td class="text-center">6 ~ 9</td>
+                                                    <td class="text-center">≥7.5</td>
+                                                    <td class="text-center">≤2</td>
+                                                    <td class="text-center">≤0.15</td>
+                                                    <td class="text-center">≤0.02</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">Ⅱ</td>
+                                                    <td class="text-center">6 ~ 9</td>
+                                                    <td class="text-center">≥6</td>
+                                                    <td class="text-center">≤4</td>
+                                                    <td class="text-center">≤0.5</td>
+                                                    <td class="text-center">≤0.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">Ⅲ</td>
+                                                    <td class="text-center">6 ~ 9</td>
+                                                    <td class="text-center">≥5</td>
+                                                    <td class="text-center">≤6</td>
+                                                    <td class="text-center">≤1.0</td>
+                                                    <td class="text-center">≤0.2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">Ⅳ</td>
+                                                    <td class="text-center">6 ~ 9</td>
+                                                    <td class="text-center">≥3</td>
+                                                    <td class="text-center">≤10</td>
+                                                    <td class="text-center">≤1.5</td>
+                                                    <td class="text-center">≤0.3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">Ⅴ</td>
+                                                    <td class="text-center">6 ~ 9</td>
+                                                    <td class="text-center">≥2</td>
+                                                    <td class="text-center">≤15</td>
+                                                    <td class="text-center">≤2.0</td>
+                                                    <td class="text-center">≤0.4</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-    
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                
+                </div>
 
             </div>
 
-        </div>
-     
-        <!--  BEGIN FOOTER  -->
-        <div class="footer-wrapper">
-            <div class="footer-section f-section-1">
-                <p class="">系统正在开发ing，有小bug，敬请谅解</p>
+            <!--  BEGIN FOOTER  -->
+            <div class="footer-wrapper">
+                <div class="footer-section f-section-1">
+                    <p class="">系统正在开发ing，有小bug，敬请谅解</p>
+                </div>
+
             </div>
+            <!--  END FOOTER  -->
 
+            <!--  END CONTENT AREA  -->
         </div>
-        <!--  END FOOTER  -->
-
         <!--  END CONTENT AREA  -->
+
     </div>
-    <!--  END CONTENT AREA  -->
+    <!-- END MAIN CONTAINER -->
 
 </div>
-<!-- END MAIN CONTAINER -->
-
 <!--todo done 新增签到功能，按钮变化，弹窗-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="{% static 'src/assets/js/Hu/signInScript.js' %}"></script>
+<script src="{% static 'src/assets/js/searchNav.js' %}"></script>
 
 <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
 <script src="{% static 'src/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -970,38 +1024,80 @@
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 <script src="{% static 'src/plugins/src/apex/apexcharts.min.js' %}"></script>
 <script src="{% static 'src/assets/js/dashboard/dash_underwater.js' %}"></script>
-<script src="{% static 'src/assets/js/dashboard/dash_datacenter.js' %}"></script>
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-<script src="../src/plugins/src/highlight/highlight.pack.js"></script>
-<script src="../src/assets/js/scrollspyNav.js"></script>
-<script src="../src/plugins/src/apex/apexcharts.min.js"></script>
-<script src="../src/plugins/src/apex/custom-apexcharts.js"></script>
+<script src="{% static 'src/plugins/src/highlight/highlight.pack.js' %}"></script>
+<script src="{% static 'src/assets/js/scrollspyNav.js' %}"></script>
+<script src="{% static 'src/plugins/src/apex/custom-apexcharts.js' %}"></script>
 
 <script>
 
     var allSpeciesData = JSON.parse('{{ all_species_data|safe }}');
-    
-    $(document).ready(function() {
+
+    $(document).ready(function () {
         $("#date").inputmask("99/99/9999");
     });
 </script>
+
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function () {-->
+<!--        const alerts = JSON.parse('{{ alerts|safe }}'); // 确保这里正确地将 alerts 变量从 Django 传递到 JavaScript-->
+<!--        if (alerts && alerts.length > 0) {  // 检查 alerts 是否非空且长度大于0-->
+<!--            let alertMessage = "Water Quality Alerts:\n\n";-->
+<!--            alerts.forEach(alert => {-->
+<!--                alertMessage += alert + "\n";-->
+<!--            });-->
+<!--            alert(alertMessage);-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+<!--<script>-->
+<!--document.addEventListener('DOMContentLoaded', function() {-->
+<!--    const alerts = JSON.parse('{{ alerts|safe }}');  // 从后端获取警告数组-->
+<!--    const alertsContainer = document.getElementById('alerts-container');  // 假设你有一个容器元素用于显示警告-->
+
+<!--    if (alerts && alerts.length > 0) {-->
+<!--        alerts.forEach(alert => {-->
+<!--            const alertDiv = document.createElement('div');-->
+<!--            alertDiv.className = 'alert alert-warning';-->
+<!--            alertDiv.textContent = alert;  // 将整个警告信息作为文本内容添加-->
+<!--            alertsContainer.appendChild(alertDiv);-->
+<!--        });-->
+<!--    }-->
+<!--});-->
+<!--</script>-->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const alerts = JSON.parse('{{ alerts|safe }}');  // 确保这里正确地将 alerts 变量从 Django 传递到 JavaScript
+    const alertsContainer = document.getElementById('alerts-container');  // 假设你有一个容器元素用于显示警告
+
+    if (alerts && alerts.length > 0) {
+        alerts.forEach(alert => {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-light-danger alert-dismissible fade show border-0 mb-4';
+            alertDiv.setAttribute('role', 'alert');
+            alertDiv.innerHTML = `
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <strong>Error!</strong> ${alert}
+            `;
+            alertsContainer.appendChild(alertDiv);
+        });
+    }
+});
+</script>
+
+<!-- 传感器信息 -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const alerts = JSON.parse('{{ alerts|safe }}');
-        if (alerts.length > 0) {
-            let alertMessage = "Water Quality Alerts:\n\n";
-            alerts.forEach(alert => {
-                alertMessage += alert + "\n";
-            });
-            alert(alertMessage);
-        }
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
         // 默认显示第一个传感器的数据
         var firstSensorId = '{{ sensors.first.sensor_id }}';
         showSensorInfo(firstSensorId);
@@ -1021,19 +1117,56 @@
         }
 
         // 更新标题
-        document.getElementById('sensor-title').innerText =  sensorId;
+        document.getElementById('sensor-title').innerText = sensorId;
     }
 </script>
 
 
- <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
- <script src="../src/plugins/src/global/vendors.min.js"></script>
- <script src="../layouts/vertical-light-menu/app.js"></script>
- <script src="../src/plugins/src/input-mask/jquery.inputmask.bundle.min.js"></script>
- <script src="../src/plugins/src/input-mask/input-mask.js"></script>
+<!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+<script src="{% static 'src/plugins/src/global/vendors.min.js' %}"></script>
+<script src="{% static 'src/plugins/src/input-mask/jquery.inputmask.bundle.min.js' %}"></script>
+<script src="{% static 'src/plugins/src/input-mask/input-mask.js' %}"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $("#province-select").change(function () {
+        var url = "{% url 'ajax_load_river_basins' %}";  // 获取流域的 URL
+        var provinceId = $(this).val();  // 获取选中的省份
+
+        $.ajax({
+            url: url,
+            data: {
+                'province': provinceId
+            },
+            success: function (data) {
+                $("#river-basin-select").html('<option value="">选择流域</option>');
+                $.each(data, function (key, value) {
+                    $("#river-basin-select").append('<option value="' + value + '">' + value + '</option>');
+                });
+            }
+        });
+    });
+
+    $("#river-basin-select").change(function () {
+        var url = "{% url 'ajax_load_section_names' %}";  // 获取断面名称的 URL
+        var riverBasin = $(this).val();  // 获取选中的流域
+
+        $.ajax({
+            url: url,
+            data: {
+                'river_basin': riverBasin
+            },
+            success: function (data) {
+                $("#section-name-select").html('<option value="">选择断面名称</option>');
+                $.each(data, function (key, value) {
+                    $("#section-name-select").append('<option value="' + value + '">' + value + '</option>');
+                });
+            }
+        });
+    });
+</script>
 
 
- 
 </body>
 
 </html>

@@ -22,7 +22,6 @@
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="{% static 'src/plugins/src/apex/apexcharts.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'src/assets/css/light/dashboard/dash_datacenter.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'src/assets/css/dark/dashboard/dash_datacenter.css' %}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
@@ -35,33 +34,39 @@
 
     <link href="{% static 'src/assets/css/dark/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'src/plugins/css/dark/apex/custom-apexcharts.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'src/assets/css/light/elements/search.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'src/assets/css/dark/elements/search.css' %}" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'src/assets/css/light/elements/alert.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'src/assets/css/dark/elements/alert.css' %}">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <style>
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #007BFF; 
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 4px #0056b3; 
-        }
+<!--    <style>-->
+<!--        .button {-->
+<!--            display: inline-block;-->
+<!--            padding: 10px 20px;-->
+<!--            font-size: 16px;-->
+<!--            cursor: pointer;-->
+<!--            text-align: center;-->
+<!--            text-decoration: none;-->
+<!--            outline: none;-->
+<!--            color: #fff;-->
+<!--            background-color: #007BFF;-->
+<!--            border: none;-->
+<!--            border-radius: 15px;-->
+<!--            box-shadow: 0 4px #0056b3;-->
+<!--        }-->
 
-        .button:hover {
-            background-color: #0056b3; 
-        }
+<!--        .button:hover {-->
+<!--            background-color: #0056b3;-->
+<!--        }-->
 
-        .button:active {
-            background-color: #0056b3; 
-            box-shadow: 0 2px #003f7f; 
-            transform: translateY(2px);
-        }
-    </style>
+<!--        .button:active {-->
+<!--            background-color: #0056b3;-->
+<!--            box-shadow: 0 2px #003f7f;-->
+<!--            transform: translateY(2px);-->
+<!--        }-->
+<!--    </style>-->
 </head>
 
 <body class="layout-boxed">
@@ -110,11 +115,7 @@
                 </form>
                 <span class="badge badge-secondary">Ctrl + /</span>
             </div>
-            <form action="{% url 'download_ohio_csv' %}" method="get">
-                <button type="submit" class="button" style="font-size: inherit; padding: inherit;">下载 Ohio 数据</button>
-            </form>
             <ul class="navbar-item flex-row ms-lg-auto ms-0">
-
                 <!--主题切换-->
                 <li class="nav-item theme-toggle-item">
                     <a href="javascript:void(0);" class="nav-link theme-toggle">
@@ -156,8 +157,8 @@
                                     &#x1F44B;
                                 </div>
                                 <div class="media-body">
-                                    <h5>李大壮</h5>
-                                    <p>池塘清扫员</p>
+                                    <h5>{{ user_info.name }}</h5>
+                                    <p>{{ user_info.job }}</p>
                                 </div>
                             </div>
                         </div>
@@ -244,8 +245,8 @@
                             <img src="{% static 'src/assets/img/boy-1.png' %}" alt="avatar">
                         </div>
                         <div class="profile-content">
-                            <h6 class="">李大壮</h6>
-                            <p class="">池塘清扫员</p>
+                            <h6 class="">{{ user_info.name }}</h6>
+                            <p class="">{{ user_info.job }}</p>
                         </div>
                     </div>
                 </div>
@@ -393,48 +394,59 @@
             <div class="layout-px-spacing">
 
                 <div class="middle-content container-xxl p-0">
-                    <button class="button" onclick="window.location.href='http://127.0.0.1:8000/admin/#/admin/datacenter/ohio/'">修改数据</button>
                     <div class="row layout-top-spacing">
 
-                        
-
-
-                        <!--地图-->
-                        <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                            <div class="widget widget-map">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>数据中心分布</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="map-container" id="data-map" style="display: flex; justify-content: center; align-items: center;">
-                                    <iframe src="https://map.baidu.com/" style="width:90%; height:400px; justify-content: center; align-items:center;"></iframe> 
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <!-- <div id="chartRadial" class="col-xl-12 layout-spacing">
+                        <!--搜索鱼类-->
+                        <div id="searchLive" class="col-lg-12 layout-spacing">
                             <div class="statbox widget box box-shadow">
                                 <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>各渔业养殖组KPI完成情况</h4>
+                                            <h4>鱼类查询</h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-content widget-content-area">
-                                    <div id="radial-chart" class=""></div>
+                                <div class="widget-content widget-content-area text-center tags-content">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8 col-sm-9 filtered-list-search mx-auto">
+                                            <form class="form-inline my-2 my-lg-0 justify-content-center">
+                                                <div class="w-100">
+                                                    <input type="text" class="w-100 form-control product-search br-30"
+                                                           id="searchInput" placeholder="输入鱼种类...">
+                                                    <button class="btn btn-primary" type="submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                         class="feather feather-search">
+                                                        <circle cx="11" cy="11" r="8"></circle>
+                                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                    </svg>
+                                                    </button>
+                                                    <br>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="searchable-container">
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="searchable-items" id="result">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div> -->
-                        <div id="chartpyr" class="col-xl-12 layout-spacing">
+                        </div>
+                        <div id="chartpyr" class="col-xl-6 layout-spacing">
                             <div class="statbox widget box box-shadow">
                                 <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>3cm_size_class分布</h4>
+                                            <h4>3cm尺寸范围分类分布</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -443,9 +455,10 @@
                                     <script>
                                         var sizeClassNames = {{ size_class_names|safe }};
                                         var sizeClassCounts = {{ size_class_counts|safe }};
-                                
+
                                         var chartOptions = {
                                             series: [{
+                                                name:'总数',
                                                 data: sizeClassCounts
                                             }],
                                             chart: {
@@ -487,73 +500,20 @@
                                                 show: false
                                             }
                                         };
-                                
+
                                         var chart = new ApexCharts(document.querySelector("#chart"), chartOptions);
                                         chart.render();
                                     </script>
-            
+
                                 </div>
                             </div>
                         </div>
-                        
-                        <!--数据交汇处理-->
-                        <!-- <div id="chartPyramid" class="col-xl-12 layout-spacing">
+                        <div id="chartBar" class="col-xl-6 layout-spacing">
                             <div class="statbox widget box box-shadow">
                                 <div class="widget-header">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>数据交汇处理</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content widget-content-area">
-                                    <div id="pyramid-chart" class=""></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="chart"></div>
-
-    <script>
-        var sizeClassNames = {{ size_class_names|safe }};
-        var sizeClassCounts = {{ size_class_counts|safe }};
-
-        var chartOptions = {
-            series: [{
-                data: sizeClassCounts
-            }],
-            chart: {
-                type: 'bar',
-                height: 350
-            },
-            xaxis: {
-                categories: sizeClassNames
-            }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart"), chartOptions);
-        chart.render();
-    </script> -->
-                        <!--数据类型占比-->
-                        <!-- <div id="chartRadar" class="col-xl-8 layout-spacing">
-                            <div class="statbox widget box box-shadow">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>数据类型占比</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content widget-content-area">
-                                    <div id="radar-chart" class=""></div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <div id="chartBar" class="col-xl-12 layout-spacing">
-                            <div class="statbox widget box box-shadow">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>拉丁文名分布</h4>
+                                            <h4>鱼类拉丁文名分布</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -562,7 +522,7 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <script>
                             document.addEventListener('DOMContentLoaded', function () {
                                 var barChart = {
@@ -612,11 +572,12 @@
                                         ],
                                     }
                                 };
-                    
+
                                 var chart = new ApexCharts(document.querySelector("#bar-chart"), barChart);
                                 chart.render();
                             });
                         </script>
+
 
                         <!--数据库查询数据-->
                         <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
@@ -729,9 +690,10 @@
                             </div>
                         </div>
 
+
                         <!--硬件信息统计-->
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                            <div class="widget-four">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+                            <div class=" widget widget-four" style="height: 480px">
                                 <div class="widget-heading">
                                     <h5 class="">硬件信息统计</h5>
                                 </div>
@@ -828,423 +790,97 @@
 
                                         </div>
 
+                                        <div class="browser-list">
+                                            <div class="w-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-chrome">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <circle cx="12" cy="12" r="4"></circle>
+                                                    <line x1="21.17" y1="8" x2="12" y2="8"></line>
+                                                    <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+                                                    <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+                                                </svg>
+                                            </div>
+                                            <div class="w-browser-details">
+                                                <div class="w-browser-info">
+                                                    <h6>硬盘使用状态</h6>
+                                                    <p class="browser-count">57%</p>
+                                                </div>
+                                                <div class="w-browser-stats">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-gradient-primary" role="progressbar"
+                                                            style="width: 57%" aria-valuenow="90" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="browser-list">
+                                            <div class="w-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-compass">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polygon
+                                                        points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76">
+                                                    </polygon>
+                                                </svg>
+                                            </div>
+                                            <div class="w-browser-details">
+
+                                                <div class="w-browser-info">
+                                                    <h6>网络收发状态</h6>
+                                                    <p class="browser-count">47%</p>
+                                                </div>
+
+                                                <div class="w-browser-stats">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-gradient-danger" role="progressbar"
+                                                            style="width: 47%" aria-valuenow="65" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
                                     </div>
 
                                 </div>
                             </div>
                         </div>
 
-                        <!--结构化数据树形图-->
-                        <!-- <div id="chartTreemap" class="col-xl-12 layout-spacing">
-                            <div class="statbox widget box box-shadow">
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>结构化数据树形图</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content widget-content-area">
-                                    <div id="treemap-chart" class=""></div>
-                                </div>
-                            </div>
-                        </div> -->
 
-                        <!--数据总量-->
-                        <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                            <div class="widget widget-chart-three">
-                                <div class="widget-heading">
-                                    <div class="">
-                                        <h5 class="">数据总量</h5>
-                                    </div>
-
-                                    <div class="task-action">
-                                        <div class="dropdown ">
-                                            <a class="dropdown-toggle" href="#" role="button" id="uniqueVisitors"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-more-horizontal">
-                                                    <circle cx="12" cy="12" r="1"></circle>
-                                                    <circle cx="19" cy="12" r="1"></circle>
-                                                    <circle cx="5" cy="12" r="1"></circle>
-                                                </svg>
-                                            </a>
-
-                                            <div class="dropdown-menu left" aria-labelledby="uniqueVisitors">
-                                                <a class="dropdown-item" href="javascript:void(0);">View</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Update</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Download</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="widget-content">
-                                    <div id="uniqueVisits"></div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!--传感器信息-->
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+                        <!-- 海洋牧场环境感知得分图表 -->
+                        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-card-four">
-                                <div class="widget-content">
                                 <div class="w-header">
                                     <div class="w-info">
-                                    <h6 class="value">传感器信息</h6>
+                                        <h6 class="value">海洋牧场环境感知得分</h6>
                                     </div>
-                
                                 </div>
-                
-                                <div class="w-content">
-                                    <div class="w-info">
-                                    <p id="transfer-time">平均传输时间  02：05</p>
-                                    <p id="process-time">平均处理时间  00：02</p>
-
+                                <div class="widget-content">
+                                    <div class="widget-content-text">
+                                        <ul class="list-group">
+                                            <li class="list-group-item list-group-item-danger">0.25以下为危险</li>
+                                            <li class="list-group-item list-group-item-warning">0.5以下为隐患</li>
+                                            <li class="list-group-item list-group-item-info">0.75以下为正常</li>
+                                            <li class="list-group-item list-group-item-success">0.75以上为舒适</li>
+                                        </ul>
                                     </div>
-                                </div>        
+                                    <div id="enviroment" class="" style="height: 100%"></div>
+                                    <div class="alert-container">
+                                        <div class="alert alert-light-danger alert-dismissible fade show border-2 mb-4" role="alert" style="width: 400px"> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-bs-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Warning!</strong> 水温过高～</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!--传感器设备日志-->
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                            <div class="widget widget-activity-five">
-
-                                <div class="widget-heading">
-                                    <h5 class="">传感器设备日志</h5>
-
-                                    <div class="task-action">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="activitylog"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-more-horizontal">
-                                                    <circle cx="12" cy="12" r="1"></circle>
-                                                    <circle cx="19" cy="12" r="1"></circle>
-                                                    <circle cx="5" cy="12" r="1"></circle>
-                                                </svg>
-                                            </a>
-
-                                            <div class="dropdown-menu left" aria-labelledby="activitylog"
-                                                style="will-change: transform;">
-                                                <a class="dropdown-item" href="javascript:void(0);">View All</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Mark as Read</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="widget-content">
-
-                                    <div class="w-shadow-top"></div>
-
-                                    <div class="mt-container mx-auto">
-                                        <div class="timeline-line">
-
-                                            <div class="item-timeline timeline-new">
-                                                <div class="t-dot">
-                                                    <div class="t-secondary"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            class="feather feather-plus">
-                                                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                        </svg></div>
-                                                </div>
-                                                <div class="t-content">
-                                                    <div class="t-uppercontent">
-                                                        <h5>Video-1 <a href="javascript:void(0);">类型</a>   <a
-                                                            href="javascript:void(0);">大小</a>
-                                                        </h5>
-                                                    </div>
-                                                    <p>07 May, 2024</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="item-timeline timeline-new">
-                                                <div class="t-dot">
-                                                    <div class="t-success"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            class="feather feather-mail">
-                                                            <path
-                                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                                                            </path>
-                                                            <polyline points="22,6 12,13 2,6"></polyline>
-                                                        </svg></div>
-                                                </div>
-                                                <div class="t-content">
-                                                    <div class="t-uppercontent">
-                                                        <h5>Video-2 <a href="javascript:void(0);">类型</a>   <a
-                                                            href="javascript:void(0);">大小</a>
-                                                        </h5>
-                                                    </div>
-                                                    <p>06 May, 2024</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="item-timeline timeline-new">
-                                                <div class="t-dot">
-                                                    <div class="t-primary"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            class="feather feather-check">
-                                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                                        </svg></div>
-                                                </div>
-                                                <div class="t-content">
-                                                    <div class="t-uppercontent">
-                                                        <h5>Video-3 <a href="javascript:void(0);">类型</a>   <a
-                                                            href="javascript:void(0);">大小</a>
-                                                        </h5>
-                                                    </div>
-                                                    <p>01 May, 2024</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="item-timeline timeline-new">
-                                                <div class="t-dot">
-                                                    <div class="t-danger"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            class="feather feather-check">
-                                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                                        </svg></div>
-                                                </div>
-                                                <div class="t-content">
-                                                    <div class="t-uppercontent">
-                                                        <h5>Holder-1 <a href="javascript:void(0);">类型</a>   <a
-                                                            href="javascript:void(0);">大小</a>
-                                                        </h5>
-                                                    </div>
-                                                    <p>30 Apr, 2024</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="item-timeline timeline-new">
-                                                <div class="t-dot">
-                                                    <div class="t-warning"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            class="feather feather-file">
-                                                            <path
-                                                                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z">
-                                                            </path>
-                                                            <polyline points="13 2 13 9 20 9"></polyline>
-                                                        </svg></div>
-                                                </div>
-                                                <div class="t-content">
-                                                    <div class="t-uppercontent">
-                                                        <h5>Sonar-1 <a href="javascript:void(0);">类型</a>   <a
-                                                            href="javascript:void(0);">大小</a>
-                                                        </h5>
-                                                        <span class=""></span>
-                                                    </div>
-                                                    <p>25 Apr, 2024</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="item-timeline timeline-new">
-                                                <div class="t-dot">
-                                                    <div class="t-dark"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            class="feather feather-server">
-                                                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2">
-                                                            </rect>
-                                                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2">
-                                                            </rect>
-                                                            <line x1="6" y1="6" x2="6" y2="6"></line>
-                                                            <line x1="6" y1="18" x2="6" y2="18"></line>
-                                                        </svg></div>
-                                                </div>
-                                                <div class="t-content">
-                                                    <div class="t-uppercontent">
-                                                        <h5>Sensor-1 <a href="javascript:void(0);">类型</a>   <a
-                                                            href="javascript:void(0);">大小</a>
-                                                        </h5>
-                                                        <span class=""></span>
-                                                    </div>
-                                                    <p>10 Apr, 2024</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="w-shadow-bottom"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                            <div class="widget widget-five">
-
-                                <div class="widget-heading">
-
-                                    <a href="javascript:void(0)" class="task-info">
-
-                                        <div class="usr-avatar">
-                                            <span>FD</span>
-                                        </div>
-
-                                        <div class="w-title">
-
-                                            <h5>Figma Design</h5>
-                                            <span>Design Project</span>
-
-                                        </div>
-
-                                    </a>
-
-                                    <div class="task-action">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="pendingTask"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-more-horizontal">
-                                                    <circle cx="12" cy="12" r="1"></circle>
-                                                    <circle cx="19" cy="12" r="1"></circle>
-                                                    <circle cx="5" cy="12" r="1"></circle>
-                                                </svg>
-                                            </a>
-
-                                            <div class="dropdown-menu left" aria-labelledby="pendingTask"
-                                                style="will-change: transform;">
-                                                <a class="dropdown-item" href="javascript:void(0);">View Project</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Edit Project</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Mark as Done</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="widget-content">
-
-                                    <p>Doloribus nisi vel suscipit modi, optio ex repudiandae voluptatibus officiis
-                                        commodi.</p>
-
-                                    <div class="progress-data">
-
-                                        <div class="progress-info">
-                                            <div class="task-count"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-check-square">
-                                                    <polyline points="9 11 12 14 22 4"></polyline>
-                                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11">
-                                                    </path>
-                                                </svg>
-                                                <p>5 Tasks</p>
-                                            </div>
-                                            <div class="progress-stats">
-                                                <p>86.2%</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="progress">
-                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 65%"
-                                                aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="meta-info">
-
-                                        <div class="due-time">
-                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-clock">
-                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                                </svg> 3 Days Left</p>
-                                        </div>
-
-
-                                        <div class="avatar--group">
-
-                                            <div class="avatar translateY-axis more-group">
-                                                <span class="avatar-title">+6</span>
-                                            </div>
-                                            <div class="avatar translateY-axis">
-                                                <img alt="avatar" src="{% static 'src/assets/img/profile-8.jpeg' %}" />
-                                            </div>
-                                            <div class="avatar translateY-axis">
-                                                <img alt="avatar" src="{% static 'src/assets/img/profile-12.jpeg' %}" />
-                                            </div>
-                                            <div class="avatar translateY-axis">
-                                                <img alt="avatar" src="{% static 'src/assets/img/profile-19.jpeg' %}" />
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                            <div class="widget widget-card-one">
-                                <div class="widget-content">
-
-                                    <div class="media">
-                                        <div class="w-img">
-                                            <img src="{% static 'src/assets/img/profile-19.jpeg' %}" alt="avatar">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6>Jimmy Turner</h6>
-                                            <p class="meta-date-time">Monday, May 18</p>
-                                        </div>
-                                    </div>
-
-                                    <p>"Duis aute irure dolor" in reprehenderit in voluptate velit esse cillum "dolore
-                                        eu fugiat" nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-
-                                    <div class="w-action">
-                                        <div class="card-like">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="feather feather-thumbs-up">
-                                                <path
-                                                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
-                                                </path>
-                                            </svg>
-                                            <span>551 Likes</span>
-                                        </div>
-
-                                        <div class="read-more">
-                                            <a href="javascript:void(0);">Read More <svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-chevrons-right">
-                                                    <polyline points="13 17 18 12 13 7"></polyline>
-                                                    <polyline points="6 17 11 12 6 7"></polyline>
-                                                </svg></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
 
                     </div>
 
@@ -1270,15 +906,13 @@
     <!--todo done 新增签到功能，按钮变化，弹窗-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="{% static 'src/assets/js/Hu/signInScript.js' %}"></script>
-
-
-
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="{% static 'src/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'src/plugins/src/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
     <script src="{% static 'src/plugins/src/mousetrap/mousetrap.min.js' %}"></script>
     <script src="{% static 'src/plugins/src/waves/waves.min.js' %}"></script>
     <script src="{% static 'layouts/modern-light-menu/app.js' %}"></script>
+    <script src="{% static 'src/plugins/src/global/vendors.min.js' %}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
@@ -1286,6 +920,37 @@
     <script src="{% static 'src/assets/js/dashboard/dash_datacenter.js' %}"></script>
     <script src="{% static 'src/plugins/src/apex/daat_apexcharts.js' %}"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'src/assets/js/elements/custom-search.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $('#searchInput').on('keyup', function (e) {
+            e.preventDefault();  // 阻止表单默认提交行为
+
+            var searchQuery = $(this).val();  // 获取输入值
+
+            $.ajax({
+                url: '/search_species/',  // 确保这是正确的API URL
+                type: 'GET',
+                data: {search: searchQuery},  // 发送数据到服务器，这里的参数名要与后端接收的一致
+                success: function (data) {
+                    $('#result').empty();  // 清空当前内容
+                    data.forEach(function (item) {
+                        $('#result').append(
+                            '<div class="items">' +
+                            '<div class="user-name>"><p>鱼类名称：' + item.common_name + ' (拉丁文：' + item.latin_name + ') 记录日期：' + item.date + '</p></div>' +
+                            '<div class="user-email>"><p>3cm尺寸范围的分类: ' + item._3cm_size_class + ' ;  所有个体总重量: ' + item.weight_kg + ' kg</p></div>' +
+                            '</div>'
+                        );
+                    });
+                },
+                error: function () {
+                    $('#result').html('<p>Error loading data.</p>');  // 显示错误信息
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 

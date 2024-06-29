@@ -115,8 +115,8 @@
                                     &#x1F44B;
                                 </div>
                                 <div class="media-body">
-                                    <h5>李大壮</h5>
-                                    <p>池塘清扫员</p>
+                                    <h5>{{ user_info.name }}</h5>
+                                    <p>{{ user_info.job }}</p>
                                 </div>
                             </div>
                         </div>
@@ -202,8 +202,8 @@
                             <img src="{% static 'src/assets/img/boy-1.png' %}" alt="avatar">
                         </div>
                         <div class="profile-content">
-                            <h6 class="">李大壮</h6>
-                            <p class="">Project Leader</p>
+                            <h6 class="">{{ user_info.name }}</h6>
+                            <p class="">{{ user_info.job }}</p>
                         </div>
                     </div>
                 </div>
@@ -390,7 +390,7 @@
                                     </div>
                                     <div class="text-center user-info">
                                         <img src="{% static 'src/assets/img/profile-3.jpeg' %}" alt="avatar">
-                                        <p class="">李大壮</p>
+                                        <p class="">{{ user_info.name }}</p>
                                     </div>
                                     <div class="user-info-list">
 
@@ -765,6 +765,7 @@
     <script src="{% static 'src/assets/js/Hu/signInScript.js' %}"></script>
     <!--todo done 新增用户在用户界面操作的js-->
     <script src="{% static 'src/assets/js/Hu/userOperation.js' %}"></script>
+    <script src="{% static 'src/assets/js/searchNav.js' %}"></script>
 
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->

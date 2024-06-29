@@ -118,7 +118,7 @@ if __name__ == '__main__':
         print(f"Data shape: {data.shape}")
         
         result = forecast(data)
-        
+
         forecast_results[factor] = result
     
     forecast_results.to_csv("all_factors_forecast_result.csv", index=False)

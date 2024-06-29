@@ -4,6 +4,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LSTM
 from sklearn.preprocessing import StandardScaler
 import time
+import os
 
 look_back = 20
 look_after = 1
@@ -124,13 +125,15 @@ if __name__ == '__main__':
     print(f"Data shape: {data.shape}")
     
     result = forecast(data)
+
+    print(1)
     
     # 将结果保存到 CSV 文件
-    result_df = pd.DataFrame(result, columns=[factor])
-    result_df.to_csv("forecast_result.csv", index=False)
+    # result_df = pd.DataFrame(result, columns=[factor])
+    # result_df.to_csv("forecast_result.csv", index=False)
     
-    print("预测结果已保存到 forecast_result.csv 文件")
-    
-    end = time.time()
-    time_consuming = end - start
-    print('预测耗时: %.3f 秒' % time_consuming)
+    # print("预测结果已保存到 forecast_result.csv 文件")
+    #
+    # end = time.time()
+    # time_consuming = end - start
+    # print('预测耗时: %.3f 秒' % time_consuming)

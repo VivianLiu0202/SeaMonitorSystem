@@ -1319,12 +1319,12 @@ window.addEventListener("load", function () {
                 Sales By Category | Render
             =================================
         */
-        var chart = new ApexCharts(
+        var chartsb = new ApexCharts(
             document.querySelector("#chart-2"),
             options
         );
 
-        chart.render();
+        chartsb.render();
 
         /*
             =============================================
